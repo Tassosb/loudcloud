@@ -16,7 +16,7 @@ feature.
 - [ ] User pages
 
 ## Design Docs
-- [View Wireframes](wireframes.md)
+- [View Wireframes](wireframes/)
 - [React Components](component-hierarchy.md)
 - [API Endpoints](api-endpoints.md)
 - [DB Schema](schema.md)
