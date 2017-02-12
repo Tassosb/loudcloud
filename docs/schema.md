@@ -17,7 +17,7 @@ location    | string
 column name | data type | details
 ----------- | --------- | -------
 id          | integer   | not null, primary key
-user_id     |           | not null, index
+user_id     | integer   | not null, index
 http_user_agent | string | not null
 
 ## tracks
