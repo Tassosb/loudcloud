@@ -36,10 +36,10 @@ feature.
 
 **Objective:** Users can create and delete comments on track show page
 
-### Phase 4: User profile pages (1 day, W2 W 6pm)
+### Phase 4: User profile pages (2 days, W2 W 6pm)
 
 **Objective:** User pages display all user's tracks
 
-### Phase 5: Track pages (1 day, W2 W 6pm)
+### Phase 5: Search Bar (1 day, W2 F 6pm)
 
-**Objective:** Track pages display all track's comments
+**Objective:** User can search for songs with responsive search bar.
