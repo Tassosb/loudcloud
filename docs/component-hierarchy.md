@@ -90,3 +90,15 @@
 
 - SearchBar Container
   - SearchBar
+
+## Routes
+
+Path | Component
+---- | ---------
+/  |   App
+/  |   Splash
+/stream | Stream
+/users/:id | UserView
+/tracks/:id | TrackView
+/charts | Charts
+/upload | Upload
