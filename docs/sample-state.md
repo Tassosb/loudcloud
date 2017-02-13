@@ -3,22 +3,70 @@
 ```javascript
 {
   currentUser: {
-    email: "loudcloud@gmail.com"
+    id: 4,
+    email: "loudcloud@gmail.com",
+    name: "LoudCloud User"
   },
 
   errors: {
-    session: {},
-    upload: {}
+    session: {
+      sign_in: [],
+      login: [],
+    },
+    upload: [],
+    comment: []
   },
 
-  currentTrack: {
-    id: 112,
-    title: "Under Pressure",
-    media_url: "http://some.url",
-    image_url: "http://some.other.url",
-    track_credits: "Feat. Prince",
-    user_id: 43
+  nowPlaying: {
+    elapsed_time: 54, //seconds
+    track: {
+      id: 112,
+      duration: 193,
+      title: "Under Pressure",
+      media_url: "http://some.url",
+      image_url: "http://some.other.url",
+      artist: {
+        id: 67,
+        name: "David Bowie"
+      }
+    }
   },
+
+  tracks: {
+    432: {
+      title: "Life On Mars?",
+      duration: 180,
+      media_url: "http://some.url",
+      image_url: "http://some.other.url",
+      track_credits: "",
+      artist: {
+        id: 67,
+        name: "David Bowie"
+      }
+    },
+    147: {
+      title: "Starman",
+      duration: 180,
+      media_url: "http://some.url",
+      image_url: "http://some.other.url",
+      track_credits: "",
+      artist: {
+        id: 67,
+        name: "David Bowie"
+      }
+    },
+    532: {
+      title: "Moonage Daydream",
+      duration: 180,
+      media_url: "http://some.url",
+      image_url: "http://some.other.url",
+      track_credits: "",
+      artist: {
+        id: 67,
+        name: "David Bowie"
+      }
+    }
+  }
 
   playQueue: [
     {
@@ -27,7 +75,10 @@
       media_url: "http://some.url",
       image_url: "http://some.other.url",
       track_credits: "",
-      user_id: 67
+      artist: {
+        id: 67,
+        name: "David Bowie"
+      }
     },
     {
       id: 147,
@@ -35,7 +86,10 @@
       media_url: "http://some.url",
       image_url: "http://some.other.url",
       track_credits: "",
-      user_id: 53
+      artist: {
+        id: 67,
+        name: "David Bowie"
+      }
     },
     {
       id: 532,
@@ -43,21 +97,26 @@
       media_url: "http://some.url",
       image_url: "http://some.other.url",
       track_credits: "",
-      user_id: 34
+      artist: {
+        id: 67,
+        name: "David Bowie"
+      }
     }
   ],
 
   trackInView: {
     id: 432,
     title: "Life On Mars?",
+    duration: 180,
     media_url: "http://some.url",
     image_url: "http://some.other.url",
     track_credits: "",
-    user_id: 67,
+    artist_id: 67,
     comments: {
       94: {
         body: "My favorite",
         author: {
+          id: 43,
           name: "Freddie Mercury",
           image_url: "http://some.url"
         }
@@ -66,6 +125,7 @@
       45: {
         body: "RIP Bowie",
         author: {
+          id: 75,
           name: "Greg Porter",
           image_url: "http://some.other.url"
         }

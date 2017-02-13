@@ -6,7 +6,7 @@ column name | data type | details
 ----------- | --------- | -------
 id          | integer   | not null, primary key
 email       | string    | not null, indexed, unique
-name        | string    | not null
+name        | string    | not null, indexed, unique
 password_digest | string | not null
 session_token | string | not null, indexed, unique
 image_url   | string
@@ -27,7 +27,7 @@ column name | data type | details
 id          |  integer  | not null, primary key
 title       |  string   | not null, indexed
 media_url   |  string   | not null
-user_id     |  integer  | not null, foreign key (references users), indexed
+artist_id   |  integer  | not null, foreign key (references users), indexed
 image_url   |  string
 track_credits | string
 created_at  |  date     | not null, indexed
