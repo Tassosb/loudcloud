@@ -17,19 +17,10 @@
     comment: []
   },
 
-  nowPlaying: {
-    elapsed_time: 54, //seconds
-    track: {
-      id: 112,
-      duration: 193,
-      title: "Under Pressure",
-      media_url: "http://some.url",
-      image_url: "http://some.other.url",
-      artist: {
-        id: 67,
-        name: "David Bowie"
-      }
-    }
+  currentTrack: {
+    id: 112,
+    playing: true,
+    restart: false
   },
 
   tracks: {
