@@ -39,10 +39,10 @@
 - `POST /api/likes`
 - `DELETE /api/likes/:id`
 
-## Search Results (bonus)
+### Search Results (bonus)
 
 - `GET /api/search_results`
 
-## Chart Tracks
+### Chart Tracks (bonus)
 
 - `GET /api/chart_tracks`
