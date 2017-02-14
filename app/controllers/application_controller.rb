@@ -16,12 +16,12 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
-  def logout!
+  def log_out!
     current_user.try(:remove_session!, session[:session_token])
     session[:session_token] = nil
   end
 
   def log_in!(user)
-    session[:session_token] = user.add_session!(request.env("HTTP_USER_AGENT"))
+    session[:session_token] = user.add_session!(request.env["HTTP_USER_AGENT"])
   end
 end

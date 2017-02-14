@@ -9,7 +9,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "node_modules/.bin/webpack",
-    "watch": "node_modules/.bin/webpack --watch"
+    "watch": "node_modules/.bin/webpack --watch",
+    "postinstall": "./node_modules/.bin/webpack"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,11 @@
     "react-redux": "^5.0.2",
     "react-router": "^3.0.2",
     "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0",
     "webpack": "^2.2.1"
+  },
+  "engines": {
+    "node": "7.4.0",
+    "npm": "2.1.x"
   }
 }

@@ -31,7 +31,7 @@ class AuthForm extends React.Component {
   }
 
   render () {
-    const { promptName, formType } = this.props
+    const { formType } = this.props
 
     return (
       <div className='auth-form'>
@@ -42,7 +42,7 @@ class AuthForm extends React.Component {
             value={ this.state.email }
             formType={ formType } />
 
-          { promptName &&
+          { formType === 'signUp' &&
             <AuthField field='name'
               update={ this.update }
               value={ this.state.name }
