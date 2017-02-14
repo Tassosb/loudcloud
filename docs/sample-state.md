@@ -10,12 +10,13 @@
 
   errors: {
     session: {
-      sign_in: [],
-      login: [],
+      password: ['password is too short']
     },
     upload: [],
     comment: []
   },
+
+  modal: "signIn",
 
   currentTrack: {
     id: 112,
