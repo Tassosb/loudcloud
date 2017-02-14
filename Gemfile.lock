@@ -36,9 +36,9 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    annotate (2.6.5)
-      activerecord (>= 2.3.0)
-      rake (>= 0.8.7)
+    annotate (2.7.1)
+      activerecord (>= 3.2, < 6.0)
+      rake (>= 10.4, < 12.0)
     arel (6.0.4)
     bcrypt (3.1.11)
     better_errors (2.1.1)
@@ -61,7 +61,7 @@ GEM
     debug_inspector (0.0.2)
     erubis (2.7.0)
     execjs (2.7.0)
-    faker (1.7.2)
+    faker (1.7.3)
       i18n (~> 0.5)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
@@ -85,6 +85,7 @@ GEM
     mini_portile2 (2.1.0)
     minitest (5.10.1)
     multi_json (1.12.1)
+    newrelic_rpm (3.18.1.330)
     nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
     pg (0.19.0)
@@ -92,7 +93,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    pry-rails (0.3.4)
+    pry-rails (0.3.5)
       pry (>= 0.9.10)
     rack (1.6.5)
     rack-test (0.6.3)
@@ -116,12 +117,17 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.5)
+    rails_stdout_logging (0.0.5)
     railties (4.2.7.1)
       actionpack (= 4.2.7.1)
       activesupport (= 4.2.7.1)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    rake (12.0.0)
+    rake (11.3.0)
     rdoc (4.3.0)
     sass (3.4.23)
     sass-rails (5.0.6)
@@ -169,9 +175,11 @@ DEPENDENCIES
   faker
   jbuilder (~> 2.0)
   jquery-rails
+  newrelic_rpm
   pg (~> 0.15)
   pry-rails
   rails (= 4.2.7.1)
+  rails_12factor
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
