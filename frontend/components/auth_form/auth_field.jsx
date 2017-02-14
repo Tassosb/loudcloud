@@ -6,7 +6,8 @@ const AuthField = ({ formType, update, field, value }) => {
   return (
     <div className='auth-field'>
       { formType === 'signUp' && <label>Choose your { field }</label> }
-      <input type='text' value={ value }
+      <input type={ field === 'password' ? 'password' : 'text' }
+        value={ value }
         placeholder={ placeholder }
         onChange={ update(field) } />
     </div>

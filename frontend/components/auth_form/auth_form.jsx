@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router';
 import AuthField from './auth_field';
+import ErrorList from '../errors/error_list';
 
 class AuthForm extends React.Component {
   constructor (props) {
@@ -31,7 +32,7 @@ class AuthForm extends React.Component {
   }
 
   render () {
-    const { formType } = this.props
+    const { formType, errors } = this.props
 
     return (
       <div className='auth-form'>
@@ -41,6 +42,7 @@ class AuthForm extends React.Component {
             update={ this.update }
             value={ this.state.email }
             formType={ formType } />
+          <ErrorList errors={ errors.email } />
 
           { formType === 'signUp' &&
             <AuthField field='name'
@@ -48,11 +50,14 @@ class AuthForm extends React.Component {
               value={ this.state.name }
               formType={ formType } />
               }
+          <ErrorList errors={ errors.name } />
 
           <AuthField field='password'
             update={ this.update }
             value={ this.state.password }
             formType={ formType } />
+          <ErrorList errors={ errors.password } />
+          <ErrorList errors={ errors.login } />
 
           <input type='submit' value='Continue' />
         </form>
