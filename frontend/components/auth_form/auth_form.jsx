@@ -1,14 +1,18 @@
 import React from 'react';
 import { withRouter } from 'react-router';
+import AuthField from './auth_field';
 
 class AuthForm extends React.Component {
   constructor (props) {
     super(props);
 
-    this.state = {
-      email: '',
-      password: ''
-    };
+    let fields = ['email', 'password']
+    if (this.props.formType === 'signup') { fields.push('name') }
+
+    let startState = {};
+    fields.forEach((field) => (startState[field] = ''));
+
+    this.state = startState;
 
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,17 +31,28 @@ class AuthForm extends React.Component {
   }
 
   render () {
+    const { promptName, formType } = this.props
+
     return (
       <div className='auth-form'>
         <form onSubmit={ this.handleSubmit }>
 
-          <input type='text' value={ this.state.email }
-            placeholder='Your email address'
-            onChange={ this.update('email') } />
+          <AuthField field='email'
+            update={ this.update }
+            value={ this.state.email }
+            formType={ formType } />
 
-          <input type='password' value={ this.state.password }
-            placeholder='Your password'
-            onChange={ this.update('password') } />
+          { promptName &&
+            <AuthField field='name'
+              update={ this.update }
+              value={ this.state.name }
+              formType={ formType } />
+              }
+
+          <AuthField field='password'
+            update={ this.update }
+            value={ this.state.password }
+            formType={ formType } />
 
           <input type='submit' value='Continue' />
         </form>

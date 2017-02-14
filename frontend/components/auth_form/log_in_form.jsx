@@ -18,6 +18,7 @@ class LogInForm extends React.Component {
         <h1>Sign In</h1>
         <AuthForm
           submitForm={ logIn }
+          formType='logIn'
           errors={ errors } />
       </div>
     )
