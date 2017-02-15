@@ -62,3 +62,8 @@ button:hover, a:hover, input[type='submit']:hover {
 button:active {
   border-shadow: none;
 }
+
+a {
+  text-decoration: none;
+  color: inherit
+}

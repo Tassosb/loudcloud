@@ -7,7 +7,7 @@
   justify-content: space-around;
 }
 
-.modal-form input {
+.modal-form input, button {
   width: 80%;
   height: 40px;
   margin-top: 10px;
@@ -15,7 +15,7 @@
   border-radius: $slight-curve;
 }
 
-.modal-form input {
+.modal-form input, button {
   border: 1px solid $accent-grey;
   font-color: $light-grey;
   font-size: 16px;
@@ -29,6 +29,12 @@
   color: white;
 }
 
+.demo-log-in {
+  background-color: #264285;
+  background-image: linear-gradient(#3857A1,#264285);
+  border-color: #264285;
+  color: #fff;
+}
 
 .error-list {
   color: $orange;
@@ -38,4 +44,23 @@
   margin-left: 40px;
   text-align: left;
   padding: 8px 0;
+}
+
+.form-divider {
+  margin-top: 5px;
+  color: $dark-grey;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-divider-line {
+  width: 35%;
+  border-top: 1px solid $dark-grey;
+}
+
+.form-or {
+  padding: 5px;
+  color: $dark-grey;
 }

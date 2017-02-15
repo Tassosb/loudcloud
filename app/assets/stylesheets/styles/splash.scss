@@ -1,4 +1,5 @@
 .splash-banner {
+  margin: 0 auto;
   display: block;
   width: 1080px;
   height: 450px;
@@ -6,4 +7,17 @@
   background-image: url('banner_dancer.jpg');
   background-size: cover;
   background-position: top;
+  border-top: 4px solid $orange;
+}
+
+.splash-header {
+  height: 90px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 30px;
+
+  .sign-up-button {
+    margin-left: 20px;
+  }
 }
