@@ -25,10 +25,19 @@ class AuthForm extends React.Component {
     }
   }
 
-  handleSubmit () {
-    const user = Object.assign({}, this.state);
-    this.props.submitForm(user)
-      .then(() => this.props.router.push('/'));
+  handleSubmit (demo) {
+    const demoUser = {
+      email: 'demo@loudcloud.com',
+      password: 'loudcloud'
+    }
+
+    const user = demo ? demoUser : Object.assign({}, this.state);
+
+    return (e) => {
+      e.preventDefault();
+      this.props.submitForm(user)
+      .then(() => this.props.router.push('/stream'));
+    }
   }
 
   render () {
@@ -36,7 +45,17 @@ class AuthForm extends React.Component {
 
     return (
       <div className='auth-form'>
-        <form onSubmit={ this.handleSubmit }>
+        <form onSubmit={ this.handleSubmit(false) }>
+
+          <button
+            className='demo-log-in'
+            onClick={ this.handleSubmit(true) }>Demo Sign in</button>
+
+          <div className='form-divider'>
+            <div className='form-divider-line'></div>
+            <span className='form-or'>or</span>
+            <div className='form-divider-line'></div>
+          </div>
 
           <AuthField field='email'
             update={ this.update }
