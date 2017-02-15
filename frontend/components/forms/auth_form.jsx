@@ -8,7 +8,7 @@ class AuthForm extends React.Component {
     super(props);
 
     let fields = ['email', 'password']
-    if (this.props.formType === 'signup') { fields.push('name') }
+    if (this.props.formType === 'signUp') { fields.push('name') }
 
     let startState = {};
     fields.forEach((field) => (startState[field] = ''));

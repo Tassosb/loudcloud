@@ -4,7 +4,7 @@ const AuthField = ({ formType, update, field, value }) => {
   let placeholder = formType === 'logIn' ? `Your ${field}` : ''
 
   return (
-    <div className='auth-field'>
+    <div className='form-field'>
       { formType === 'signUp' && <label>Choose your { field }</label> }
       <input type={ field === 'password' ? 'password' : 'text' }
         value={ value }

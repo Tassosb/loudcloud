@@ -1,0 +1,42 @@
+.modal-form {
+  height: 500px;
+  width: 400px;
+  border: 1px solid black;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.modal-form input {
+  width: 80%;
+  height: 40px;
+  margin-top: 10px;
+  padding: 0;
+  border-radius: $slight-curve;
+}
+
+.modal-form input {
+  border: 1px solid $accent-grey;
+  font-color: $light-grey;
+  font-size: 16px;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+
+.modal-form input[type='submit'] {
+  border: none;
+  background-color: $orange;
+  color: white;
+}
+
+
+.error-list {
+  color: $orange;
+  font-size: 11px;
+  font-family: 'Lucida-grande', tahoma;
+  width: 90%;
+  margin-left: 40px;
+  text-align: left;
+  padding: 8px 0;
+}

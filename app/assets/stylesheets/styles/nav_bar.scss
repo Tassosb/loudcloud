@@ -1,0 +1,54 @@
+.nav-logo {
+  margin-left: 10px;
+  height: 50px;
+  width: 160px;
+}
+
+.nav-bar {
+  width: 100%;
+  height: 50px;
+  background-color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-bar-buttons {
+  height: 50px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-bar button {
+  border-radius: $slight-curve;
+  // @extend .reset-button;
+  color: $off-white;
+  font-size: 14px;
+  // font-family: 'Robot', sans-serif;
+}
+
+.nav-bar span {
+  color: $light-grey;
+  margin: 0 13px;
+}
+
+.log-in-button {
+  height: 30px;
+  width: 65px;
+  margin-left: 35px;
+  border: 1px solid $accent-grey;
+  background-color: $dark-grey;
+}
+
+.log-in-button:hover {
+  border-color: #e5e5e5;
+}
+
+.sign-up-button {
+  @extend .reset-button;
+  height: 30px;
+  width: 120px;
+  background-color: $orange;
+
+}

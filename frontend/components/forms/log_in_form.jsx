@@ -1,24 +1,23 @@
 import { connect } from 'react-redux';
 import React from 'react';
 import { Link } from 'react-router';
-import { signUp, receiveSessionErrors } from '../../actions/session_actions';
+import { logIn, receiveSessionErrors } from '../../actions/session_actions';
 import AuthForm from './auth_form';
 
-class SignUpForm extends React.Component {
+class LogInForm extends React.Component {
 
   componentDidMount () {
     this.props.clearErrors();
   }
 
   render () {
-    const { signUp, errors } = this.props;
+    const { logIn, errors } = this.props;
 
     return (
-      <div className='sign-up-form'>
-        <h1>Create Account</h1>
+      <div className='modal-form log-in-form'>
         <AuthForm
-          submitForm={ signUp }
-          formType='signUp'
+          submitForm={ logIn }
+          formType='logIn'
           errors={ errors } />
       </div>
     )
@@ -30,11 +29,11 @@ const mapStateToProps = ({ errors }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  signUp: (user) => dispatch(signUp(user)),
+  logIn: (user) => dispatch(logIn(user)),
   clearErrors: () => dispatch(receiveSessionErrors({}))
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(SignUpForm)
+)(LogInForm)
