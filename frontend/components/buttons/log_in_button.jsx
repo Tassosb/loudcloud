@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { receiveModal } from '../../actions/modal_actions';
 
-const LogInButton = ({ showLogIn }) => {
+const LogInButton = ({ showLogIn, redirect, route }) => {
   const handleClick = (e) => {
     e.preventDefault();
     showLogIn();

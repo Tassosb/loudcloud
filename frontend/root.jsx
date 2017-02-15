@@ -7,6 +7,7 @@ import SignUpForm from './components/forms/sign_up_form';
 import configureStore from './store/store';
 import Splash from './components/splash/splash';
 import Stream from './components/browse/stream';
+import Profile from './components/user/profile';
 
 
 const Root = () => {
@@ -22,13 +23,26 @@ const Root = () => {
     return !!store.getState().session.currentUser;
   };
 
+  const redirectUnlessLoggedIn = (nextState, replace) => {
+    if (!loggedIn())
+      replace('/');
+  }
+
+  const redirectIfLoggedIn = (nextState, replace) => {
+    if (loggedIn())
+      replace('/stream');
+  }
+
   return (
     <Provider store={ store }>
       <Router history={ hashHistory }>
         <Route path='/' component={ App }>
-          <IndexRoute component={ Splash } />
+          <IndexRoute component={ Splash } onEnter={ redirectIfLoggedIn } />
           <Route path='/stream' component={ Stream }></Route>
-          <Route path='/profile' component={ Profile }></Route>
+          <Route
+            path='/profile'
+            component={ Profile }
+            onEnter={ redirectUnlessLoggedIn } />
         </Route>
       </Router>
     </Provider>
