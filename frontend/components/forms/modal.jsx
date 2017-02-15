@@ -3,23 +3,27 @@ import { connect } from 'react-redux';
 import LogInForm from './log_in_form';
 import SignUpForm from './sign_up_form';
 
+const modals = {
+  signUp: <SignUpForm />,
+  logIn: <LogInForm />
+}
 
 class Modal extends React.Component {
 
   render () {
-    if (this.props.modal === 'signUp') { return <SignUpForm />; }
-    if (this.props.modal === 'logIn') { return <LogInForm />; }
-    return null;
+    const { modal } = this.props
+    if (!modal) { return null };
+
+    return (
+      <div className='modal-background'>
+        <div className='modal-center'>
+          <i className="fa fa-times" aria-hidden="true"></i>
+          { modals[modal] }
+        </div>
+      </div>
+    );
   }
 }
-  // return (
-  //   <div className='modal-background'>
-  //     <div className='modal-center'>
-  //       { modal === 'signUp' ? <SignUpForm /> : <LogInForm /> }
-  //     </div>
-  //   </div>
-  // );
-
 
 const mapStateToProps = (state) => ({
   modal: state.modal
