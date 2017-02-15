@@ -7,15 +7,12 @@
   justify-content: space-around;
 }
 
-.modal-form input, button {
+.modal-form input, .modal-form button {
   width: 80%;
   height: 40px;
   margin-top: 10px;
   padding: 0;
   border-radius: $slight-curve;
-}
-
-.modal-form input, button {
   border: 1px solid $accent-grey;
   font-color: $light-grey;
   font-size: 16px;

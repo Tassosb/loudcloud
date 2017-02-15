@@ -1,4 +1,51 @@
 .user-banner {
-  background: linear-gradient(#3857A1,#264285);
-  height: 300px;
+  background: linear-gradient( 135deg, $purple-grey,$salmon);
+  height: 260px;
+  display: flex;
+}
+
+.user-image {
+  margin-top: 30px;
+  margin-left: 15px;
+  height: 200px;
+  width: 200px;
+  border-radius: 100px;
+  background: linear-gradient( 45deg, $salmon, $purple-grey);
+}
+
+.user-info {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+
+  div {
+    background: rgba(0, 0, 0, .8);
+    color: $off-white;
+    padding: 10px;
+    font-size: 24px;
+    margin-bottom: 5px;
+  }
+}
+
+.user-nav {
+  display: flex;
+  margin: 0 20px;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.user-view-tabs {
+  display: flex;
+  margin-top: 20px;
+}
+
+.user-view-tabs span {
+  font-size: 18px;
+  height: 40px;
+  color: black;
+  display: inline-block;
+}
+
+.user-view-tabs span.selectedTab {
+  border-bottom: 1px solid $dark-grey;
+  color: $orange;
 }
