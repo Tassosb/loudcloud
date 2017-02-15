@@ -9,10 +9,27 @@ class LogOutButton extends React.Component {
     this.handleLogOut = this.handleLogOut.bind(this);
   }
 
-  handleSignOut(e) {
+  handleLogOut(e) {
     e.preventDefault();
     this.props.logOut().then(() =>
       this.props.router.push('/')
     )
   }
+
+  render () {
+    return (
+      <span
+        className='log-out-button'
+        onClick={ this.handleLogOut }>Sign out</span>
+    )
+  }
 }
+
+const mapDispatchToProps = (dispatch) => ({
+  logOut: () => dispatch(logOut())
+})
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(withRouter(LogOutButton));
