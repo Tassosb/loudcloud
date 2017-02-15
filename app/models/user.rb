@@ -1,7 +1,21 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :integer          not null, primary key
+#  email           :string           not null
+#  password_digest :string           not null
+#  name            :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  location        :string
+#  image_url       :string
+#
+
 class User < ActiveRecord::Base
   attr_reader :password
 
-  validates :email, :password_digest, presence: true
+  validates :email, :password_digest, :name, presence: true
   validates :email, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
