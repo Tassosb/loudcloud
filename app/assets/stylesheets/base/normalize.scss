@@ -58,3 +58,7 @@ button:hover, a:hover, input[type='submit']:hover {
 .reset-button {
   border: 0;
 }
+
+button:active {
+  border-shadow: none;
+}
