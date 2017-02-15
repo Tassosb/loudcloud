@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import LogInButton from '../buttons/log_in_button';
 import SignUpButton from '../buttons/sign_up_button';
 import LogOutButton from '../buttons/log_out_button';
@@ -7,7 +8,7 @@ import LogOutButton from '../buttons/log_out_button';
 const NavButtons = ({ loggedIn }) => (
     <div className='nav-buttons'>
       { !loggedIn &&
-        <div className='nav-buttons'>
+        <div>
           <LogInButton />
           <span>or</span>
           <SignUpButton />
@@ -29,7 +30,7 @@ const NavDropDown = ({ loggedIn }) => {
           aria-hidden="true"></i>
       </li>
       <ul>
-        <li><span>Profile</span></li>
+        <li><Link to='/profile'>Profile</Link></li>
         { loggedIn && <li><LogOutButton /></li>}
       </ul>
     </ul>
@@ -49,9 +50,16 @@ class NavBar extends React.Component {
         <div className='nav-logo'>
           <img src={ logoWithText } />
         </div>
+        <div>
+          <Link to='/'>
+            Home
+          </Link>
+        </div>
         <NavButtons loggedIn={ !!currentUser } />
         { !!currentUser &&
-          <div>{ currentUser.name || currentUser.email }</div> }
+          <div><Link to='/profile'>
+            { currentUser.name || currentUser.email }
+          </Link></div> }
         <NavDropDown loggedIn={ !!currentUser } />
       </div>
     )
