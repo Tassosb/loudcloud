@@ -3,14 +3,14 @@ import TrackIndex from '../tracks/track_index';
 
 const BrowseNavBar = ({ onPage }) => {
   return (
-    <nav>
+    <nav className='browse-nav-bar'>
       <ul>
-        <li>
+        <li className='browse-tab'>
           <span className={ onPage === 'stream' ? 'selected' : '' }>
             Stream
           </span>
         </li>
-        <li>
+        <li  className='browse-tab'>
           <span className={ onPage === 'charts' ? 'selected' : '' }>
             Charts
           </span>
@@ -20,11 +20,29 @@ const BrowseNavBar = ({ onPage }) => {
   )
 }
 
+const BrowseSideBar = () => {
+  return (
+    <div className='browse-side-bar'>
+    </div>
+  )
+}
+
 const Browse = ({ onPage, tracks }) => {
+  const message = onPage === 'stream' ?
+    'Hear the latest tracks' : '';
+
   return (
     <div className='browse'>
-      <BrowseNavBar onPage={ onPage } />
-      <TrackIndex tracks={ tracks } />
+      <div className='browse-main'>
+        <div className='browse-index-column'>
+          <BrowseNavBar onPage={ onPage } />
+          <h2>{ message }</h2>
+          <TrackIndex tracks={ tracks } />
+        </div>
+        <div className='browse-side-column'>
+          <BrowseSideBar />
+        </div>
+      </div>
     </div>
   )
 }

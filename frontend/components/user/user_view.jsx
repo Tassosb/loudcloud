@@ -69,6 +69,14 @@ class UserView extends React.Component{
           user={ user }
           currentTab={ this.state.currentTab }
           updateTab={ this.updateTab }/>
+        <div className='user-view-main'>
+          <div className='user-tracks-column'>
+
+          </div>
+          <div className='user-side-column'>
+
+          </div>
+        </div>
       </div>
     );
   }

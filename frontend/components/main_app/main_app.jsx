@@ -6,7 +6,9 @@ const MainApp= ({ children }) => {
   return (
     <div className='main-app'>
       <NavBar />
-      { children }
+      <div className='main-content'>
+        { children }
+      </div>
     </div>
   )
 }
