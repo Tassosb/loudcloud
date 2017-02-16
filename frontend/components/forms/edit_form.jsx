@@ -6,21 +6,22 @@ class EditForm extends React.Component {
   constructor (props) {
     super(props);
 
-    let editItem = this.props.user || this.props.track;
+    this.editItem = this.props.user || this.props.track;
     let currState = {};
-    Object.keys(editItem).concat(['imageFile', 'imageUrl']).forEach((attr) => {
-      if (attr !== 'image' && attr !== 'id'))
-        currState[attr] = editItem[attr] || null;
+    Object.keys(this.editItem).concat(['imageFile']).forEach((attr) => {
+      if (attr !== 'id') {
+        currState[attr] = this.editItem[attr] || '';
+      }
     })
 
     this.state = currState;
 
     this.textFields = Object.keys(this.state).filter(
-      (field) => field !== 'imageUrl' && field !== 'imageFile');
+      (field) => field !== 'image_url' && field !== 'imageFile');
 
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.changed = false
+    this.updateFile = this.updateFile.bind(this);
   }
 
   update (field) {
@@ -31,7 +32,29 @@ class EditForm extends React.Component {
   }
 
   handleSubmit () {
-    this.props.submitForm(Object.assign({}, this.state))
+    const formData = new FormData();
+    const itemType = this.props.user ? 'user' : 'track';
+
+    this.textFields.forEach((field) => {
+      formData.append(`${itemType}[${field}]`, this.state[field])
+    });
+
+    formData.append(`${itemType}[image]`, this.state.imageFile);
+
+    this.props.submitForm(formData, this.editItem.id);
+  }
+
+  updateFile (e) {
+    let file = e.currentTarget.files[0];
+    let fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      this.setState({ imageFile: file, imageUrl: fileReader.result });
+    };
+
+    if (file) {
+      fileReader.readAsDataURL(file);
+      this.changed = true;
+    }
   }
 
   render () {
@@ -42,8 +65,9 @@ class EditForm extends React.Component {
           <div className='edit-form-flex-box'>
             <div className='edit-image-column'>
               <div className='user-image'>
-                <
+                <img src={ this.state.image_url } />
               </div>
+              <input type='file' onChange={ this.updateFile }/>
             </div>
             <div className='edit-text-column'>
               { this.textFields.map((field, idx) => (
