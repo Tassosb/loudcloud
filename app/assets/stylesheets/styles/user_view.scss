@@ -19,11 +19,22 @@
   flex-direction: column;
 
   div {
-    background: rgba(0, 0, 0, .8);
     color: $off-white;
-    padding: 10px;
-    font-size: 24px;
-    margin-bottom: 5px;
+
+    h1, h2 {
+      background: rgba(0, 0, 0, .8);
+      padding: 10px;
+      margin-bottom: 5px;
+      display: inline-block;
+    }
+
+    h1 {
+      font-size: 24px;
+    }
+
+    h2 {
+      font-size: 18px;
+    }
   }
 }
 

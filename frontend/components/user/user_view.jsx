@@ -9,9 +9,9 @@ const UserBanner = ({ user }) => {
       <div className='user-image'>
       </div>
       <div className='user-info'>
-        <div>{ user.name }</div>
+        <div><h1>{ user.name }</h1></div>
         { user.location &&
-          <div>{ user.location }</div>
+          <div><h2>{ user.location }</h2></div>
         }
       </div>
     </div>

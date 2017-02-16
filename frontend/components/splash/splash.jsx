@@ -6,6 +6,7 @@ import SignUpButton from '../buttons/sign_up_button';
 const SplashBanner = () => {
   return (
     <div className='splash-banner'>
+      <div className='orange-fade-left'></div>
       <div className='splash-header'>
         <div className='nav-logo'>
           <img src={ logoNoBackground }/>
@@ -15,6 +16,7 @@ const SplashBanner = () => {
           <SignUpButton redirect={ true }/>
         </div>
       </div>
+      <div className='orange-fade-right'></div>
     </div>
   );
 }

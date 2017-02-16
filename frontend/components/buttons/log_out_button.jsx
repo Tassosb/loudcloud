@@ -18,9 +18,9 @@ class LogOutButton extends React.Component {
 
   render () {
     return (
-      <span
+      <li
         className='log-out-button'
-        onClick={ this.handleLogOut }>Sign out</span>
+        onClick={ this.handleLogOut }>Sign out</li>
     )
   }
 }

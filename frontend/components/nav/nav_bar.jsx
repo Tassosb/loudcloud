@@ -30,8 +30,8 @@ const NavDropDown = ({ loggedIn }) => {
           aria-hidden="true"></i>
       </li>
       <ul>
-        <li><Link to='/profile'>Profile</Link></li>
-        { loggedIn && <li><LogOutButton /></li>}
+        <Link to='/profile'><li>Profile</li></Link>
+        { loggedIn && <LogOutButton />}
       </ul>
     </ul>
   )

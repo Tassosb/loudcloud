@@ -1,6 +1,6 @@
 .log-in-button {
   height: 30px;
-  width: 65px;
+  width: 70px;
   margin-left: 35px;
   border: 1px solid $accent-grey;
   background-color: $dark-grey;
@@ -13,7 +13,7 @@
 .sign-up-button {
   @extend .reset-button;
   height: 30px;
-  width: 120px;
+  width: 130px;
   background-color: $orange;
 
 }
@@ -29,12 +29,17 @@ button {
   border-radius: $slight-curve;
   // @extend .reset-button;
   color: $off-white;
-  font-size: 14px;
+  font-size: 16px;
   // font-family: 'Robot', sans-serif;
 }
 
 .splash-banner .log-in-button {
   background: rgba(0, 0, 0, 0);
+  border-color: $lighter-grey;
+}
+
+.splash-banner .log-in-button:hover {
+  border-color: $smoke-grey;
 }
 
 .edit-profile-button {

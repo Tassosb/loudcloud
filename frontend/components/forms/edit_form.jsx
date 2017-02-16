@@ -35,15 +35,23 @@ class EditForm extends React.Component {
       <div className='modal-form modal-center modal-form-wide'>
         <h2 className='edit-form-title'>{ this.props.title }</h2>
         <form className='edit-form' onSubmit={ this.handleSubmit }>
-          { this.textFields.map((field, idx) => (
-            <div key={ idx }>
-              <FormField
-                field={ field }
-                value={ this.state[field] }
-                update={ this.update(field) } />
-              <ErrorList errors={ this.props.errors[field] } />
+          <div className='edit-form-flex-box'>
+            <div className='edit-image-column'>
+              <div className='user-image'>
+              </div>
             </div>
-          )) }
+            <div className='edit-text-column'>
+              { this.textFields.map((field, idx) => (
+                <div key={ idx }>
+                  <FormField
+                    field={ field }
+                    value={ this.state[field] }
+                    update={ this.update(field) } />
+                  <ErrorList errors={ this.props.errors[field] } />
+                </div>
+              )) }
+            </div>
+          </div>
 
           <input type='submit'
             value='Save changes'

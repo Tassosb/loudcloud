@@ -70,14 +70,17 @@
 }
 
 .edit-form {
-  width: 75%;
+  width: 80%;
   margin: 0 auto;
+  color: $dark-grey;
+
   label {
     display: block;
     margin-top: 5px;
     padding-top: 10px;
     text-align: left;
     width: 100%;
+    font-size: 14px;
   }
 }
 
@@ -87,11 +90,12 @@
 }
 
 input.edit-field-input {
+  margin-top: 10px;
   width: 100%;
 }
 
 .edit-form-title {
-  font-size: 22;
+  font-size: 22px;
   text-align: left;
   margin-left: 20px;
   padding-bottom: 10px;
@@ -99,13 +103,13 @@ input.edit-field-input {
 }
 
 .edit-form input[type='submit'] {
-  margin-left: 322px;
+  margin-left: 350px;
   text-align: center;
   width: 129px;
   padding: 0px;
-  background-color: $lighter-grey;
-  border: 1px solid $light-grey;
-  color: $light-grey;
+  background-color: $smoke-grey;
+  border: 1px solid $subtle-grey;
+  color: $subtle-grey;
 }
 
 input[type='submit'].awake {
@@ -113,11 +117,12 @@ input[type='submit'].awake {
   border: none;
   color: white;
 }
-// .edit-field-half {
-//   width: 43%;
-//   float: left;
-// }
-//
-// .edit-field-half {
-//   margin: 0 20px;
-// }
+
+.edit-text-column {
+  margin-bottom: 10px;
+}
+
+.edit-form-flex-box {
+  display: flex;
+  justify-content: space-between;
+}

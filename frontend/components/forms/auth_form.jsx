@@ -53,11 +53,13 @@ class AuthForm extends React.Component {
               onClick={ this.handleSubmit(true) }>Demo Sign in</button>
             }
 
-          <div className='form-divider'>
-            <div className='form-divider-line'></div>
-            <span className='form-or'>or</span>
-            <div className='form-divider-line'></div>
-          </div>
+          { formType === 'logIn' &&
+            <div className='form-divider'>
+              <div className='form-divider-line'></div>
+              <span className='form-or'>or</span>
+              <div className='form-divider-line'></div>
+            </div>
+          }
 
           <AuthField field='email'
             update={ this.update }
