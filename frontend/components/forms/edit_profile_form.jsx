@@ -13,7 +13,7 @@ class EditProfileForm extends React.Component {
       <div className='modal-form edit-profile-form'>
         <EditForm
           user={ user }
-          updateUser={ updateUser }
+          submitForm={ updateUser }
           errors={ errors }/>
       </div>
     )

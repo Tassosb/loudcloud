@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import EditProfileButton from '../buttons/edit_profile_button';
+import { receiveUserInView } from '../../actions/user_actions';
 
 const UserBanner = ({ user }) => {
   return (
@@ -17,7 +18,7 @@ const UserBanner = ({ user }) => {
   );
 }
 
-const UserNav = ({ currentTab, updateTab }) => {
+const UserNav = ({ currentTab, updateTab, user }) => {
   return (
     <nav className='user-nav'>
       <ul className='user-view-tabs'>
@@ -28,7 +29,7 @@ const UserNav = ({ currentTab, updateTab }) => {
           </span>
         </li>
         <li>
-          <EditProfileButton />
+          <EditProfileButton user={user} />
         </li>
       </ul>
     </nav>
@@ -46,6 +47,10 @@ class UserView extends React.Component{
     this.updateTab = this.updateTab.bind(this);
   }
 
+  componentDidMount () {
+    this.props.receiveUserInView(this.props.user);
+  }
+
   updateTab (tab) {
     return () => {
       this.setState({ currentTab: tab })
@@ -60,6 +65,7 @@ class UserView extends React.Component{
       <div className='user-view'>
         <UserBanner user={ user }/>
         <UserNav
+          user={ user }
           currentTab={ this.state.currentTab }
           updateTab={ this.updateTab }/>
       </div>
@@ -67,7 +73,11 @@ class UserView extends React.Component{
   }
 }
 
-({ user, profile }) => {
-}
+const mapDispatchToProps = (dispatch) => ({
+  receiveUserInView: (user) => dispatch(receiveUserInView(user))
+})
 
-export default UserView;
+export default connect(
+  null,
+  mapDispatchToProps
+)(UserView);

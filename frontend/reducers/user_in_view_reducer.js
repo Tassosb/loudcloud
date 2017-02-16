@@ -11,7 +11,11 @@ const userInViewReducer = (state = defaultState, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_USER_IN_VIEW:
-      return action.user;
+      const newUser = {};
+      Object.keys(action.user).forEach((attr) => {
+        newUser[attr] = action.user[attr] || defaultState[attr]
+      });
+      return newUser;
     default:
       return state;
   }

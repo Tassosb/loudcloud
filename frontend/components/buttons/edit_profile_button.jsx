@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { receiveModal } from '../../actions/modal_actions';
 
-const EditProfileButton = ({ showEditProfileForm }) => {
+const EditProfileButton = ({ showEditProfileForm, user }) => {
   const handleClick = (e) => {
     e.preventDefault();
     showEditProfileForm();

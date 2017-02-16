@@ -11,6 +11,7 @@ class EditForm extends React.Component {
       (field) => field !== 'image_url' && field !== 'id');
 
     this.update = this.update.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   update (field) {
@@ -19,9 +20,13 @@ class EditForm extends React.Component {
     }
   }
 
+  handleSubmit () {
+    this.props.submitForm(Object.assign({}, this.state))
+  }
+
   render () {
     return (
-      <form>
+      <form onSubmit={ this.handleSubmit }>
         { this.textFields.map((field, idx) => (
           <div key={ idx }>
             <FormField
