@@ -36,3 +36,14 @@ button {
 .splash-banner .log-in-button {
   background: rgba(0, 0, 0, 0);
 }
+
+.edit-profile-button {
+  background: white;
+  color: $darker-grey;
+  padding: 4px 10px;
+  border: 1px solid $light-grey;
+
+  i {
+    margin-right: 5px;
+  }
+}

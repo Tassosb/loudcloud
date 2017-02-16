@@ -1,10 +1,9 @@
 .modal-form {
-  height: 500px;
-  width: 400px;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  // align-items: center;
 }
 
 .modal-form input, .modal-form button {
@@ -24,6 +23,14 @@
   border: none;
   background-color: $orange;
   color: white;
+}
+
+.modal-form-wide {
+  height: 400px
+}
+
+.modal-form-narrow {
+  height: 500px;
 }
 
 .demo-log-in {
@@ -61,3 +68,31 @@
   padding: 5px;
   color: $dark-grey;
 }
+
+.edit-form {
+  label {
+    display: block;
+    margin-top: 5px;
+  }
+}
+
+.edit-form-title {
+  font-size: 22;
+  text-align: left;
+  margin-left: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid $lighter-grey;
+}
+
+.edit-form-label {
+  padding-top: 10px;
+}
+
+// .edit-field-half {
+//   width: 43%;
+//   float: left;
+// }
+//
+// .edit-field-half {
+//   margin: 0 20px;
+// }
