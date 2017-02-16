@@ -2,6 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import EditProfileButton from '../buttons/edit_profile_button';
 import { receiveUserInView } from '../../actions/user_actions';
+import TrackIndex from '../tracks/track_index';
+import { selectTracksAsArray } from '../../reducers/selectors'
+import { fetchTracks } from '../../actions/track_actions';
 
 const UserBanner = ({ user }) => {
   return (
@@ -50,6 +53,7 @@ class UserView extends React.Component{
 
   componentDidMount () {
     this.props.receiveUserInView(this.props.user);
+    this.props.fetchTracks({artist_id: this.props.user.id});
   }
 
   updateTab (tab) {
@@ -59,9 +63,9 @@ class UserView extends React.Component{
   }
 
   render () {
-    const { user, profile } = this.props;
+    const { user, profile, tracks } = this.props;
     if (!user) { return null; }
-
+    // debugger
     return (
       <div className='user-view'>
         <UserBanner user={ user }/>
@@ -71,7 +75,7 @@ class UserView extends React.Component{
           updateTab={ this.updateTab }/>
         <div className='user-view-main'>
           <div className='user-tracks-column'>
-
+            <TrackIndex tracks={ tracks }/>
           </div>
           <div className='user-side-column'>
 
@@ -82,11 +86,16 @@ class UserView extends React.Component{
   }
 }
 
+const mapStateToProps = ( state ) => ({
+  tracks: selectTracksAsArray(state)
+})
+
 const mapDispatchToProps = (dispatch) => ({
+  fetchTracks: (specs) => dispatch(fetchTracks(specs)),
   receiveUserInView: (user) => dispatch(receiveUserInView(user))
 })
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(UserView);

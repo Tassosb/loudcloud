@@ -43,7 +43,7 @@ class AuthForm extends React.Component {
 
     return (e) => {
       e.preventDefault();
-      this.props.submitForm(user)
+      this.props.submitForm(demoUser)
         .then(this.redirect);
     }
   }
@@ -57,12 +57,12 @@ class AuthForm extends React.Component {
 
     return (
       <div className='modal-form modal-form-narrow'>
-        <form onSubmit={ this.handleSubmit(false) }>
+        <form onSubmit={ this.handleSubmit() }>
 
           { formType === 'logIn' &&
             <button
               className='demo-log-in'
-              onClick={ this.handleSubmit(true) }>Demo Sign in</button>
+              onClick={ this.handleDemoLogin() }>Demo Sign in</button>
             }
 
           { formType === 'logIn' &&

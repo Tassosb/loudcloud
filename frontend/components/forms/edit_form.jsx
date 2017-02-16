@@ -48,7 +48,7 @@ class EditForm extends React.Component {
     let file = e.currentTarget.files[0];
     let fileReader = new FileReader();
     fileReader.onloadend = () => {
-      this.setState({ imageFile: file, imageUrl: fileReader.result });
+      this.setState({ imageFile: file, image_url: fileReader.result });
     };
 
     if (file) {
