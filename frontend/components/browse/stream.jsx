@@ -1,13 +1,35 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import MainApp from '../main_app/main_app';
 import Browse from './browse';
+import { selectTracksAsArray } from '../../reducers/selectors';
 
-const Stream = () => {
-  return (
-    <MainApp>
-      <Browse onPage='stream' />
-    </MainApp>
-  )
+class Stream extends React.Component {
+
+  componentDidMount () {
+    this.props.fetchTracks();
+  }
+
+  render () {
+    const { tracks } = this.props
+    return (
+      <MainApp>
+        <Browse onPage='stream' tracks={ tracks }/>
+      </MainApp>
+    );
+  }
+
 }
 
-export default Stream;
+const mapStateToProps = (state) => ({
+  tracks: selectTracksAsArray(state)
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchTracks: () => dispatch(fetchTracks())
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Stream);

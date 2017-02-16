@@ -15,8 +15,8 @@ export const receiveUserErrors = (errors) => ({
   errors
 });
 
-export const updateUser = (user) => dispatch => {
-  return APIUtil.updateUser(user)
+export const updateUser = (formData, userId) => dispatch => {
+  return APIUtil.updateUser(formData, userId)
     .then((user) => {
       dispatch(receiveUserInView(user))
       dispatch(receiveModal(''))

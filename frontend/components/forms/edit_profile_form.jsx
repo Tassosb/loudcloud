@@ -26,7 +26,7 @@ const mapStateToProps = ({ userInView, errors }) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  updateUser: (user) => dispatch(updateUser(user))
+  updateUser: (formData, id) => dispatch(updateUser(formData, id))
 })
 
 export default connect(

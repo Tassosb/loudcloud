@@ -1,4 +1,5 @@
 import React from 'react';
+import TrackIndex from '../tracks/track_index';
 
 const BrowseNavBar = ({ onPage }) => {
   return (
@@ -19,10 +20,11 @@ const BrowseNavBar = ({ onPage }) => {
   )
 }
 
-const Browse = ({ onPage }) => {
+const Browse = ({ onPage, tracks }) => {
   return (
     <div className='browse'>
       <BrowseNavBar onPage={ onPage } />
+      <TrackIndex tracks={ tracks } />
     </div>
   )
 }
