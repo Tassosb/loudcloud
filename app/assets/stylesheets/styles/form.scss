@@ -70,8 +70,9 @@
 }
 
 .edit-form {
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
+  margin-bottom: 20px;
   color: $dark-grey;
 
   label {
@@ -103,13 +104,23 @@ input.edit-field-input {
 }
 
 .edit-form input[type='submit'] {
-  margin-left: 350px;
+  margin-left: 390px;
+  margin-top: 0;
   text-align: center;
   width: 129px;
   padding: 0px;
   background-color: $smoke-grey;
   border: 1px solid $subtle-grey;
   color: $subtle-grey;
+}
+
+.edit-form input[type='file'] {
+  border: none;
+  position: absolute;
+  bottom: 3px;
+  right: 60px;
+  color: rgba(0,0,0,0);
+  width: 100px;
 }
 
 input[type='submit'].awake {
@@ -120,6 +131,14 @@ input[type='submit'].awake {
 
 .edit-text-column {
   margin-bottom: 10px;
+  margin-right: 40px;
+  flex: 1;
+}
+
+.edit-image-column {
+  flex: 1;
+  margin-left: 30px;
+  position: relative;
 }
 
 .edit-form-flex-box {

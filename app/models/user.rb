@@ -23,6 +23,8 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   has_many :sessions
+  has_many :tracks,
+    foreign_key: :artist_id
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
