@@ -9,3 +9,4 @@
 User.destroy_all
 
 User.create!(email: 'demo@loudcloud.com', password: 'loudcloud', name: 'LoudCloud User')
+User.create!(email: 'test@loudcloud.com', password: 'loudcloud', name: 'Test User')

@@ -2,10 +2,12 @@
 
 ```javascript
 {
-  currentUser: {
-    id: 4,
-    email: "loudcloud@gmail.com",
-    name: "LoudCloud User"
+  session:{
+      currentUser: {
+      id: 4,
+      email: "loudcloud@gmail.com",
+      name: "LoudCloud User"
+    }
   },
 
   errors: {

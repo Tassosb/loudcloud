@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: sessions
+#
+#  id              :integer          not null, primary key
+#  token           :string           not null
+#  user_id         :integer          not null
+#  http_user_agent :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 class Session < ActiveRecord::Base
   validates :user, :token, :http_user_agent, presence: true
 
