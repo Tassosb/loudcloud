@@ -17,6 +17,8 @@ class AuthForm extends React.Component {
 
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemoLogin = this.handleDemoLogin.bind(this);
+    this.redirect = this.redirect.bind(this);
   }
 
   update (field) {
@@ -25,19 +27,29 @@ class AuthForm extends React.Component {
     }
   }
 
-  handleSubmit (demo) {
+  handleSubmit () {
+    return (e) => {
+      e.preventDefault();
+      this.props.submitForm(Object.assign({}, this.state))
+      .then(this.redirect);
+    }
+  }
+
+  handleDemoLogin () {
     const demoUser = {
       email: 'demo@loudcloud.com',
       password: 'loudcloud'
-    }
-
-    const user = demo ? demoUser : Object.assign({}, this.state);
+    };
 
     return (e) => {
       e.preventDefault();
       this.props.submitForm(user)
-      .then(() => this.props.router.push('/stream'));
+        .then(this.redirect);
     }
+  }
+
+  redirect () {
+    this.props.router.push('/stream')
   }
 
   render () {
