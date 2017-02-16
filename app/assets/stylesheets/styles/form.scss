@@ -70,10 +70,24 @@
 }
 
 .edit-form {
+  width: 75%;
+  margin: 0 auto;
   label {
     display: block;
     margin-top: 5px;
+    padding-top: 10px;
+    text-align: left;
+    width: 100%;
   }
+}
+
+.edit-field input {
+  width: 100%;
+  margin: 0;
+}
+
+input.edit-field-input {
+  width: 100%;
 }
 
 .edit-form-title {
@@ -84,10 +98,21 @@
   border-bottom: 1px solid $lighter-grey;
 }
 
-.edit-form-label {
-  padding-top: 10px;
+.edit-form input[type='submit'] {
+  margin-left: 322px;
+  text-align: center;
+  width: 129px;
+  padding: 0px;
+  background-color: $lighter-grey;
+  border: 1px solid $light-grey;
+  color: $light-grey;
 }
 
+input[type='submit'].awake {
+  background-color: $orange;
+  border: none;
+  color: white;
+}
 // .edit-field-half {
 //   width: 43%;
 //   float: left;

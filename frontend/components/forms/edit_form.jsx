@@ -6,17 +6,23 @@ class EditForm extends React.Component {
   constructor (props) {
     super(props);
 
-    this.state = this.props.user || this.props.track
+    this.state = this.props.user || this.props.track;
+
+
+    // this.state = Object.assign({changed: false}, newState)
+
     this.textFields = Object.keys(this.state).filter(
       (field) => field !== 'image_url' && field !== 'id');
 
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.changed = false
   }
 
   update (field) {
     return (e) => {
       this.setState({[field]: e.currentTarget.value});
+      this.changed = true;
     }
   }
 
@@ -39,7 +45,9 @@ class EditForm extends React.Component {
             </div>
           )) }
 
-          <input type='submit' value='Save changes' />
+          <input type='submit'
+            value='Save changes'
+            className={ this.changed ? 'awake' : '' } />
         </form>
       </div>
     );
