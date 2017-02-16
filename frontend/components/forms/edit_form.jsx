@@ -6,13 +6,17 @@ class EditForm extends React.Component {
   constructor (props) {
     super(props);
 
-    this.state = this.props.user || this.props.track;
+    let editItem = this.props.user || this.props.track;
+    let currState = {};
+    Object.keys(editItem).concat(['imageFile', 'imageUrl']).forEach((attr) => {
+      if (attr !== 'image' && attr !== 'id'))
+        currState[attr] = editItem[attr] || null;
+    })
 
-
-    // this.state = Object.assign({changed: false}, newState)
+    this.state = currState;
 
     this.textFields = Object.keys(this.state).filter(
-      (field) => field !== 'image_url' && field !== 'id');
+      (field) => field !== 'imageUrl' && field !== 'imageFile');
 
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -38,6 +42,7 @@ class EditForm extends React.Component {
           <div className='edit-form-flex-box'>
             <div className='edit-image-column'>
               <div className='user-image'>
+                <
               </div>
             </div>
             <div className='edit-text-column'>

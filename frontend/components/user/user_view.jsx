@@ -7,6 +7,7 @@ const UserBanner = ({ user }) => {
   return (
     <div className='user-banner'>
       <div className='user-image'>
+        <img src={ user.image_url } />
       </div>
       <div className='user-info'>
         <div><h1>{ user.name }</h1></div>
