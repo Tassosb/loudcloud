@@ -10,7 +10,10 @@ const EditProfileButton = ({ showEditProfileForm, user }) => {
   return (
     <button
       className='edit-profile-button'
-      onClick={ handleClick }>Edit</button>
+      onClick={ handleClick }>
+      <i className="fa fa-pencil" aria-hidden="true"></i>
+      Edit
+    </button>
   );
 }
 

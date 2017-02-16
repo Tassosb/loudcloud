@@ -10,12 +10,11 @@ class EditProfileForm extends React.Component {
     const { user, updateUser, errors } = this.props;
 
     return (
-      <div className='modal-form edit-profile-form'>
-        <EditForm
-          user={ user }
-          submitForm={ updateUser }
-          errors={ errors }/>
-      </div>
+      <EditForm
+        title='Edit your Profile'
+        user={ user }
+        submitForm={ updateUser }
+        errors={ errors }/>
     )
   }
 

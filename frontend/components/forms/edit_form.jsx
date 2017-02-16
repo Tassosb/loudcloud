@@ -26,19 +26,22 @@ class EditForm extends React.Component {
 
   render () {
     return (
-      <form onSubmit={ this.handleSubmit }>
-        { this.textFields.map((field, idx) => (
-          <div key={ idx }>
-            <FormField
-              field={ field }
-              value={ this.state[field] }
-              update={ this.update(field) } />
-            <ErrorList errors={ this.props.errors[field] } />
-          </div>
-        )) }
+      <div className='modal-form modal-center modal-form-wide'>
+        <h2 className='edit-form-title'>{ this.props.title }</h2>
+        <form className='edit-form' onSubmit={ this.handleSubmit }>
+          { this.textFields.map((field, idx) => (
+            <div key={ idx }>
+              <FormField
+                field={ field }
+                value={ this.state[field] }
+                update={ this.update(field) } />
+              <ErrorList errors={ this.props.errors[field] } />
+            </div>
+          )) }
 
-        <input type='submit' value='Save changes' />
-      </form>
+          <input type='submit' value='Save changes' />
+        </form>
+      </div>
     );
   }
 }

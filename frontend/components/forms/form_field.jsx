@@ -10,9 +10,9 @@ const FormField = ({ field, value, update }) => {
   const size = field === 'name' ? 'whole' : 'half';
 
   return (
-    <div>
+    <div className={ 'edit-field-' + size }>
       <label className='edit-field-label'>{ displayFields[field] }</label>
-      <input className={ 'edit-field-label ' + size }
+      <input className='edit-field-input'
         type='text' value={ value }
         onChange={ update }/>
     </div>

@@ -28,10 +28,10 @@ const UserNav = ({ currentTab, updateTab, user }) => {
             Tracks
           </span>
         </li>
-        <li>
-          <EditProfileButton user={user} />
-        </li>
       </ul>
+      <div className='user-edit-button-container'>
+        <EditProfileButton user={user} />
+      </div>
     </nav>
   );
 }

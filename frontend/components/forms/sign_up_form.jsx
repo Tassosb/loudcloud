@@ -14,12 +14,10 @@ class SignUpForm extends React.Component {
     const { signUp, errors } = this.props;
 
     return (
-      <div className='modal-form sign-up-form'>
-        <AuthForm
-          submitForm={ signUp }
-          formType='signUp'
-          errors={ errors } />
-      </div>
+      <AuthForm
+        submitForm={ signUp }
+        formType='signUp'
+        errors={ errors } />
     )
   }
 }

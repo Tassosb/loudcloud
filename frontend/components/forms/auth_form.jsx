@@ -44,7 +44,7 @@ class AuthForm extends React.Component {
     const { formType, errors } = this.props
 
     return (
-      <div className='auth-form'>
+      <div className='modal-form modal-form-narrow'>
         <form onSubmit={ this.handleSubmit(false) }>
 
           { formType === 'logIn' &&
