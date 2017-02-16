@@ -6,3 +6,16 @@
 @import "styles/splash.scss";
 @import "styles/buttons.scss";
 @import "styles/user_view";
+@import "styles/browse";
+@import "styles/images";
+@import "styles/section_nav";
+@import "styles/tracks";
+
+.main-content {
+  margin: 0 13px;
+  background-color: white;
+}
+
+body {
+  background-color: $smoke-grey;
+}

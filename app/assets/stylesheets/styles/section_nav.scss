@@ -1,0 +1,16 @@
+.section-tabs {
+  display: flex;
+}
+
+.selected-tab {
+  border-bottom: 1px solid $dark-grey;
+  color: $orange;
+  cursor: default;
+}
+
+.section-nav {
+  border-bottom: 1px solid #f2f2f2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

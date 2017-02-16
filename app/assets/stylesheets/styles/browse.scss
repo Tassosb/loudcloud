@@ -1,0 +1,48 @@
+.browse {
+  width: 100%;
+}
+
+.browse-main {
+  display: flex;
+}
+
+.browse-index-column {
+  padding: 20px;
+  flex: 2;
+
+  h2 {
+    padding: 20px 0;
+    font-size: 20px;
+    color: $plain-grey;
+  }
+}
+
+.browse-side-column {
+  flex: 1;
+  background-color: red;
+}
+
+.browse-nav-bar {
+  padding: 30px 0 10px 0;
+  @extend .section-nav;
+  margin-bottom: 10px;
+
+  ul {
+    @extend .section-tabs;
+    justify-content: space-around;
+    flex-direction: row;
+  }
+}
+
+.browse-tab span {
+  margin-right: 20px;
+  padding-bottom: 6px;
+  font-size: 24px;
+  font-weight: bolder;
+  color: $dark-grey;
+  cursor: pointer;
+}
+
+.browse-tab span.selected {
+  @extend .selected-tab;
+}
