@@ -47,9 +47,11 @@ class AuthForm extends React.Component {
       <div className='auth-form'>
         <form onSubmit={ this.handleSubmit(false) }>
 
-          <button
-            className='demo-log-in'
-            onClick={ this.handleSubmit(true) }>Demo Sign in</button>
+          { formType === 'logIn' &&
+            <button
+              className='demo-log-in'
+              onClick={ this.handleSubmit(true) }>Demo Sign in</button>
+            }
 
           <div className='form-divider'>
             <div className='form-divider-line'></div>
@@ -68,7 +70,7 @@ class AuthForm extends React.Component {
               update={ this.update }
               value={ this.state.name }
               formType={ formType } />
-              }
+            }
           <ErrorList errors={ errors.name } />
 
           <AuthField field='password'

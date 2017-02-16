@@ -3,10 +3,12 @@ import { connect } from 'react-redux';
 import LogInForm from './log_in_form';
 import SignUpForm from './sign_up_form';
 import { receiveModal } from '../../actions/modal_actions';
+import EditProfileForm from './edit_profile_form';
 
 const modals = {
   signUp: <SignUpForm />,
-  logIn: <LogInForm />
+  logIn: <LogInForm />,
+  editProfile: <EditProfileForm />
 }
 
 class Modal extends React.Component {

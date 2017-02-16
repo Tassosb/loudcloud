@@ -16,3 +16,5 @@ const userInViewReducer = (state = defaultState, action) => {
       return state;
   }
 }
+
+export default userInViewReducer;

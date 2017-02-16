@@ -2,24 +2,23 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { receiveModal } from '../../actions/modal_actions';
 
-const LogInButton = ({ showLogIn, route }) => {
+const EditProfileButton = ({ showEditProfileForm }) => {
   const handleClick = (e) => {
     e.preventDefault();
-    showLogIn();
+    showEditProfileForm();
   }
-
   return (
     <button
-      className='log-in-button'
-      onClick={ handleClick }>Sign in</button>
+      className='edit-profile-button'
+      onClick={ handleClick }>Edit</button>
   );
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  showLogIn: () => dispatch(receiveModal('logIn'))
-})
+  showEditProfileForm: () => dispatch(receiveModal('editProfile'))
+});
 
 export default connect(
   null,
   mapDispatchToProps
-)(LogInButton);
+)(EditProfileButton);

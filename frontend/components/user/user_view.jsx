@@ -1,12 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import EditProfileButton from '../buttons/edit_profile_button';
 
 const UserBanner = ({ user }) => {
   return (
     <div className='user-banner'>
-
+      <div className='user-image'>
+      </div>
+      <div className='user-info'>
+        <div>{ user.name }</div>
+        { user.location &&
+          <div>{ user.location }</div>
+        }
+      </div>
     </div>
-  )
+  );
 }
 
 const UserNav = ({ currentTab, updateTab }) => {
@@ -18,6 +26,9 @@ const UserNav = ({ currentTab, updateTab }) => {
           <span className={ currentTab === 'tracks' ? 'selectedTab' : '' }>
             Tracks
           </span>
+        </li>
+        <li>
+          <EditProfileButton />
         </li>
       </ul>
     </nav>

@@ -1,6 +1,6 @@
 import * as APIUtil from '../util/user_api_util';
 
-export const RECEIVE_USER_IN_VIEW = 'RECEIVE_USER';
+export const RECEIVE_USER_IN_VIEW = 'RECEIVE_USER_IN_VIEW';
 export const RECEIVE_USER_ERRORS = 'RECEIVE_USER_ERRORS';
 
 export const receiveUser = (user) => ({
@@ -13,8 +13,8 @@ export const receiveUserErrors = (errors) => ({
   errors
 });
 
-export const updateUser = (user) => {
+export const updateUser = (user) => dispatch => {
   return APIUtil.updateUser(user)
-    .then((user) => receiveUser(user),
-          (errors) => receiveUserErrors(errors));
+    .then((user) => dispatch(receiveUser(user)),
+          (errors) => dispatch(receiveUserErrors(errors)));
 };
