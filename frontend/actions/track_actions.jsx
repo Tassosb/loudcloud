@@ -9,5 +9,10 @@ export const receiveTracks = (tracks) => ({
 
 export const fetchTracks = (specs) => dispatch => {
   return APIUtil.fetchTracks(specs)
-    .then((tracks) => dispatch(receiveTracks(tracks)));
+    .then((tracks) => {
+      let newTracks = Object.assign({}, tracks);
+      Object.keys(tracks).forEach((trackId, idx) => {
+        newTracks[trackId]['queuePos'] = idx + 1;
+      }) //Add queue position to each track.
+      dispatch(receiveTracks(newTracks))});
 }

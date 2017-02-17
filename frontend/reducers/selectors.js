@@ -7,5 +7,5 @@ function shuffle(a) {
 }
 
 export const selectTracksAsArray = (state) => (
-  shuffle(Object.keys(state.tracks).map((id) => state.tracks[id]))
+  Object.keys(state.tracks).map((id) => state.tracks[id])
 );
