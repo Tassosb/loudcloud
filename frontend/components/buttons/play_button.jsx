@@ -7,10 +7,10 @@ import { receivePlayQueue } from '../../actions/play_queue_actions';
 const PlayButton = ({ playing, size, pauseTrack, playTrack, trackQueuePos, currentQueuePos, tracks, updateQueue}) => {
   let icon, action;
   if (playing && trackQueuePos === currentQueuePos) {
-    icon = "fa fa-pause-circle";
+    icon = size === 'small' ? "fa fa-pause" : "fa fa-pause-circle";
     action = pauseTrack;
   } else {
-    icon = "fa fa-play-circle";
+    icon = size === 'small' ? "fa fa-play" : "fa fa-play-circle";
     action = (e) => {
       updateQueue(tracks);
       playTrack(trackQueuePos);
