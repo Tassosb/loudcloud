@@ -1,15 +1,20 @@
 .search-bar {
 
   input {
-    width: 300px;
-    height: 24px;;
-    background-color: $smoke-grey;
+    width: 350px;
+    height: 28px;;
+    background-color: white;
     // margin: 10px 0 ;
-    font-size:16px;
+    font-size:14px;
+    color: $dark-grey;
     border-radius: 4px;
+    border-style: none;
+    padding: 4px 7px;
+    box-sizing: border-box;
   }
 
-  input.active {
+  input:active {
     border-style: none;
+
   }
 }
