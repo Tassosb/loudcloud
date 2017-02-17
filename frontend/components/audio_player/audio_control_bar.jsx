@@ -43,31 +43,36 @@ class AudioControlBar extends React.Component {
     if (!this.listening) { return null; }
 
     return (
-      <div className='audio-control-bar'>
-        <div className='audio-control-buttons'>
-          <div className='last-song-button'>
-            <i className="fa fa-step-backward"
-              aria-hidden="true"
-              onClick={ this.restartSong }></i>
+      <div className='audio-control-full-width'>
+        <div className='audio-control-bar'>
+          <div className='audio-control-buttons'>
+            <div className='last-song-button'>
+              <i className="fa fa-step-backward"
+                aria-hidden="true"
+                onClick={ this.restartSong }></i>
+            </div>
+            <PlayButton size='small' trackQueuePos={ currentQueuePos } />
+            <div className='next-song-button'>
+              <i className="fa fa-step-forward"
+                aria-hidden="true"
+                onClick={ this.playNextSong }></i>
+            </div>
           </div>
-          <PlayButton size='small' trackQueuePos={ currentQueuePos } />
-          <div className='next-song-button'>
-            <i className="fa fa-step-forward"
-              aria-hidden="true"
-              onClick={ this.playNextSong }></i>
+          <div className='progress-bar-box'>
+            <ProgressBar
+              trackPlaying={ trackPlaying }
+              receiveCurrentTrack={ receiveCurrentTrack } />
           </div>
-        </div>
-        <div className='progress-bar-box'>
-          <ProgressBar
-            trackPlaying={ trackPlaying }
-            receiveCurrentTrack={ receiveCurrentTrack } />
-        </div>
-        <div className='currentl-track-details'>
-        </div>
+          <div className='volume-control'>
+            <i className="fa fa-volume-down" aria-hidden="true"></i>
+          </div>
+          <div className='current-track-details'>
+          </div>
           <AudioElement
             audioUrl={ trackPlaying.audio_url }
             playNextSong={ this.playNextSong }
             receiveCurrentTrack={ receiveCurrentTrack } />
+        </div>
       </div>
     );
   }

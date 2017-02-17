@@ -1,14 +1,22 @@
 .audio-control-bar {
-  position: fixed;
-  width: 100%;
-  min-width: 400px;
+  margin: 0 auto;
+  // width: 100%;
+  // min-width: 400px;
   height: 32px;
   bottom: 0;
-  background-color: $smoke-grey;
-  border-top: 1px solid rgba(0,0,0,.15);
   display: flex;
   padding: 8px;
   justify-content: space-around;
+  @extend .middle-content;
+}
+
+.audio-control-full-width {
+  bottom: 0;
+  position: fixed;
+  height: 50px;
+  width: 100%;
+  background-color: $smoke-grey;
+  border-top: 1px solid rgba(0,0,0,.15);
 }
 
 .audio-control-buttons {
@@ -31,7 +39,16 @@
   text-align: center;
 }
 
+.volume-control {
+  width: 20px;
+  font-size: 20px;
+  padding: 7px 0;
+}
 
+.current-track-details {
+  flex: 1;
+  height: 100%;
+}
 
 .progress-bar-box {
   width: 300px;
@@ -42,7 +59,7 @@
   // flex-direction: column;
   justify-content: space-around;
   align-items: flex-end;
-  padding: 0 10px;
+  padding: 0 50px;
 }
 
 .progress-bar {
