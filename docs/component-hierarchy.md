@@ -91,6 +91,11 @@
 - SearchBar Container
   - SearchBar
 
+- AudioControlBar
+  - PlayButton
+  - ProgressBar
+  - CurrentTrackDetail
+
 ## Routes
 
 Path | Component

@@ -21,25 +21,44 @@ class AuthForm extends React.Component {
     this.redirect = this.redirect.bind(this);
   }
 
+  componentWillUnmount () {
+    window.clearInterval(this.intervalId);
+  }
+
   update (field) {
     return (e) => {
       this.setState({[field]: e.currentTarget.value});
     }
   }
 
-  handleSubmit () {
-    return (e) => {
-      e.preventDefault();
-      this.props.submitForm(Object.assign({}, this.state))
-      .then(this.redirect);
-    }
+  handleSubmit (e) {
+    if (e) { e.preventDefault() };
+    this.props.submitForm(Object.assign({}, this.state))
+    .then(this.redirect);
   }
 
-  handleDemoLogin () {
-    const demoUser = {
+  handleDemoLogin (e) {
+    const demo = {
       email: 'demo@loudcloud.com',
       password: 'loudcloud'
     };
+    const eLength = demo.email.length;
+
+    let i = 0;
+    this.intervalId = window.setInterval(() => {
+      i++
+      if (i <= eLength)  {
+        this.setState({
+          email: (demo.email.slice(0, i))
+        })
+      } else if (i <= demo.password.length + eLength){
+        this.setState({
+          password: (demo.password.slice(0, i - eLength))
+        })
+      } else {
+        this.handleSubmit();
+      }
+    }, 100);
 
     return (e) => {
       e.preventDefault();
@@ -57,13 +76,13 @@ class AuthForm extends React.Component {
 
     return (
       <div className='modal-form modal-form-narrow'>
-        <form onSubmit={ this.handleSubmit() }>
+        <form onSubmit={ this.handleSubmit }>
 
           { formType === 'logIn' &&
-            <button
+            <div
               className='demo-log-in'
-              onClick={ this.handleDemoLogin() }>Demo Sign in</button>
-            }
+              onClick={ this.handleDemoLogin }>Demo Sign in</div>
+          }
 
           { formType === 'logIn' &&
             <div className='form-divider'>

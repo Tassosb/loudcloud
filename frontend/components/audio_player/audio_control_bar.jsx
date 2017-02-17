@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PlayButton from '../buttons/play_button';
+import AudioElement from './audio_element';
+import ProgressBar from './progress_bar';
 
 class AudioControlBar extends React.Component {
   constructor (props) {
@@ -27,45 +29,47 @@ class AudioControlBar extends React.Component {
     // let currentQueuePos = this.props.currentTrack.currentQueuePos - 1;
     // if (currentQueuePos < 1) { currentQueuePos = queueLength}
 
-    this.receiveCurrentTrack({
+    this.props.receiveCurrentTrack({
       restart: true
     });
   }
 
   render () {
-    const { currentTrack, playQueue } = this.props;
-    const { playing, currentQueuePos } = currentTrack;
+    const { currentTrack, playQueue, receiveCurrentTrack } = this.props;
+    const { restart, playing, currentQueuePos } = currentTrack;
+    const trackPlaying = playQueue[currentQueuePos];
 
     if (playing) { this.listening = true }
+    if (!this.listening) { return null; }
 
-    if (this.listening) {
-      return (
-        <div className='audio-control-bar'>
-          <div className='audio-control-buttons'>
-            <div className='last-song-button'>
-              <i className="fa fa-step-backward"
-                aria-hidden="true"
-                onClick={ this.restartSong }></i>
-            </div>
-            <PlayButton size='small' trackQueuePos={ currentQueuePos } />
-            <div className='next-song-button'>
-              <i className="fa fa-step-forward"
-                aria-hidden="true"
-                onClick={ this.playNextSong }></i>
-            </div>
+    return (
+      <div className='audio-control-bar'>
+        <div className='audio-control-buttons'>
+          <div className='last-song-button'>
+            <i className="fa fa-step-backward"
+              aria-hidden="true"
+              onClick={ this.restartSong }></i>
           </div>
-          <div className='progress-bar'>
+          <PlayButton size='small' trackQueuePos={ currentQueuePos } />
+          <div className='next-song-button'>
+            <i className="fa fa-step-forward"
+              aria-hidden="true"
+              onClick={ this.playNextSong }></i>
           </div>
-          <div className='currentl-track-details'>
-          </div>
-          { playing &&
-            <audio src={ playQueue[currentQueuePos].audio_url } autoPlay></audio>
-            }
         </div>
-      );
-    } else {
-      return null;
-    }
+        <div className='progress-bar-box'>
+          <ProgressBar trackPlaying={ trackPlaying } />
+        </div>
+        <div className='currentl-track-details'>
+        </div>
+          <AudioElement
+            audioUrl={ trackPlaying.audio_url }
+            restart={ restart }
+            playing={ playing }
+            playNextSong={ this.playNextSong }
+            receiveCurrentTrack={ receiveCurrentTrack } />
+      </div>
+    );
   }
 }
 
