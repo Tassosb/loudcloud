@@ -47,31 +47,33 @@ class NavBar extends React.Component {
     const { currentUser } = this.props;
 
     return (
-      <div className='nav-bar'>
-        <div className='nav-logo'>
-          <Link to='/'>
-            <img src={ logoWithText } />
-          </Link>
-        </div>
-        <div>
-          <Link to='/'>
-            Home
-          </Link>
-        </div>
-        <div>
-          <Link to='/'>
-            Charts
-          </Link>
-        </div>
-        <div>
-          <SearchBar />
-        </div>
-        <NavButtons loggedIn={ !!currentUser } />
-        { !!currentUser &&
-          <div><Link to='/profile'>
-            { currentUser.name || currentUser.email }
-          </Link></div> }
-        <NavDropDown loggedIn={ !!currentUser } />
+      <div className='header-bar'>
+        <div className='nav-bar'>
+          <div className='nav-logo'>
+            <Link to='/'>
+              <img src={ logoWithText } />
+            </Link>
+          </div>
+          <div>
+            <Link to='/'>
+              Home
+            </Link>
+          </div>
+          <div>
+            <Link to='/'>
+              Charts
+            </Link>
+          </div>
+          <div>
+            <SearchBar />
+          </div>
+          <NavButtons loggedIn={ !!currentUser } />
+          { !!currentUser &&
+            <div><Link to='/profile'>
+              { currentUser.name || currentUser.email }
+            </Link></div> }
+            <NavDropDown loggedIn={ !!currentUser } />
+          </div>
       </div>
     )
   }

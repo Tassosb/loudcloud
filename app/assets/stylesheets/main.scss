@@ -13,8 +13,15 @@
 @import "styles/audio_controls";
 @import "styles/search_bar";
 
+.middle-content {
+  width: 95%;
+  max-width: 1240px;
+  min-width: 900px;
+}
+
 .main-content {
-  margin: 0 13px;
+  @extend .middle-content;
+  margin: 0 auto;
   background-color: white;
 }
 

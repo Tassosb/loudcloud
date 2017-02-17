@@ -61,7 +61,9 @@
 .progress-bar-detail {
   display: flex;
   align-items: flex-end;
-  width: 225px;
+  max-width: 475px;
+  width: 100%;
+  // width: 225px;
   height: 100%;
   position: relative;
   margin: 0 8px;

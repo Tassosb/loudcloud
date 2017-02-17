@@ -19,7 +19,9 @@ const ProgressBar = ({ elapsedTime, duration, trackPlaying, receiveCurrentTrack 
 
   const handleClick = (e) => {
     var relClickPos = e.nativeEvent.offsetX;
-    const elapsedTime = Math.floor((relClickPos / 225) * duration)
+    var barWidth = e.currentTarget.offsetWidth;
+
+    const elapsedTime = Math.floor((relClickPos / barWidth) * duration)
     receiveCurrentTrack({ elapsedTime, changeTime: true })
   }
 
@@ -31,9 +33,9 @@ const ProgressBar = ({ elapsedTime, duration, trackPlaying, receiveCurrentTrack 
       <div onClick={ handleClick } className='progress-bar-detail'>
         <div className='track-duration-bar'>
         </div>
-          <div className='elapsed-time-bar' style={ style }>
-            <div className='time-bar-circle'></div>
-          </div>
+        <div className='elapsed-time-bar' style={ style }>
+          <div className='time-bar-circle'></div>
+        </div>
       </div>
       <div className='bar-duration-detail'>
         <span>{ formattedDuration }</span>
