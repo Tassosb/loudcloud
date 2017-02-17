@@ -1,18 +1,21 @@
 .audio-control-bar {
   position: fixed;
   width: 100%;
+  min-width: 400px;
   height: 32px;
   bottom: 0;
   background-color: $smoke-grey;
   border-top: 1px solid rgba(0,0,0,.15);
   display: flex;
   padding: 8px;
+  justify-content: space-around;
 }
 
 .audio-control-buttons {
   display: flex;
-  justify-content: space-around;
-  width: 150px;
+  flex: 1;
+  max-width: 130px;
+  justify-content: flex-start;
   padding-top: 5px;
   align-items: baseline;
   font-size: 25px;
@@ -32,8 +35,9 @@
 
 .progress-bar-box {
   width: 300px;
-  background-color: yellow;
+  // background-color: yellow;
   display: flex;
+  flex: 1;
   align-items: flex-start;
   // flex-direction: column;
   justify-content: space-around;
@@ -47,7 +51,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
+  height: 78%;
     span {
       font-size: 11px;
       color: $orange;
@@ -59,13 +63,39 @@
   align-items: flex-end;
   width: 225px;
   height: 100%;
+  position: relative;
+  margin: 0 8px;
+  background: transparent;
+  z-index: 999;
 }
 
 .track-duration-bar {
   height: 50%;
   width: 100%;
   border-top: 1px solid rgba(0,0,0,.15);
-  margin: 0 8px;
+}
+
+.elapsed-time-bar {
+  border-top: 1px solid $orange;
+  height: 50%;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
+
+.time-bar-circle {
+  border-radius: 5px;
+  position: absolute;
+  top: -5px;
+  right: 0px;
+}
+
+.progress-bar-detail:hover .time-bar-circle {
+  border: 5px solid $orange;
+}
+
+.progress-bar-detail:hover {
+  cursor: pointer;
 }
 
 .elapsed-time-ticker {

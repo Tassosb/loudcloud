@@ -5,7 +5,8 @@ const defaultState = {
   playing: false,
   restart: false,
   elapsedTime: 0,
-  duration: 0
+  duration: 0,
+  changeTime: false
 }
 
 const currentTrackReducer = (state = defaultState, action) => {

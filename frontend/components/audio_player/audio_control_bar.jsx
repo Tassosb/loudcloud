@@ -36,7 +36,7 @@ class AudioControlBar extends React.Component {
 
   render () {
     const { currentTrack, playQueue, receiveCurrentTrack } = this.props;
-    const { restart, playing, currentQueuePos } = currentTrack;
+    const { restart, playing, currentQueuePos, changeTime } = currentTrack;
     const trackPlaying = playQueue[currentQueuePos];
 
     if (playing) { this.listening = true }
@@ -58,14 +58,14 @@ class AudioControlBar extends React.Component {
           </div>
         </div>
         <div className='progress-bar-box'>
-          <ProgressBar trackPlaying={ trackPlaying } />
+          <ProgressBar
+            trackPlaying={ trackPlaying }
+            receiveCurrentTrack={ receiveCurrentTrack } />
         </div>
         <div className='currentl-track-details'>
         </div>
           <AudioElement
             audioUrl={ trackPlaying.audio_url }
-            restart={ restart }
-            playing={ playing }
             playNextSong={ this.playNextSong }
             receiveCurrentTrack={ receiveCurrentTrack } />
       </div>

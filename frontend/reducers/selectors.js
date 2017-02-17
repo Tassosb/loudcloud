@@ -19,8 +19,14 @@ const formatTime = (seconds) => {
 
 export const selectFormattedElapsedTime = (state) => (
   formatTime(state.currentTrack.elapsedTime)
-)
+);
 
 export const selectFormattedDuration = (state) => (
   formatTime(state.currentTrack.duration)
-)
+);
+
+export const selectPercentElapsedTime = ({ currentTrack }) => (
+  Math.floor(
+    (currentTrack.elapsedTime / currentTrack.duration)
+  ) + '%'
+);
