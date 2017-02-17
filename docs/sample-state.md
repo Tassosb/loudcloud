@@ -33,6 +33,7 @@
       media_url: "http://some.url",
       image_url: "http://some.other.url",
       track_credits: "",
+      QueuePos: 1,
       artist: {
         id: 67,
         name: "David Bowie"
@@ -44,6 +45,7 @@
       media_url: "http://some.url",
       image_url: "http://some.other.url",
       track_credits: "",
+      QueuePos: 2,
       artist: {
         id: 67,
         name: "David Bowie"
@@ -55,6 +57,7 @@
       media_url: "http://some.url",
       image_url: "http://some.other.url",
       track_credits: "",
+      QueuePos: 3,
       artist: {
         id: 67,
         name: "David Bowie"
@@ -62,8 +65,8 @@
     }
   }
 
-  playQueue: [
-    {
+  playQueue: {
+    '1': {
       id: 432,
       title: "Life On Mars?",
       media_url: "http://some.url",
@@ -74,7 +77,7 @@
         name: "David Bowie"
       }
     },
-    {
+    '2': {
       id: 147,
       title: "Starman",
       media_url: "http://some.url",
@@ -85,7 +88,7 @@
         name: "David Bowie"
       }
     },
-    {
+    '3': {
       id: 532,
       title: "Moonage Daydream",
       media_url: "http://some.url",
@@ -96,7 +99,7 @@
         name: "David Bowie"
       }
     }
-  ],
+  },
 
   trackInView: {
     id: 432,
