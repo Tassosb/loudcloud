@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import LogInButton from '../buttons/log_in_button';
 import SignUpButton from '../buttons/sign_up_button';
 import LogOutButton from '../buttons/log_out_button';
+import SearchBar from '../search/search_bar';
 
 const NavButtons = ({ loggedIn }) => (
     <div className='nav-buttons'>
@@ -48,12 +49,22 @@ class NavBar extends React.Component {
     return (
       <div className='nav-bar'>
         <div className='nav-logo'>
-          <img src={ logoWithText } />
+          <Link to='/'>
+            <img src={ logoWithText } />
+          </Link>
         </div>
         <div>
           <Link to='/'>
             Home
           </Link>
+        </div>
+        <div>
+          <Link to='/'>
+            Charts
+          </Link>
+        </div>
+        <div>
+          <SearchBar />
         </div>
         <NavButtons loggedIn={ !!currentUser } />
         { !!currentUser &&
