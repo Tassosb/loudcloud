@@ -47,10 +47,11 @@ class AudioElement extends React.Component {
       this.AudioPlayer.setPlayTime(0)
       receiveCurrentTrack({ restart: false })
     } else if (this.AudioPlayer.isSongOver()) {
-      playNextSong
+      playNextSong()
+    } else {
+      playing ? this.AudioPlayer.play() : this.AudioPlayer.pause();
     }
 
-    playing ? this.AudioPlayer.play() : this.AudioPlayer.pause();
   }
 
   render () {

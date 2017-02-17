@@ -43,6 +43,22 @@
   width: 20px;
   font-size: 20px;
   padding: 7px 0;
+  position: relative;
+}
+
+.volume-bar {
+  display: none;
+  position: absolute;
+  background-color: $smoke-grey;
+  border: 1px solid rgba(0,0,0,.15);
+  top: -100px;
+  right: -1px;
+  width: 30px;
+  height: 100px;
+}
+
+.volume-bar.show {
+  display: block;
 }
 
 .current-track-details {
@@ -108,6 +124,7 @@
   top: -5px;
   right: 0px;
 }
+
 
 .progress-bar-detail:hover .time-bar-circle {
   border: 5px solid $orange;

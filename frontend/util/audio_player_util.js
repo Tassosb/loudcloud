@@ -17,7 +17,7 @@ export default class AudioPlayer {
 
   isSongOver () {
     return (
-      this.audioEl.currentTime === this.audioEl.duration
+      Math.floor(this.audioEl.currentTime) === Math.floor(this.audioEl.duration)
     );
   }
 

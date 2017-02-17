@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PlayButton from '../buttons/play_button';
 import AudioElement from './audio_element';
 import ProgressBar from './progress_bar';
+import VolumeControl from './volume_control';
 
 class AudioControlBar extends React.Component {
   constructor (props) {
@@ -63,9 +64,7 @@ class AudioControlBar extends React.Component {
               trackPlaying={ trackPlaying }
               receiveCurrentTrack={ receiveCurrentTrack } />
           </div>
-          <div className='volume-control'>
-            <i className="fa fa-volume-down" aria-hidden="true"></i>
-          </div>
+          <VolumeControl />
           <div className='current-track-details'>
           </div>
           <AudioElement
