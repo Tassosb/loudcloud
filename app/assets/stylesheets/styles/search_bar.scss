@@ -1,0 +1,15 @@
+.search-bar {
+
+  input {
+    width: 300px;
+    height: 24px;;
+    background-color: $smoke-grey;
+    // margin: 10px 0 ;
+    font-size:16px;
+    border-radius: 4px;
+  }
+
+  input.active {
+    border-style: none;
+  }
+}
