@@ -5,6 +5,7 @@ import modal from './modal_reducer';
 import userInView from './user_in_view_reducer';
 import tracks from './tracks_reducer';
 import playQueue from './play_queue_reducer';
+import currentTrack from './current_track_reducer';
 
 const rootReducer = combineReducers({
   errors,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   modal,
   userInView,
   tracks,
-  playQueue
+  playQueue,
+  currentTrack
 });
 
 export default rootReducer;
