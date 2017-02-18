@@ -8,6 +8,7 @@ import configureStore from './store/store';
 import Splash from './components/splash/splash';
 import Stream from './components/browse/stream';
 import Profile from './components/user/profile';
+import UserShow from './components/user/user_show';
 
 
 const Root = () => {
@@ -43,6 +44,7 @@ const Root = () => {
             path='/profile'
             component={ Profile }
             onEnter={ redirectUnlessLoggedIn } />
+          <Route path='/users/:userId' component={ UserShow } />
         </Route>
       </Router>
     </Provider>

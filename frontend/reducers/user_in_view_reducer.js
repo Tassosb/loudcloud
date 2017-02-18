@@ -4,7 +4,8 @@ const defaultState = {
   id: 0,
   name: '',
   email: '',
-  location: ''
+  location: '',
+  image_url: ''
 }
 
 const userInViewReducer = (state = defaultState, action) => {
