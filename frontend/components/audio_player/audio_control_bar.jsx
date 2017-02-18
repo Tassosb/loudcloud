@@ -5,6 +5,8 @@ import AudioElement from './audio_element';
 import ProgressBar from './progress_bar';
 import VolumeControl from './volume_control';
 import CurrentTrackDetail from './current_track_detail';
+import { receiveCurrentTrack } from '../../actions/current_track_actions';
+import { receivePlayQueue } from '../../actions/play_queue_actions';
 
 class AudioControlBar extends React.Component {
   constructor (props) {

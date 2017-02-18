@@ -19,6 +19,7 @@
 }
 
 .track-details {
+  margin-left: 15px;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -62,5 +63,63 @@
 
 .track-item-top {
   display: flex;
-  padding: 10px;
+  padding: 10px 10px 10px 0;
+}
+
+.track-stats {
+  justify-content: space-between;
+  align-items: flex-end;
+  font-size: 13px;
+
+  .fa-play, .fa-comment, span {
+    color: $plain-grey;
+  }
+}
+
+
+.track-stats-right {
+  padding-bottom: 6px;
+  @extend .flex-row;
+  width: 75px;
+  justify-content: space-around;
+
+  .fa-play:hover {
+    cursor: default;
+  }
+
+  a:hover span{
+    color: $dark-grey;
+  }
+
+  a {
+    flex: 1;
+    justify-content: space-around;
+  }
+}
+
+.track-stats-left {
+  button {
+    color: black;
+    @extend .subtle-border;
+    height: 27px;
+    width: 60px;
+    padding: 0 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+    margin-right: 5px;
+
+    span {
+      color: black;
+    }
+  }
+
+  button, span {
+    font-size: 14px;
+  }
+
+  button:hover {
+    @extend .subtle-border-hover;
+  }
 }

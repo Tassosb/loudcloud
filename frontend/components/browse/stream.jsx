@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import MainApp from '../main_app/main_app';
 import Browse from './browse';
 import { selectTracksAsArray } from '../../reducers/selectors';
+import { fetchTracks } from '../../actions/track_actions';
 
 class Stream extends React.Component {
 

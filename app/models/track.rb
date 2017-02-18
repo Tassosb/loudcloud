@@ -1,5 +1,5 @@
 class Track < ActiveRecord::Base
-  validates :title, :artist, presence: true
+  validates :title, :artist, :num_plays, presence: true
 
   has_attached_file :audio
   validates_attachment_content_type :audio,

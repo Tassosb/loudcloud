@@ -5,3 +5,11 @@ export const fetchTracks = (specs) => {
     data: specs
   })
 }
+
+export const updateTrack = (track) => {
+  return $.ajax({
+    method: 'PATCH',
+    url: `api/tracks/${track.id}`,
+    data: { track }
+  })
+}

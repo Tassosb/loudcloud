@@ -2,30 +2,54 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { receiveCurrentTrack } from '../../actions/current_track_actions';
 import { receivePlayQueue } from '../../actions/play_queue_actions';
+import { updateTrackPlays } from '../../actions/track_actions';
 
 //Playbutton takes size and trackQueuePos
-const PlayButton = ({ playing, size, pauseTrack, playTrack,
-                        trackId, trackQueuePos, currentQueuePos,
-                          tracks, updateQueue, currentTrackId }) => {
-  let icon, action;
-  if (playing && (trackQueuePos === currentQueuePos || trackId === currentTrackId)) {
-    icon = size === 'small' ? "fa fa-pause" : "fa fa-pause-circle";
-    action = pauseTrack;
-  } else {
-    icon = size === 'small' ? "fa fa-play" : "fa fa-play-circle";
-    action = (e) => {
-      updateQueue(tracks);
-      playTrack(tracks[trackId].queuePos);
-    };
+class PlayButton extends React.Component {
+  constructor (props) {
+    super(props);
+    this.playCounted = false;
   }
-  let klass = size === 'small' ?
+
+  componentDidMount () {
+  }
+
+  render () {
+    const { playing, size, pauseTrack, playTrack,
+      trackId, trackQueuePos, currentQueuePos,
+      tracks, updateQueue, currentTrackId, updateTrackPlays } = this.props;
+
+    const track = tracks[trackId];
+
+    let icon, action;
+    if (playing && (trackQueuePos === currentQueuePos || trackId === currentTrackId)) {
+      icon = size === 'small' ? "fa fa-pause" : "fa fa-pause-circle";
+      action = pauseTrack;
+    } else {
+      icon = size === 'small' ? "fa fa-play" : "fa fa-play-circle";
+      action = () => {
+        if (!this.playCounted) {
+          updateTrackPlays({
+            id: trackId,
+            num_plays: track.num_plays + 1,
+            queuePos: track.queuePos
+          });
+          this.playCounted = true;
+        }
+        updateQueue(tracks);
+        playTrack(track.queuePos);
+      };
+    }
+
+    let klass = size === 'small' ?
     'small-music-button' : 'reg-music-button';
 
-  return (
-    <div className={ klass }>
-      <i onClick={ action } className={ icon }></i>
-    </div>
-  )
+    return (
+      <div className={ klass }>
+        <i onClick={ action } className={ icon }></i>
+      </div>
+    );
+  }
 }
 
 //play button seems likes it should not need to know all tracks
@@ -48,7 +72,8 @@ const mapDispatchToProps = (dispatch) => ({
     currentQueuePos: trackQueuePos, playing: true})),
   pauseTrack: () => dispatch(receiveCurrentTrack({
     playing: false})),
-  updateQueue: (tracks) => dispatch(receivePlayQueue(tracks))
+  updateQueue: (tracks) => dispatch(receivePlayQueue(tracks)),
+  updateTrackPlays: (track) => dispatch(updateTrackPlays(track))
 })
 
 export default connect(

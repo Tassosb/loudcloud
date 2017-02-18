@@ -1,4 +1,4 @@
-json.extract! track, :id, :title, :credits
+json.extract! track, :id, :title, :credits, :num_plays
 json.audio_url asset_path(track.audio.url(:original))
 
 json.artist do
