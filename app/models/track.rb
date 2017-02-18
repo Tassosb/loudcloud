@@ -14,6 +14,9 @@ class Track < ActiveRecord::Base
       'audio/x-mpg',
       'audio/x-mpegaudio' ]
 
+  has_attached_file :image, default_url: "default_image.png"
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+
   belongs_to :artist,
     class_name: 'User',
     foreign_key: :artist_id

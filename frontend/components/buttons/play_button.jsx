@@ -28,7 +28,7 @@ class PlayButton extends React.Component {
     } else {
       icon = size === 'small' ? "fa fa-play" : "fa fa-play-circle";
       action = () => {
-        if (!this.playCounted) {
+        if (!this.playCounted && trackQueuePos === currentQueuePos) {
           updateTrackPlays({
             id: trackId,
             num_plays: track.num_plays + 1,

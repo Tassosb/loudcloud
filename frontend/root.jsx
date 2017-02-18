@@ -34,6 +34,12 @@ const Root = () => {
       replace('/stream');
   }
 
+  const redirectIfCurrentUserPage = (nextState, replace) => {
+    if (parseInt(nextState.params.userId) === store.getState().session.currentUser.id) {
+      replace('/profile');
+    }
+  }
+
   return (
     <Provider store={ store }>
       <Router history={ hashHistory }>
@@ -44,11 +50,17 @@ const Root = () => {
             path='/profile'
             component={ Profile }
             onEnter={ redirectUnlessLoggedIn } />
-          <Route path='/users/:userId' component={ UserShow } />
+          <Route
+            path='/users/:userId'
+            component={ UserShow }
+            onEnter={ redirectIfCurrentUserPage } />
         </Route>
       </Router>
     </Provider>
   )
 }
+// <Route 
+//   path='/upload'
+//   component={}/>
 
 export default Root;

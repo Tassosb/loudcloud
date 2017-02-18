@@ -51,7 +51,7 @@ class TrackIndexItem extends React.Component{
         <div className='track-index-item-flex'>
           <Link to={`/users/${track.artist.id}`}>
             <div className='image-tile-medium'>
-              <img src={ track.artist.image_url } />
+              <img src={ track.image_url } />
             </div>
           </Link>
           <div className='track-details'>
