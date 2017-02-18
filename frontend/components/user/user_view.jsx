@@ -22,7 +22,7 @@ const UserBanner = ({ user }) => {
   );
 }
 
-const UserNav = ({ currentTab, updateTab, user }) => {
+const UserNav = ({ currentTab, updateTab, user, isProfile }) => {
   return (
     <nav className='user-nav'>
       <ul className='user-view-tabs'>
@@ -33,9 +33,11 @@ const UserNav = ({ currentTab, updateTab, user }) => {
           </span>
         </li>
       </ul>
-      <div className='user-edit-button-container'>
-        <EditProfileButton user={user} />
-      </div>
+      { isProfile &&
+        <div className='user-edit-button-container'>
+          <EditProfileButton user={user} />
+        </div>
+      }
     </nav>
   );
 }
@@ -49,11 +51,21 @@ class UserView extends React.Component{
     }
 
     this.updateTab = this.updateTab.bind(this);
+    this.isProfile = this.isProfile.bind(this);
   }
 
   componentDidMount () {
-    this.props.receiveUserInView(this.props.user);
+    if (this.isProfile()) {
+      this.props.receiveUserInView(this.props.user);
+    }
     this.props.fetchTracks({artist_id: this.props.user.id});
+  }
+
+  componentWillReceiveProps (newProps) {
+    if (!newProps.user) { return null; }
+    if (this.props.user.id !== newProps.user.id) {
+      this.props.fetchTracks({artist_id: newProps.user.id})
+    }
   }
 
   updateTab (tab) {
@@ -62,15 +74,19 @@ class UserView extends React.Component{
     }
   }
 
+  isProfile () {
+    return this.props.currentUser.id === this.props.user.id
+  }
+
   render () {
-    const { user, profile, tracks } = this.props;
+    const { user, tracks } = this.props;
     if (!user) { return null; }
-    // debugger
+
     return (
       <div className='user-view'>
         <UserBanner user={ user }/>
         <UserNav
-          user={ user }
+          user={ user } isProfile={ this.isProfile() }
           currentTab={ this.state.currentTab }
           updateTab={ this.updateTab }/>
         <div className='user-view-main'>
@@ -78,7 +94,6 @@ class UserView extends React.Component{
             <TrackIndex tracks={ tracks }/>
           </div>
           <div className='user-side-column'>
-
           </div>
         </div>
       </div>
@@ -87,7 +102,8 @@ class UserView extends React.Component{
 }
 
 const mapStateToProps = ( state ) => ({
-  tracks: selectTracksAsArray(state)
+  tracks: selectTracksAsArray(state),
+  currentUser: state.session.currentUser
 })
 
 const mapDispatchToProps = (dispatch) => ({

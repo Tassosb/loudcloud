@@ -14,7 +14,6 @@ const generatePlayQueue = (tracks) => {
 }
 
 const playQueueReducer = (state = {}, action) => {
-
   switch(action.type) {
     case RECEIVE_PLAY_QUEUE:
       return generatePlayQueue(action.tracks);

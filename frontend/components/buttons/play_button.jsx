@@ -4,16 +4,18 @@ import { receiveCurrentTrack } from '../../actions/current_track_actions';
 import { receivePlayQueue } from '../../actions/play_queue_actions';
 
 //Playbutton takes size and trackQueuePos
-const PlayButton = ({ playing, size, pauseTrack, playTrack, trackQueuePos, currentQueuePos, tracks, updateQueue}) => {
+const PlayButton = ({ playing, size, pauseTrack, playTrack,
+                        trackId, trackQueuePos, currentQueuePos,
+                          tracks, updateQueue, currentTrackId }) => {
   let icon, action;
-  if (playing && trackQueuePos === currentQueuePos) {
+  if (playing && (trackQueuePos === currentQueuePos || trackId === currentTrackId)) {
     icon = size === 'small' ? "fa fa-pause" : "fa fa-pause-circle";
     action = pauseTrack;
   } else {
     icon = size === 'small' ? "fa fa-play" : "fa fa-play-circle";
     action = (e) => {
       updateQueue(tracks);
-      playTrack(trackQueuePos);
+      playTrack(tracks[trackId].queuePos);
     };
   }
   let klass = size === 'small' ?
@@ -26,15 +28,20 @@ const PlayButton = ({ playing, size, pauseTrack, playTrack, trackQueuePos, curre
   )
 }
 
-//play button seems likes it should need to know all tracks
+//play button seems likes it should not need to know all tracks
 //But for now I need them to updat the queue every time the play
 //button is clicked.
 
-const mapStateToProps = ({ currentTrack, tracks }) => ({
-  playing: currentTrack.playing,
-  currentQueuePos: currentTrack.currentQueuePos,
-  tracks
-})
+const mapStateToProps = ({ currentTrack, tracks, playQueue }) => {
+  const currentTrackId = currentTrack.playing ?
+      playQueue[currentTrack.currentQueuePos].id : 0;
+  return {
+    playing: currentTrack.playing,
+    currentQueuePos: currentTrack.currentQueuePos,
+    currentTrackId,
+    tracks
+  }
+};
 
 const mapDispatchToProps = (dispatch) => ({
   playTrack: (trackQueuePos) => dispatch(receiveCurrentTrack({

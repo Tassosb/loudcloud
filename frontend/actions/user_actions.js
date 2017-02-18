@@ -24,3 +24,8 @@ export const updateUser = (formData, userId) => dispatch => {
     },
       (errors) => dispatch(receiveUserErrors(errors)));
 };
+
+export const fetchUser = (userId) => dispatch => {
+  return APIUtil.fetchUser(userId)
+    .then((user) => dispatch(receiveUserInView(user)));
+};

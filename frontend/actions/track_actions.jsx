@@ -7,12 +7,14 @@ export const receiveTracks = (tracks) => ({
   tracks
 })
 
+let nextQueuePos = 1; //close over this, we don't want to repeat queuePos in a session
 export const fetchTracks = (specs) => dispatch => {
   return APIUtil.fetchTracks(specs)
     .then((tracks) => {
       let newTracks = Object.assign({}, tracks);
-      Object.keys(tracks).forEach((trackId, idx) => {
-        newTracks[trackId]['queuePos'] = idx + 1;
+      Object.keys(tracks).forEach((trackId) => {
+        newTracks[trackId]['queuePos'] = nextQueuePos;
+        nextQueuePos++
       }) //Add queue position to each track.
       dispatch(receiveTracks(newTracks))});
 }

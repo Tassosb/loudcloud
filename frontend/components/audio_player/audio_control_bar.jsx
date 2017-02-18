@@ -12,12 +12,46 @@ class AudioControlBar extends React.Component {
 
     this.playNextSong = this.playNextSong.bind(this);
     this.restartSong = this.restartSong.bind(this);
+    this.playLastSong = this.playLastSong.bind(this);
+  }
+
+  getLastQueuePos () {
+    let maxPos = 0;
+    Object.keys(this.props.playQueue).forEach((pos) => {
+     let posNum = parseInt(pos);
+      if (posNum > maxPos) { maxPos = posNum }
+    })
+
+    return maxPos;
+  }
+
+  getFirstQueuePos () {
+    let minPos = null;
+    Object.keys(this.props.playQueue).forEach((pos) => {
+     let posNum = parseInt(pos);
+      if (!minPos || posNum < minPos) { minPos = posNum }
+    })
+
+    return minPos;
   }
 
   playNextSong () {
-    const queueLength = Object.keys(this.props.playQueue).length
-    let currentQueuePos = (this.props.currentTrack.currentQueuePos + 1) % queueLength
-    if (currentQueuePos === 0 ) { currentQueuePos++ }
+    const lastQueuePos = this.getLastQueuePos();
+    let currentQueuePos = (this.props.currentTrack.currentQueuePos + 1) % (lastQueuePos + 1)
+    if (currentQueuePos === 0 ) {
+      currentQueuePos = this.getFirstQueuePos();
+    }
+    this.props.receiveCurrentTrack({
+      currentQueuePos: currentQueuePos,
+      playing: true
+    });
+  }
+
+  playLastSong () {
+    let currentQueuePos = this.props.currentTrack.currentQueuePos - 1
+    if (currentQueuePos === 0 ) {
+      currentQueuePos = this.getLastQueuePos();
+    }
     this.props.receiveCurrentTrack({
       currentQueuePos: currentQueuePos,
       playing: true
@@ -53,7 +87,8 @@ class AudioControlBar extends React.Component {
                 aria-hidden="true"
                 onClick={ this.restartSong }></i>
             </div>
-            <PlayButton size='small' trackQueuePos={ currentQueuePos } />
+            <PlayButton size='small' trackId={ trackPlaying.id }
+              trackQueuePos={ currentQueuePos } />
             <div className='next-song-button'>
               <i className="fa fa-step-forward"
                 aria-hidden="true"
@@ -73,7 +108,8 @@ class AudioControlBar extends React.Component {
             audioUrl={ trackPlaying.audio_url }
             playNextSong={ this.playNextSong }
             receiveCurrentTrack={ receiveCurrentTrack }
-            setVolume={ this.setVolume }/>
+            setVolume={ this.setVolume }
+            playLastSong={ this.playLastSong }/>
         </div>
       </div>
     );

@@ -11,9 +11,10 @@ class LogOutButton extends React.Component {
 
   handleLogOut(e) {
     e.preventDefault();
+
     this.props.logOut().then(() =>
       this.props.router.push('/')
-    )
+    );
   }
 
   render () {

@@ -42,6 +42,7 @@ class AudioElement extends React.Component {
             elapsedTime,
             changeTime,
             playNextSong,
+            playLastSong,
             receiveCurrentTrack,
           } = this.props;
 
@@ -49,6 +50,9 @@ class AudioElement extends React.Component {
       this.AudioPlayer.setPlayTime(elapsedTime);
       receiveCurrentTrack({ changeTime: false });
     } else if (restart) {
+      if (this.AudioPlayer.getCurrentTime() < 1) {
+        playLastSong();
+      }
       this.AudioPlayer.setPlayTime(0)
       receiveCurrentTrack({ restart: false })
     } else if (this.AudioPlayer.isSongOver()) {

@@ -12,7 +12,7 @@ const CurrentTrackDetail = ({ track }) => {
         <Link to='/'>
           Playing from your stream
         </Link>
-        <Link to='/'>
+        <Link to={`users/${track.artist.id}`}>
           { track.title } - { track.artist.name || track.artist.email }
         </Link>
       </div>

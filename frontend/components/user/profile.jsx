@@ -6,7 +6,7 @@ import MainApp from '../main_app/main_app';
 const Profile = ({ currentUser }) => {
   return (
     <MainApp>
-      <UserView user={ currentUser } profile={ true } />
+      <UserView user={ currentUser } />
     </MainApp>
   );
 }
