@@ -10,4 +10,13 @@ $lighter-grey: #ccc;
 $salmon: #e4846f;
 $purple-grey: #918485;
 $subtle-grey: #cfcfcf;
-$smoke-grey: #f2f2f2
+$smoke-grey: #f2f2f2;
+
+.flex-row {
+  display: flex;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}

@@ -4,6 +4,7 @@ import PlayButton from '../buttons/play_button';
 import AudioElement from './audio_element';
 import ProgressBar from './progress_bar';
 import VolumeControl from './volume_control';
+import CurrentTrackDetail from './current_track_detail';
 
 class AudioControlBar extends React.Component {
   constructor (props) {
@@ -65,12 +66,14 @@ class AudioControlBar extends React.Component {
               receiveCurrentTrack={ receiveCurrentTrack } />
           </div>
           <VolumeControl />
-          <div className='current-track-details'>
+          <div className='current-track-details-box'>
+            <CurrentTrackDetail track={ trackPlaying }/>
           </div>
           <AudioElement
             audioUrl={ trackPlaying.audio_url }
             playNextSong={ this.playNextSong }
-            receiveCurrentTrack={ receiveCurrentTrack } />
+            receiveCurrentTrack={ receiveCurrentTrack }
+            setVolume={ this.setVolume }/>
         </div>
       </div>
     );

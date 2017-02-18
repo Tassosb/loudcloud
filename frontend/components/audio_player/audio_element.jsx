@@ -9,7 +9,7 @@ class AudioElement extends React.Component {
 
   componentDidMount () {
     const $audioEl = $('audio')[0];
-    const { receiveCurrentTrack, elapsedTime } = this.props;
+    const { receiveCurrentTrack, elapsedTime, setVolume } = this.props;
 
     this.AudioPlayer = new AudioPlayer($audioEl);
 
@@ -17,6 +17,11 @@ class AudioElement extends React.Component {
       receiveCurrentTrack({
         duration: this.AudioPlayer.getDuration()
       })
+    });
+
+    $audioEl.addEventListener('volumechange', () => {
+      console.log('volume changed')
+      console.log(this.AudioPlayer.getVolume())
     });
 
     this.timerId = window.setInterval(() => {

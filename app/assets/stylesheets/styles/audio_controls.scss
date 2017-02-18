@@ -47,18 +47,60 @@
 }
 
 .volume-bar {
-  display: none;
   position: absolute;
   background-color: $smoke-grey;
   border: 1px solid rgba(0,0,0,.15);
-  top: -100px;
+  top: -125px;
   right: -1px;
   width: 30px;
-  height: 100px;
+  padding-top: 15px;
+  height: 111px;
 }
 
-.volume-bar.show {
-  display: block;
+.volume-pop-up {
+  display: none;
+}
+
+.volume-pop-up.show {
+  display: flex;
+}
+
+.bar-circle {
+  border-radius: 5px;
+  position: absolute;
+  top: -5px;
+}
+
+.volume-bar-line {
+  border-right: 2px solid rgba(0,0,0,.15);
+  width: 48%;
+  height: 89%;
+}
+
+.volume-bar-circle {
+  @extend .bar-circle;
+  right: 26px;
+  border: 5px solid $orange;
+}
+
+.volume-click-bar {
+  top: 15px;
+  right: 0;
+  width: 30px;
+  height: 99px;
+  background: transparent;
+  z-index: 999;
+  position: absolute;
+  cursor: pointer;
+}
+
+.current-volume-line {
+  border-left: 2px solid $orange;
+  width: 50%;
+  left: 4px;
+  bottom: 41px;
+  width: 30px;
+  position: absolute;
 }
 
 .current-track-details {
@@ -84,7 +126,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 78%;
+  height: 90%;
     span {
       font-size: 11px;
       color: $orange;
@@ -119,12 +161,9 @@
 }
 
 .time-bar-circle {
-  border-radius: 5px;
-  position: absolute;
-  top: -5px;
+  @extend .bar-circle;
   right: 0px;
 }
-
 
 .progress-bar-detail:hover .time-bar-circle {
   border: 5px solid $orange;
@@ -138,4 +177,25 @@
 }
 
 .bar-duration-detail {
+}
+
+.current-track-details-box {
+  flex: 1;
+  padding-left: 35px;
+}
+
+.current-track-text-details {
+  padding-left: 8px;
+  font-size: 11px;
+  color: $plain-grey;
+
+  a:last-of-type {
+    padding-top: 7px;
+    color: $accent-grey;
+    font-size: 12px;
+  }
+
+  a:hover {
+    color: $dark-grey
+  }
 }

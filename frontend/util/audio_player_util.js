@@ -28,4 +28,8 @@ export default class AudioPlayer {
   getDuration () {
     return Math.floor(this.audioEl.duration)
   }
+
+  getVolume () {
+    return this.audioEl.volume;
+  }
 }
