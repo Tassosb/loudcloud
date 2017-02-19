@@ -13,3 +13,13 @@ export const updateTrack = (track) => {
     data: { track }
   })
 }
+
+export const createTrack = (formData) => {
+  return $.ajax({
+    method: 'POST',
+    url: 'api/tracks',
+    contentType: false,
+    processData: false,
+    data: formData
+  });
+}

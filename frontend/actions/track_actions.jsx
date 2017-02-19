@@ -51,5 +51,14 @@ export const updateTrack = (track) => dispatch => {
     .then((track) => {
       dispatch(receiveTrackInView(track));
     },
-      (errors) => dispatch(receiveTrackErrors(errors)));
+      (errors) => dispatch(receiveTrackErrors(errors.responseJSON)));
+}
+
+
+export const createTrack = (track) => dispatch => {
+  return APIUtil.createTrack(track)
+    .then((track) => {
+      dispatch(receiveTrackInView(track));
+    },
+      (errors) => dispatch(receiveTrackErrors(errors.responseJSON)));
 }

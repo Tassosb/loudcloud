@@ -8,7 +8,7 @@ import { updateTrackPlays } from '../../actions/track_actions';
 class PlayButton extends React.Component {
   constructor (props) {
     super(props);
-    this.playCounted = false;
+    this.state = {playCounted: false};
   }
 
   componentDidMount () {
@@ -28,16 +28,16 @@ class PlayButton extends React.Component {
     } else {
       icon = size === 'small' ? "fa fa-play" : "fa fa-play-circle";
       action = () => {
-        if (!this.playCounted && trackQueuePos === currentQueuePos) {
+        updateQueue(tracks);
+        playTrack(track.queuePos);
+        if (!this.state.playCounted && currentTrackId !== trackId) {
           updateTrackPlays({
             id: trackId,
             num_plays: track.num_plays + 1,
             queuePos: track.queuePos
           });
-          this.playCounted = true;
+          this.setState({playCounted: true});
         }
-        updateQueue(tracks);
-        playTrack(track.queuePos);
       };
     }
 

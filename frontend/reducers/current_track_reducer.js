@@ -12,7 +12,6 @@ const defaultState = {
 const currentTrackReducer = (state = defaultState, action) => {
   switch(action.type) {
     case RECEIVE_CURRENT_TRACK:
-    // debugger
       return Object.assign({}, state, action.currentTrack);
     default:
       return state;

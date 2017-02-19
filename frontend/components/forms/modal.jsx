@@ -32,8 +32,8 @@ class Modal extends React.Component {
     const { modal, closeModal } = this.props
     if (!modal) { return null };
 
-    const width = this.props.modal === 'editProfile' ||
-    this.props.modal === 'editTrack' ? 600 : 400
+    const width = (this.props.modal === 'editProfile' ||
+                   this.props.modal === 'editTrack') ? 600 : 400
 
     return (
       <div onClick={ this.handleClick } className='modal-screen'>

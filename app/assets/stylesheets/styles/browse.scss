@@ -8,8 +8,8 @@
 
 .browse-index-column {
   padding: 20px;
-  flex: 2;
-
+  flex: 5;
+  border-right: 1px solid $smoke-grey;
   h2 {
     padding: 20px 0;
     font-size: 20px;
@@ -18,8 +18,7 @@
 }
 
 .browse-side-column {
-  flex: 1;
-  background-color: red;
+  flex: 2;
 }
 
 .browse-nav-bar {

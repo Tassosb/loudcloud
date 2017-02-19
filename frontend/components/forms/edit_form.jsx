@@ -5,7 +5,7 @@ import FormField from './form_field';
 class EditForm extends React.Component {
   constructor (props) {
     super(props);
-    debugger
+
     this.editItem = this.props.user || this.props.track;
     let currState = {};
     Object.keys(this.editItem).concat(['imageFile']).forEach((attr) => {
@@ -41,7 +41,10 @@ class EditForm extends React.Component {
 
     formData.append(`${itemType}[image]`, this.state.imageFile);
 
-    this.props.submitForm(formData, this.editItem.id);
+    const submitArgs = [formData];
+    if (this.editItem.id) { submitArgs.push(this.editItem.id) }
+
+    this.props.submitForm(...submitArgs);
   }
 
   updateFile (e) {

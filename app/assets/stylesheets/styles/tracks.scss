@@ -1,12 +1,11 @@
 .track-index-column {
   // padding: 15px;
-  border-right: 1px solid $smoke-grey;
+
   background-color: white;
 }
 
 .track-index-item {
   height: 230px;
-  background-color: green;
   padding: 15px 0;
 
   // .image-tile-medium {
@@ -28,13 +27,11 @@
 .waveform-small {
   flex: 1;
   height: 80px;
-  background-color: orange;
 }
 
 .track-stats {
   flex: 1;
   height: 30px;
-  background-color: yellow;
 }
 .track-item-info {
   display: flex;
@@ -122,4 +119,10 @@
   button:hover {
     @extend .subtle-border-hover;
   }
+}
+
+.waveform-small {
+  margin-top: 25px;
+  height: 40px;
+  width: 100%;
 }

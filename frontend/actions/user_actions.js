@@ -22,7 +22,7 @@ export const updateUser = (formData, userId) => dispatch => {
       dispatch(receiveModal(''))
       dispatch(receiveCurrentUser(user))
     },
-      (errors) => dispatch(receiveUserErrors(errors)));
+      (errors) => dispatch(receiveUserErrors(errors.responseJSON)));
 };
 
 export const fetchUser = (userId) => dispatch => {

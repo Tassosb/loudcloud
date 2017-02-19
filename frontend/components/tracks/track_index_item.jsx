@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { receiveCurrentTrack } from '../../actions/current_track_actions';
 import PlayButton from '../buttons/play_button';
+import Waveform from '../waveform/waveform';
 
 const TrackStats = ({ track, currentUser }) => {
   let isOwnSong = currentUser ?
@@ -70,6 +71,7 @@ class TrackIndexItem extends React.Component{
               </div>
             </div>
             <div className='waveform-small'>
+              <Waveform track={ track } />
             </div>
             <TrackStats track={ track }
               currentUser={ currentUser }/>
