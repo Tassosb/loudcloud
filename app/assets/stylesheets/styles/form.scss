@@ -8,16 +8,7 @@
 
 .modal-form {
   input, button, .demo-login {
-    width: 80%;
-    height: 40px;
-    margin-top: 10px;
-    padding: 10px;
-    border-radius: $slight-curve;
-    border: 1px solid $accent-grey;
-    font-color: $light-grey;
-    font-size: 16px;
-    padding-left: 10px;
-    box-sizing: border-box;
+    @extend .big-button;
   }
 }
 
@@ -140,4 +131,8 @@ input[type='submit'].awake {
 .edit-form-flex-box {
   display: flex;
   justify-content: space-between;
+}
+
+.new-track-form {
+
 }

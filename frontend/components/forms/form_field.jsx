@@ -4,7 +4,9 @@ const FormField = ({ field, value, update }) => {
   const displayFields = {
     location: "Location",
     name: "Display name",
-    email: "Email address"
+    email: "Email address",
+    title: "Title",
+    credits: "Credits"
   }
 
   const size = field === 'name' ? 'whole' : 'half';

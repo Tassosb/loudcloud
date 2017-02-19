@@ -5,7 +5,7 @@ import FormField from './form_field';
 class EditForm extends React.Component {
   constructor (props) {
     super(props);
-
+    debugger
     this.editItem = this.props.user || this.props.track;
     let currState = {};
     Object.keys(this.editItem).concat(['imageFile']).forEach((attr) => {
@@ -83,7 +83,7 @@ class EditForm extends React.Component {
           </div>
 
           <input type='submit'
-            value='Save changes'
+            value={ this.props.newForm ? 'Save' : 'Save changes' }
             className={ this.changed ? 'awake' : '' } />
         </form>
       </div>

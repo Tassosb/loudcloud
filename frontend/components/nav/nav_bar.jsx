@@ -15,7 +15,11 @@ const NavButtons = ({ loggedIn }) => (
           <SignUpButton />
         </div>
       }
-      <div>Upload</div>
+      <Link to='/upload'>
+        <div>
+            Upload
+        </div>
+      </Link>
     </div>
 )
 

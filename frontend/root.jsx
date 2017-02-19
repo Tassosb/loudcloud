@@ -9,6 +9,7 @@ import Splash from './components/splash/splash';
 import Stream from './components/browse/stream';
 import Profile from './components/user/profile';
 import UserShow from './components/user/user_show';
+import Upload from './components/upload/upload';
 
 
 const Root = () => {
@@ -54,13 +55,13 @@ const Root = () => {
             path='/users/:userId'
             component={ UserShow }
             onEnter={ redirectIfCurrentUserPage } />
+          <Route
+            path='/upload'
+            component={ Upload } />
         </Route>
       </Router>
     </Provider>
   )
 }
-// <Route 
-//   path='/upload'
-//   component={}/>
 
 export default Root;
