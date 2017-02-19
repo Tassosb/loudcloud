@@ -16,7 +16,13 @@
   height: 200px;
   width: 200px;
   border-radius: 100px;
-  background: linear-gradient( 45deg, $salmon, $purple-grey);
+  overflow: hidden;
+}
+
+.image-circle-small {
+  height: 120px;
+  width: 120px;
+  border-radius: 60px;
   overflow: hidden;
 }
 

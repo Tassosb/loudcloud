@@ -29,12 +29,50 @@
 
 .track-view-main {
   @extend .user-view-main;
+
+  .track-stats {
+    margin-left: 20px;
+  }
 }
 
 .track-main-column {
   @extend .index-column;
+  padding-left: 0;
 }
 
 .track-side-column {
   @extend .side-column;
+}
+
+.track-main-container {
+  @extend .flex-row;
+  align-items: flex-start;
+  border-top: 1px solid $smoke-grey;
+  padding-top: 20px;
+  margin: 20px;
+}
+.track-show-artist-tile {
+  @extend .flex-column;
+  align-items: center;
+  flex: 1;
+  min-width: 120px;
+  margin-right: 20px;
+  span {
+    color: $accent-grey;
+    font-size: 14px;
+  }
+
+  span:hover {
+    color: black;
+  }
+  a {
+    margin-top: 5px;
+    text-align: center;
+  }
+}
+
+.comments-index {
+  background: blue;
+  height: 600px;
+  flex: 3;
 }

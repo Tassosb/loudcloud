@@ -1,3 +1,4 @@
+import { receiveModal } from './modal_actions';
 import * as APIUtil from '../util/track_api_util';
 
 export const RECEIVE_TRACKS = 'RECEIVE_TRACKS';
@@ -56,14 +57,16 @@ export const updateTrackPlays = (track) => dispatch => {
   return APIUtil.updateTrackPlays(track)
     .then((track) => {
       const queuedTrack = Object.assign({}, track, {queuePos: prevQueuePos})
-      dispatch(receiveTrack(queuedTrack))
+      dispatch(receiveTrack(queuedTrack));
+      dispatch(receiveTrackInView(queuedTrack));
     });
 }
 
-export const updateTrack = (track) => dispatch => {
-  return APIUtil.updateTrack(track)
+export const updateTrack = (formData, trackId) => dispatch => {
+  return APIUtil.updateTrack(formData, trackId)
     .then((track) => {
       dispatch(receiveTrackInView(track));
+      dispatch(receiveModal(''));
     },
       (errors) => dispatch(receiveTrackErrors(errors.responseJSON)));
 }

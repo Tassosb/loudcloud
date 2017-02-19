@@ -10,7 +10,7 @@ class EditTrackForm extends React.Component {
   }
 
   render () {
-    const { track, updateTrack, erros } = this.props;
+    const { track, updateTrack, errors } = this.props;
 
     return (
       <EditForm
@@ -23,7 +23,8 @@ class EditTrackForm extends React.Component {
 }
 
 const mapStateToProps = ({ trackInView, errors }) => ({
-  errors: errors.user
+  track: trackInView,
+  errors: errors.track
 })
 
 const mapDispatchToProps = (dispatch) => ({

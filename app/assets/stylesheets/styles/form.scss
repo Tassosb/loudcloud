@@ -8,6 +8,7 @@
 
 .modal-form {
   input, button, .demo-login {
+    width: 80%;
     @extend .big-button;
   }
 }
@@ -84,6 +85,7 @@
 input.edit-field-input {
   margin-top: 10px;
   width: 100%;
+  margin-right: 53px;
 }
 
 .edit-form-title {

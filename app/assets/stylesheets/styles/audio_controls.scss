@@ -189,8 +189,9 @@
   padding-left: 8px;
   font-size: 11px;
   color: $plain-grey;
+  justify-content: space-around;
 
-  a:last-of-type {
+  span a {
     padding-top: 7px;
     color: $accent-grey;
     font-size: 12px;

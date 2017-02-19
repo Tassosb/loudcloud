@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import EditTrackButton from '../buttons/edit_track_button';
 
 const TrackStats = ({ track, currentUser }) => {
   let isOwnSong = currentUser ?
@@ -15,10 +16,7 @@ const TrackStats = ({ track, currentUser }) => {
             <span>{ Math.floor(Math.random() * 100)}</span>
           </button>
           { isOwnSong &&
-            <button className='edit-track-button'>
-              <i className="fa fa-pencil" aria-hidden="true"></i>
-              Edit
-            </button>
+            <EditTrackButton track={ track } />
           }
         </div>
       </div>

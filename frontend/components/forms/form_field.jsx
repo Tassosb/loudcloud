@@ -1,5 +1,13 @@
 import React from 'react';
 
+const doNotShow = {
+  audio_url: true,
+  artist: true,
+  num_plays: true,
+  queuePos: true,
+  comments: true
+}
+
 const FormField = ({ field, value, update }) => {
   const displayFields = {
     location: "Location",
@@ -10,6 +18,8 @@ const FormField = ({ field, value, update }) => {
   }
 
   const size = field === 'name' ? 'whole' : 'half';
+
+  if (doNotShow[field]) { return null; }
 
   return (
     <div className={ 'edit-field-' + size }>

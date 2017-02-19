@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import PlayButton from '../buttons/play_button';
+import TrackStats from './track_stats';
 
 const TrackBanner = ({ track }) => {
 
@@ -41,7 +42,21 @@ class TrackView extends React.Component {
         <div className='track-view-main'>
           <div className='track-main-column'>
             <div className='comment-form'></div>
-            <div className='track-stats'></div>
+            <div className='track-stats'>
+              <TrackStats track={ track }/>
+            </div>
+            <div className='track-main-container'>
+              <div className='track-show-artist-tile'>
+                <div className='image-circle-small'>
+                  <img src={ track.artist.image_url } />
+                </div>
+                <Link to={`/users/${track.artist.id}`}>
+                  <span>{ track.artist.name }</span>
+                </Link>
+              </div>
+              <div className='comments-index'>
+              </div>
+            </div>
           </div>
           <div className='track-side-column'>
           </div>

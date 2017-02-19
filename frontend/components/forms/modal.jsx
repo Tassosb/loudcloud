@@ -4,11 +4,13 @@ import LogInForm from './log_in_form';
 import SignUpForm from './sign_up_form';
 import { receiveModal } from '../../actions/modal_actions';
 import EditProfileForm from './edit_profile_form';
+import EditTrackForm from './edit_track_form';
 
 const modals = {
   signUp: <SignUpForm />,
   logIn: <LogInForm />,
-  editProfile: <EditProfileForm />
+  editProfile: <EditProfileForm />,
+  editTrack: <EditTrackForm />
 }
 
 class Modal extends React.Component {
@@ -23,10 +25,6 @@ class Modal extends React.Component {
       this.props.closeModal();
     }
   }
-  //
-  // componentDidReceiveProps () {
-  //   $('.modal-content').css("width", width + 'px')
-  // }
 
   render () {
     const { modal, closeModal } = this.props

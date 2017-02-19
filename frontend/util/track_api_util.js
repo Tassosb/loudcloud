@@ -21,6 +21,16 @@ export const updateTrackPlays = (track) => {
   })
 }
 
+export const updateTrack = (formData, trackId) => {
+  return $.ajax({
+    method: 'PATCH',
+    url: `api/tracks/${trackId}`,
+    contentType: false,
+    processData: false,
+    data: formData
+  })
+}
+
 export const createTrack = (formData) => {
   return $.ajax({
     method: 'POST',
