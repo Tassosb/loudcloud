@@ -93,6 +93,26 @@ button {
   cursor: pointer;
 }
 
+.big-music-button:hover {
+  cursor: pointer;
+}
+
+.big-music-button {
+  font-size: 70px;
+  width: 40px;
+  height: 40px;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $orange;
+  background: white;
+  border-radius: 40px;
+
+  i {
+    color: $orange;
+  }
+}
 
 .fa:hover {
   cursor: pointer;

@@ -15,15 +15,15 @@ User.create!(email: 'test@loudcloud.com', password: 'loudcloud', name: 'Test Use
 
 artists = [
     ['David Bowie', 'England', 1],
-    ['Anderson .Paak', 'California', 2],
+    ['Anderson .Paak', 'California', 2, "https://s3.amazonaws.com/seeds-source/anderson_.paak.png"],
     ['Andrew Bird', 'Somewhere pretty', 3],
-    ['Esperanza Spaulding', 'New York', 4],
-    ['Gregory Alan Isakov', 'Colorado', 5],
-    ['John Coltrane', 'USA', 6],
-    ['Shakey Graves', 'Texas', 7],
+    ['Esperanza Spaulding', 'New York', 4, "https://s3.amazonaws.com/seeds-source/esperanza_spaulding.png"],
+    ['Gregory Alan Isakov', 'Colorado', 5, "https://s3.amazonaws.com/seeds-source/gregory_alan_isakov.png"],
+    ['John Coltrane', 'USA', 6, "https://s3.amazonaws.com/seeds-source/john_coltrane.png"],
+    ['Shakey Graves', 'Texas', 7, "https://s3.amazonaws.com/seeds-source/shakey_graves.png"],
     ['Snarky Puppy', 'Another level', 8],
     ['Sufjan Stevens', 'Brooklyn, NY', 9],
-    ['Hiatus Kaiyote', 'Outer Space', 10]
+    ['Hiatus Kaiyote', 'Melbourne, Australia', 10, "https://s3.amazonaws.com/seeds-source/hiatus_kaiyote.png"]
 ]
 
 tracks = {
@@ -31,10 +31,13 @@ tracks = {
     ['Life On Mars?', '', ],
     ['Rock and Roll Suicide', '']],
   2 => [
-    ['Celebrate', ''
+    ['Celebrate', '',
+        "https://s3.amazonaws.com/seeds-source/celebrate.mp3"
       ],
     ['Suede', ''],
-    ['Am I Wrong?', 'feat. ScHoolboy Q'],
+    ['Am I Wrong?', 'feat. ScHoolboy Q',
+        "https://s3.amazonaws.com/seeds-source/06+Am+I+Wrong+(feat.+ScHoolboy+Q).mp3"
+      ],
     ['The Bird', '',
         "https://s3.amazonaws.com/seeds-source/01+The+Bird.mp3"
       ],
@@ -43,19 +46,33 @@ tracks = {
       ]
   ],
   3 => [
-    ['Pulaski at Night', ''],
+    ['Pulaski at Night', '',
+        "https://s3.amazonaws.com/seeds-source/04+Pulaski+at+Night.mp3",
+        "https://s3.amazonaws.com/seeds-source/andrew_bird.png"
+      ],
     ['Syrian Empires', ''],
     ['Sweep the Field', '']
   ],
   4 => [
-    ['Unconditional Love', '']
+    ['Unconditional Love', '',
+        "https://s3.amazonaws.com/seeds-source/02+Unconditional+Love.mp3"
+      ]
   ],
   5 => [
     ['Saint Valentine', ''],
     ['The Trapeze Swinger', 'feat. Iron & Wine'],
     ['Stable Song', ''],
     ['Saint Valentine', '',
-        "https://s3.amazonaws.com/seeds-source/02+Saint+Valentine.mp3"
+        "https://s3.amazonaws.com/seeds-source/02+Saint+Valentine.mp3",
+        "https://s3.amazonaws.com/seeds-source/gregory_alan_isokov_track.png"
+      ],
+    ["John Brown's Body", '',
+        "https://s3.amazonaws.com/seeds-source/06+John+Brown's+Body.mp3",
+        "https://s3.amazonaws.com/seeds-source/gregory_alan_isokov_track.png"
+      ],
+    ['That Sea the Gambler', '',
+        "https://s3.amazonaws.com/seeds-source/08+That+Sea%2C+the+Gambler.mp3",
+        "https://s3.amazonaws.com/seeds-source/gregory_alan_isokov_track.png"
       ]
   ],
   6 => [
@@ -69,16 +86,30 @@ tracks = {
       ],
     ['Late July', ''],
     ['A Dream is W Wish Your Heart Makes', ''],
-    ['Donor Blues', '']
+    ['Donor Blues', ''],
+    ['Pay The Road', '',
+        "https://s3.amazonaws.com/seeds-source/05+Pay+The+Road.mp3"
+      ],
+    ['Seeing All Red', '',
+        "https://s3.amazonaws.com/seeds-source/06+Seeing+All+Red.mp3"
+      ],
+    ['A Dream is A Wish Your Heart Makes', '',
+        "https://s3.amazonaws.com/seeds-source/10+A+Dream+is+A+Wish+Your+Heart+Makes.mp3"
+      ]
   ],
   8 => [
-    ['Lingus', ''],
+    ['Lingus', '',
+        "https://s3.amazonaws.com/seeds-source/08+Lingus.mp3",
+        "https://s3.amazonaws.com/seeds-source/snarky_puppy.png"
+      ],
     ['Free Your Dreams', 'with Chantae Cann',
         "https://s3.amazonaws.com/seeds-source/01+Free+Your+Dreams+(with+Chantae+Cann).mp3"
       ]
   ],
   9 => [
-    ['Lakes of Canada', ''],
+    ['Lakes of Canada', '',
+        "https://s3.amazonaws.com/seeds-source/Lakes+of+Canada.mp3"
+      ],
     ['Casimir Pulaski Day', '']
   ],
   10 => [
@@ -93,18 +124,27 @@ tracks = {
 
 
 
-artists.each do |name, location, temp_id|
-  fname = name.split(' ').first.downcase
-  puts "Creating users"
-  user = User.create!(
-    name: name,
-    email: "#{fname}@loudcloud.com",
-    password: "#{fname}1234",
-    location: location
-    )
+artists.each do |name, location, temp_id, image_url|
 
-  puts "Creating Tracks"
-  tracks[temp_id].each do |title, credits, audio_url|
+  fname = name.split(' ').first.downcase
+
+  user = User.new(
+  name: name,
+  email: "#{fname}@loudcloud.com",
+  password: "#{fname}1234",
+  location: location
+  )
+
+  puts "Opening user image"
+  if image_url
+    file = open(image_url)
+    user.image = file
+  end
+  puts "Saving user"
+  user.save!
+
+  puts "Creating User Tracks"
+  tracks[temp_id].each do |title, credits, audio_url, image_url|
     next unless audio_url
 
     track = Track.new(
@@ -112,6 +152,11 @@ artists.each do |name, location, temp_id|
       credits: credits,
       artist_id: user.id
       )
+
+    if image_url
+      file = open(image_url)
+      track.image = file
+    end
 
     puts "Opening audio file"
     file = open(audio_url)

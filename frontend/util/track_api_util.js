@@ -6,7 +6,14 @@ export const fetchTracks = (specs) => {
   })
 }
 
-export const updateTrack = (track) => {
+export const fetchTrack = (trackId) => {
+  return $.ajax({
+    method: 'GET',
+    url: `api/tracks/${trackId}`
+  })
+}
+
+export const updateTrackPlays = (track) => {
   return $.ajax({
     method: 'PATCH',
     url: `api/tracks/${track.id}`,

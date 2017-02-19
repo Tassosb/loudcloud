@@ -10,6 +10,7 @@ import Stream from './components/browse/stream';
 import Profile from './components/user/profile';
 import UserShow from './components/user/user_show';
 import Upload from './components/upload/upload';
+import TrackShow from './components/tracks/track_show';
 
 
 const Root = () => {
@@ -45,7 +46,9 @@ const Root = () => {
     <Provider store={ store }>
       <Router history={ hashHistory }>
         <Route path='/' component={ App }>
-          <IndexRoute component={ Splash } onEnter={ redirectIfLoggedIn } />
+          <IndexRoute
+            component={ Splash }
+            onEnter={ redirectIfLoggedIn } />
           <Route path='/stream' component={ Stream }></Route>
           <Route
             path='/profile'
@@ -58,6 +61,7 @@ const Root = () => {
           <Route
             path='/upload'
             component={ Upload } />
+          <Route path='/tracks/:trackId' component={ TrackShow } />
         </Route>
       </Router>
     </Provider>

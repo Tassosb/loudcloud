@@ -34,3 +34,13 @@ $smoke-grey: #f2f2f2;
   display: flex;
   justify-content: space-around;
 }
+
+.side-column {
+  flex: 2;
+}
+
+.index-column {
+  border-right: 1px solid $smoke-grey;
+  flex: 5;
+  padding: 20px;
+}

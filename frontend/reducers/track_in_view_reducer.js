@@ -6,7 +6,7 @@ const defaultState = {
   audio_url: "",
   image_url: "",
   credits: "",
-  artist_id: 0,
+  artist: {},
   comments: {}
 }
 

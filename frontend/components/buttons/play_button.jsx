@@ -4,7 +4,13 @@ import { receiveCurrentTrack } from '../../actions/current_track_actions';
 import { receivePlayQueue } from '../../actions/play_queue_actions';
 import { updateTrackPlays } from '../../actions/track_actions';
 
-//Playbutton takes size and trackQueuePos
+const sizes = {
+  'small': 'small-music-button',
+  'regular': 'reg-music-button',
+  'big': 'big-music-button'
+}
+
+//Playbutton takes size, trackQueuePos, and trackId
 class PlayButton extends React.Component {
   constructor (props) {
     super(props);
@@ -41,8 +47,7 @@ class PlayButton extends React.Component {
       };
     }
 
-    let klass = size === 'small' ?
-    'small-music-button' : 'reg-music-button';
+    let klass = sizes[size];
 
     return (
       <div className={ klass }>

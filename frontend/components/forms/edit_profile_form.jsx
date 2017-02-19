@@ -17,10 +17,9 @@ class EditProfileForm extends React.Component {
         title='Edit your Profile'
         user={ user }
         submitForm={ updateUser }
-        errors={ errors }/>
+        errors={ errors } />
     )
   }
-
 }
 
 const mapStateToProps = ({ userInView, errors }) => ({

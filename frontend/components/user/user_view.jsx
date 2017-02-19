@@ -42,7 +42,7 @@ const UserNav = ({ currentTab, updateTab, user, isProfile }) => {
   );
 }
 
-class UserView extends React.Component{
+class UserView extends React.Component {
   constructor (props) {
     super(props);
 

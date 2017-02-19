@@ -62,9 +62,10 @@
 }
 
 .user-tracks-column {
-  flex: 2;
+  @extend .index-column;
+  padding-top: 0;
 }
 
 .user-side-column {
-  flex: 1;
+  @extend .side-column;
 }

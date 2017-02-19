@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './root';
 //tests
-import { updateTrack } from './actions/track_actions';
+import { updateTrack, fetchTrack } from './actions/track_actions';
 import { updateTrackPlays } from './actions/track_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //tests
   window.updateTrack = updateTrack;
-  window.updateTrackPlays = updateTrackPlays;
+  window.fetchTrack = fetchTrack;
 
   ReactDOM.render(<Root />, root);
 })

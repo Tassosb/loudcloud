@@ -61,12 +61,6 @@ class AudioControlBar extends React.Component {
   }
 
   restartSong () {
-    //To be implements later: conditional restarting depending on time
-
-    // const queueLength = Object.keys(this.props.playQueue).length
-    // let currentQueuePos = this.props.currentTrack.currentQueuePos - 1;
-    // if (currentQueuePos < 1) { currentQueuePos = queueLength}
-
     this.props.receiveCurrentTrack({
       restart: true
     });

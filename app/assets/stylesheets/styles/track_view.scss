@@ -1,0 +1,40 @@
+.track-banner {
+  background: linear-gradient( 135deg, #874648,#235);
+  height: 380px;
+  display: flex;
+  justify-content: space-between;
+
+  h1 {
+    padding: 7px;
+  }
+
+  div h2 {
+    padding: 5px;
+    color: $lighter-grey;
+  }
+}
+
+.track-image {
+  @extend .image-tile-big;
+  margin: 20px;
+}
+
+.track-header {
+  @extend .user-info;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.track-view-main {
+  @extend .user-view-main;
+}
+
+.track-main-column {
+  @extend .index-column;
+}
+
+.track-side-column {
+  @extend .side-column;
+}

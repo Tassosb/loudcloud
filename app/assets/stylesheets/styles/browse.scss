@@ -7,9 +7,8 @@
 }
 
 .browse-index-column {
-  padding: 20px;
-  flex: 5;
-  border-right: 1px solid $smoke-grey;
+  @extend .index-column;
+  
   h2 {
     padding: 20px 0;
     font-size: 20px;
@@ -18,7 +17,7 @@
 }
 
 .browse-side-column {
-  flex: 2;
+  @extend .side-column;
 }
 
 .browse-nav-bar {

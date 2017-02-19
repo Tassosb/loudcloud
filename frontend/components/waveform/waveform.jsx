@@ -14,9 +14,9 @@ class Waveform extends React.Component {
       height: 40,
       mediaType: 'audio',
       maxCanvasWidth: 400,
-      fillParent: true,
-      audioContext:
+      fillParent: true
     });
+
     let duration = 0
     wavesurfer.load(this.props.track.audio_url);
     wavesurfer.on('ready', function () {
