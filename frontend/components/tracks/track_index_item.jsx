@@ -71,7 +71,6 @@ class TrackIndexItem extends React.Component{
               </div>
             </div>
             <div className='waveform-small'>
-              <Waveform track={ track } />
             </div>
             <TrackStats track={ track }
               currentUser={ currentUser }/>
@@ -81,6 +80,9 @@ class TrackIndexItem extends React.Component{
     )
   }
 }
+
+//Waveform too slow!
+// <Waveform track={ track } />
 
 const mapStateToProps = ({ session }) => ({
   currentUser: session.currentUser
