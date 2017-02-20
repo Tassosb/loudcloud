@@ -34,6 +34,16 @@ class Api::TracksController < ApplicationController
     end
   end
 
+  def destroy
+    @track = Track.find_by(id: params[:id])
+
+    if @track
+      @track.destroy
+    end
+
+    render json: {}, status: 200
+  end
+
   private
   def track_params
     params.require(:track).permit(:title, :num_plays, :audio, :credits, :image)

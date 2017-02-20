@@ -69,7 +69,7 @@ class UploadForm extends React.Component {
         <div className='upload-header'>
           <h1>Upload to LoudCloud</h1>
         </div>
-        { this.state.processing && <h2>You're song is being processed! Please wait a moment.</h2> }
+        { this.state.processing && <h2>Your song is being processed! Please wait a moment.</h2> }
         <div className='upload-button-box'>
           <input type='file' className='input-file'
             id='file' onChange={ this.handleAudioFile } />

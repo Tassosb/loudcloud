@@ -140,5 +140,47 @@ input[type='submit'].awake {
 }
 
 .new-track-form {
+}
 
+.delete-track-form {
+  height: 140px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  color: $dark-grey;
+  font-size: 14px;
+
+  h1 {
+    font-size: 22px;
+    color: black;
+  }
+
+  p {
+    margin: 35px 0;
+  }
+
+  div {
+    align-self: flex-end;
+    width: 150px;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  span{
+    padding: 8px;
+    color: $dark-grey;
+  }
+
+  span:hover {
+    cursor: pointer;
+  }
+
+  span:last-of-type {
+    @extend .subtle-border;
+    border-radius: $slight-curve;
+  }
+
+  span:last-of-type:hover {
+    @extend .subtle-border-hover;
+  }
 }

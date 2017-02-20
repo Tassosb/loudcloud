@@ -5,12 +5,14 @@ import SignUpForm from './sign_up_form';
 import { receiveModal } from '../../actions/modal_actions';
 import EditProfileForm from './edit_profile_form';
 import EditTrackForm from './edit_track_form';
+import DeleteTrackForm from './delete_track_form';
 
 const modals = {
   signUp: <SignUpForm />,
   logIn: <LogInForm />,
   editProfile: <EditProfileForm />,
-  editTrack: <EditTrackForm />
+  editTrack: <EditTrackForm />,
+  deleteTrack: <DeleteTrackForm />
 }
 
 class Modal extends React.Component {

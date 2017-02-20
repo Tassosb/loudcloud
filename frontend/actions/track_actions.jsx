@@ -79,3 +79,8 @@ export const createTrack = (track) => dispatch => {
     },
       (errors) => dispatch(receiveTrackErrors(errors.responseJSON)));
 }
+
+export const deleteTrack = (trackId) => dispatch => {
+  return APIUtil.deleteTrack(trackId)
+    .then(() => dispatch(receiveModal('')));
+}

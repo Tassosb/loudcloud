@@ -44,8 +44,7 @@ class AudioControlBar extends React.Component {
       currentQueuePos = this.getFirstQueuePos();
     }
     this.props.receiveCurrentTrack({
-      currentQueuePos: currentQueuePos,
-      playing: true
+      currentQueuePos: currentQueuePos
     });
   }
 
@@ -55,8 +54,7 @@ class AudioControlBar extends React.Component {
       currentQueuePos = this.getLastQueuePos();
     }
     this.props.receiveCurrentTrack({
-      currentQueuePos: currentQueuePos,
-      playing: true
+      currentQueuePos: currentQueuePos
     });
   }
 

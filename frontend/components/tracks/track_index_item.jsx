@@ -41,8 +41,7 @@ class TrackIndexItem extends React.Component{
             </div>
             <div className='waveform-small'>
             </div>
-            <TrackStats track={ track }
-              currentUser={ currentUser }/>
+            <TrackStats track={ track } showDelete={ false }/>
           </div>
         </div>
       </li>

@@ -43,7 +43,7 @@ class TrackView extends React.Component {
           <div className='track-main-column'>
             <div className='comment-form'></div>
             <div className='track-stats'>
-              <TrackStats track={ track }/>
+              <TrackStats track={ track } showDelete={ true }/>
             </div>
             <div className='track-main-container'>
               <div className='track-show-artist-tile'>

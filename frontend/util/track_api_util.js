@@ -40,3 +40,10 @@ export const createTrack = (formData) => {
     data: formData
   });
 }
+
+export const deleteTrack = (trackId) => {
+  return $.ajax({
+    method: 'DELETE',
+    url: `api/tracks/${trackId}`
+  });
+}

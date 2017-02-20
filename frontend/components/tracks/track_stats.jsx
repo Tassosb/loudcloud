@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import EditTrackButton from '../buttons/edit_track_button';
+import DeleteTrackButton from '../buttons/delete_track_button';
 
-const TrackStats = ({ track, currentUser }) => {
+const TrackStats = ({ track, currentUser, showDelete }) => {
   let isOwnSong = currentUser ?
     (track.artist.id === currentUser.id) : false;
 
@@ -17,6 +18,9 @@ const TrackStats = ({ track, currentUser }) => {
           </button>
           { isOwnSong &&
             <EditTrackButton track={ track } />
+          }
+          { showDelete && isOwnSong &&
+            <DeleteTrackButton track={ track } />
           }
         </div>
       </div>

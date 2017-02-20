@@ -1,3 +1,5 @@
+
+
 .track-index-column {
   // padding: 15px;
 
@@ -118,6 +120,10 @@
 
   button:hover {
     @extend .subtle-border-hover;
+  }
+
+  button.delete-track-button {
+    width: 110px;
   }
 }
 
