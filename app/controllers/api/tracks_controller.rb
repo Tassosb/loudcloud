@@ -7,7 +7,7 @@ class Api::TracksController < ApplicationController
       @tracks = @tracks.where(artist_id: params[:artist_id])
     end
 
-    @tracks = @tracks.sample(5)
+    @tracks = @tracks.sample(10)
   end
 
   def update

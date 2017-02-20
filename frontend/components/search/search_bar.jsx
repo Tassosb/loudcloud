@@ -22,6 +22,7 @@ class SearchBar extends React.Component {
     return (
       <div className='search-bar'>
         <input onChange={ this.update } type='text' value={ this.state.query }/>
+        <i className="fa fa-search" aria-hidden="true"></i>
       </div>
     )
   }

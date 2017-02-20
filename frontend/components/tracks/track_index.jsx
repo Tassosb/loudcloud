@@ -7,7 +7,7 @@ const TrackIndex = ({ tracks }) => {
       <ul className='track-index-list'>
         { tracks.map((track) => (
           <TrackIndexItem key={ track.id } track= { track } />
-        ))}
+        )) }
       </ul>
     </div>
   )

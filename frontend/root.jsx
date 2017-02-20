@@ -37,6 +37,7 @@ const Root = () => {
   }
 
   const redirectIfCurrentUserPage = (nextState, replace) => {
+    if (!loggedIn()) { return; }
     if (parseInt(nextState.params.userId) === store.getState().session.currentUser.id) {
       replace('/profile');
     }

@@ -75,6 +75,7 @@ class UserView extends React.Component {
   }
 
   isProfile () {
+    if (!this.props.currentUser) { return false }
     return this.props.currentUser.id === this.props.user.id
   }
 

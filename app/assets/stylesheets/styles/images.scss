@@ -5,6 +5,14 @@
   cursor: pointer;
 }
 
+.image-tile-splash {
+  width: 190px;
+  height: 190px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+
 .image-tile-big {
   width: 340px;
   height: 340px;
