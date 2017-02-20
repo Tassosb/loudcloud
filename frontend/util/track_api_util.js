@@ -55,3 +55,11 @@ export const likeTrack = (trackId, userId) => {
     data: { user_id: userId }
   })
 }
+
+export const unlikeTrack = (trackId, userId) => {
+  return $.ajax({
+    method: 'DELETE',
+    url: `api/tracks/${trackId}/unlike`,
+    data: { user_id: userId }
+  })
+}

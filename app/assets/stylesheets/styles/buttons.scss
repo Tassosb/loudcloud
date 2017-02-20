@@ -120,3 +120,15 @@ button {
 .fa:hover {
   cursor: pointer;
 }
+
+.like-button.liked {
+  color: $orange;
+
+  span {
+    color: $orange;
+  }
+}
+
+.like-button.liked:hover {
+  border: 1px solid $orange;
+}

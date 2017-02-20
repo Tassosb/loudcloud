@@ -85,7 +85,22 @@ export const deleteTrack = (trackId) => dispatch => {
     .then(() => dispatch(receiveModal('')));
 }
 
-export const likeTrack = (trackId, userId) => dispatch => {
-  return APIUtil.likeTrack(trackId, userId)
-    .then(() => dispatch(receiveTrackLike(trackId)))
+export const likeTrack = (track, userId) => dispatch => {
+  const prevQueuePos = track.queuePos;
+  return APIUtil.likeTrack(track.id, userId)
+    .then((track) => {
+      const queuedTrack = Object.assign({}, track, {queuePos: prevQueuePos})
+      dispatch(receiveTrack(queuedTrack));
+      dispatch(receiveTrackInView(queuedTrack));
+    })
+}
+
+export const unlikeTrack = (track, userId) => dispatch => {
+  const prevQueuePos = track.queuePos;
+  return APIUtil.unlikeTrack(track.id, userId)
+    .then((track) => {
+      const queuedTrack = Object.assign({}, track, {queuePos: prevQueuePos})
+      dispatch(receiveTrack(queuedTrack));
+      dispatch(receiveTrackInView(queuedTrack));
+    })
 }

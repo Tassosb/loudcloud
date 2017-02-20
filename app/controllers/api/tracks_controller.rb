@@ -51,6 +51,13 @@ class Api::TracksController < ApplicationController
     render :show
   end
 
+  def unlike
+    @track = Track.find_by(id: params[:id])
+    @track.likes.find_by(user_id: params[:user_id]).destroy
+
+    render :show
+  end
+
   private
   def track_params
     params.require(:track).permit(:title, :num_plays, :audio, :credits, :image)

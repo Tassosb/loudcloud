@@ -1,4 +1,6 @@
 class Track < ActiveRecord::Base
+  attr_reader :liked_by_current_user
+
   validates :title, :artist, :num_plays, presence: true
 
   has_attached_file :audio
@@ -26,5 +28,9 @@ class Track < ActiveRecord::Base
 
   def num_likes
     self.likes.count
+  end
+
+  def liked_by?(user)
+    self.likers.include?(user)
   end
 end

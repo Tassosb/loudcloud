@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import EditTrackButton from '../buttons/edit_track_button';
 import DeleteTrackButton from '../buttons/delete_track_button';
+import LikeButton from '../buttons/like_button';
 
 const TrackStats = ({ track, currentUser, showDelete }) => {
   let isOwnSong = currentUser ?
@@ -12,10 +13,7 @@ const TrackStats = ({ track, currentUser, showDelete }) => {
     <div className='track-stats flex-row'>
       <div className='track-stats-left'>
         <div className='flex-item'>
-          <button className='like-button'>
-            <i className="fa fa-heart" aria-hidden="true"></i>
-            <span>{ Math.floor(Math.random() * 100)}</span>
-          </button>
+          <LikeButton track={ track }/>
           { isOwnSong &&
             <EditTrackButton track={ track } />
           }

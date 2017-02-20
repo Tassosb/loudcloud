@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :tracks, only: [:create, :destroy, :index, :show, :update] do
       member do
         post :like
+        delete :unlike
       end
     end
   end
