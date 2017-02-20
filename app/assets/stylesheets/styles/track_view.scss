@@ -57,6 +57,7 @@
   flex: 1;
   min-width: 120px;
   margin-right: 20px;
+
   span {
     color: $accent-grey;
     font-size: 14px;
@@ -72,7 +73,19 @@
 }
 
 .comments-index {
-  background: blue;
-  height: 600px;
   flex: 3;
+}
+
+.comment-count {
+  color: $plain-grey;
+  margin-bottom: 10px;
+
+  i {
+    margin: 0 5px 0 3px;
+  }
+
+  span {
+    color: $plain-grey;
+    font-size: 14px;
+  }
 }

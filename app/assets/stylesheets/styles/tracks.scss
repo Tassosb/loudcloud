@@ -94,6 +94,12 @@
     flex: 1;
     justify-content: space-around;
   }
+
+  .fa-heart {
+    color: $plain-grey;
+    padding: 0 7px 0 13px;
+    cursor: default;
+  }
 }
 
 .track-stats-left {

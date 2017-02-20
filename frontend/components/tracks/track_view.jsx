@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import PlayButton from '../buttons/play_button';
 import TrackStats from './track_stats';
+import CommentIndex from '../comments/comment_index';
 
 const TrackBanner = ({ track }) => {
 
@@ -55,6 +56,14 @@ class TrackView extends React.Component {
                 </Link>
               </div>
               <div className='comments-index'>
+                <div className='comment-count'>
+                  <i className="fa fa-comment" aria-hidden="true"></i>
+                  <span>
+                    { track.num_comments }
+                    { track.num_comments > 1 ? ' comments' : ' comment' }
+                  </span>
+                </div>
+                <CommentIndex comments={ track.comments } />
               </div>
             </div>
           </div>

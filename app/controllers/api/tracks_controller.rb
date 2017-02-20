@@ -1,7 +1,11 @@
 class Api::TracksController < ApplicationController
 
   def index
-    @tracks = Track.all.includes(:artist)
+    if (params[:liked])
+      @tracks = current_user.liked_tracks
+    else
+      @tracks = Track.all.includes(:artist)
+    end
 
     if (params[:artist_id])
       @tracks = @tracks.where(artist_id: params[:artist_id])

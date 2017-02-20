@@ -2,14 +2,17 @@
 #
 # Table name: users
 #
-#  id              :integer          not null, primary key
-#  email           :string           not null
-#  password_digest :string           not null
-#  name            :string
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  location        :string
-#  image_url       :string
+#  id                 :integer          not null, primary key
+#  email              :string           not null
+#  password_digest    :string           not null
+#  name               :string
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  location           :string
+#  image_file_name    :string
+#  image_content_type :string
+#  image_file_size    :integer
+#  image_updated_at   :datetime
 #
 
 class User < ActiveRecord::Base
@@ -27,6 +30,9 @@ class User < ActiveRecord::Base
     foreign_key: :artist_id
   has_many :likes
   has_many :liked_tracks, through: :likes, source: :track
+  has_many :authored_comments,
+    class_name: 'Comment',
+    foreign_key: :author_id
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)

@@ -1,0 +1,33 @@
+.comment-index-column {
+}
+
+li.comment {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+
+  .image-circle-thumb {
+    margin-right: 15px;
+  }
+
+  .comment-text {
+    flex: 1
+  }
+}
+
+p.comment-meta {
+  color: $plain-grey;
+}
+
+p.comment-body {
+  color: $dark-grey;
+  margin-top: 5px;
+}
+
+.comment-time-ago > span {
+  color: $plain-grey;
+}
+.comment-index-list {
+  padding-top: 20px;
+  border-top: 1px solid $smoke-grey;
+}

@@ -10,5 +10,7 @@ Rails.application.routes.draw do
         delete :unlike
       end
     end
+
+    resources :comments, only: [:create, :destroy]
   end
 end

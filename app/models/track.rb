@@ -1,3 +1,24 @@
+# == Schema Information
+#
+# Table name: tracks
+#
+#  id                 :integer          not null, primary key
+#  title              :string           not null
+#  artist_id          :integer          not null
+#  credits            :string
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  audio_file_name    :string           not null
+#  audio_content_type :string           not null
+#  audio_file_size    :integer          not null
+#  audio_updated_at   :datetime         not null
+#  num_plays          :integer          default(0)
+#  image_file_name    :string
+#  image_content_type :string
+#  image_file_size    :integer
+#  image_updated_at   :datetime
+#
+
 class Track < ActiveRecord::Base
   attr_reader :liked_by_current_user
 
@@ -25,9 +46,14 @@ class Track < ActiveRecord::Base
 
   has_many :likes
   has_many :likers, through: :likes, source: :user
+  has_many :comments
 
   def num_likes
     self.likes.count
+  end
+
+  def num_comments
+    self.comments.count
   end
 
   def liked_by?(user)

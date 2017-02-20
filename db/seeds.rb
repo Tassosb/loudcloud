@@ -165,3 +165,30 @@ artists.each do |name, location, temp_id, image_url|
     track.save!
   end
 end
+
+comments = [
+  "great song",
+  "love it",
+  "Here is a very very looooooooong comment that I am. I am very moved by your work please contact me I am a musician we can collaborate",
+  "Cool",
+  "Dig it",
+  "I like the loud parts",
+  "Great lyrics",
+  "Reminds me of the 80's"
+]
+
+user_ids = (User.first.id..User.last.id).to_a
+track_ids = (Track.first.id..Track.last.id).to_a
+
+5.times do
+  comments.each do |comment|
+    curr_user_id = user_ids.sample
+    curr_track_id = track_ids.sample
+
+    Comment.create!(
+    body: comment,
+    author_id: curr_user_id,
+    track_id: curr_track_id
+    )
+  end
+end

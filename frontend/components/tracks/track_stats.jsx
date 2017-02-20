@@ -27,10 +27,16 @@ const TrackStats = ({ track, currentUser, showDelete }) => {
           <i className='fa fa-play' aria-hidden='true'></i>
           <span>{ track.num_plays }</span>
         </div>
-        <Link className='flex-row' to='/'>
-          <i className="fa fa-comment" aria-hidden="true"></i>
-          <span>{ Math.floor(Math.random() * 100)}</span>
-        </Link>
+        { showDelete ?
+          <div>
+            <i className="fa fa-heart" aria-hidden="true"></i>
+            <span>{ track.num_likes }</span>
+          </div> :
+          <Link className='flex-row' to={`/tracks/${track.id}`}>
+            <i className="fa fa-comment" aria-hidden="true"></i>
+            <span>{ track.num_comments }</span>
+          </Link>
+        }
       </div>
     </div>
   )
