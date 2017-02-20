@@ -47,3 +47,11 @@ export const deleteTrack = (trackId) => {
     url: `api/tracks/${trackId}`
   });
 }
+
+export const likeTrack = (trackId, userId) => {
+  return $.ajax({
+    method: 'POST',
+    url: `api/tracks/${trackId}/like`,
+    data: { user_id: userId }
+  })
+}

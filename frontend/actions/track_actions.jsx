@@ -84,3 +84,8 @@ export const deleteTrack = (trackId) => dispatch => {
   return APIUtil.deleteTrack(trackId)
     .then(() => dispatch(receiveModal('')));
 }
+
+export const likeTrack = (trackId, userId) => dispatch => {
+  return APIUtil.likeTrack(trackId, userId)
+    .then(() => dispatch(receiveTrackLike(trackId)))
+}

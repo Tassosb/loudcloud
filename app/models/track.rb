@@ -20,4 +20,11 @@ class Track < ActiveRecord::Base
   belongs_to :artist,
     class_name: 'User',
     foreign_key: :artist_id
+
+  has_many :likes
+  has_many :likers, through: :likes, source: :user
+
+  def num_likes
+    self.likes.count
+  end
 end

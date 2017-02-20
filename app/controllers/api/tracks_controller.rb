@@ -44,6 +44,13 @@ class Api::TracksController < ApplicationController
     render json: {}, status: 200
   end
 
+  def like
+    @track = Track.find_by(id: params[:id])
+    @track.likes.create(user_id: params[:user_id])
+
+    render :show
+  end
+
   private
   def track_params
     params.require(:track).permit(:title, :num_plays, :audio, :credits, :image)

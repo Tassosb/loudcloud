@@ -18,7 +18,7 @@ class Upload extends React.Component {
           </div>
           <div className='upload-info'>
             <p>
-              You can upload MP3 files. The maximum file size is 5GB.
+              You can upload MP3 files. The maximum file size is 10MB.
             </p>
           </div>
         </div>
