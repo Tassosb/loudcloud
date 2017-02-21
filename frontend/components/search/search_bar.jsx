@@ -39,22 +39,24 @@ class SearchBar extends React.Component {
 
     this.update = this.update.bind(this);
     this.handleResultClick = this.handleResultClick.bind(this);
-    this.hideDropDown = this.hideDropDown.bind(this);
+    this.handleOutsideClick = this.handleOutsideClick.bind(this);
   }
 
   componentDidMount () {
-    document.addEventListener('click', (e) => {
-      if (e.target.className !== 'stay-open') {
-        this.hideDropDown();
-      }
-    })
+    document.addEventListener('click', this.handleOutsideClick);
   }
 
-  hideDropDown () {
-    this.setState({
-      active: false,
-      query: ''
-    })
+  componentWillUnmount () {
+    document.removeEventListener('click', this.handleOutsideClick);
+  }
+
+  handleOutsideClick (e) {
+    if (e.target.className !== 'stay-open') {
+      this.setState({
+        active: false,
+        query: ''
+      })
+    }
   }
 
   update (e) {
