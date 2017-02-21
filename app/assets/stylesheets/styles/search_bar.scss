@@ -1,6 +1,7 @@
 .search-bar {
   background-color: $search-bar-grey;
   border-radius: 4px;
+  position: relative;
 
   input {
     width: 100%;
@@ -24,5 +25,42 @@
   i {
     padding: 0 10px;
     color: $dark-grey;
+  }
+}
+
+.search-drop-down {
+    position: absolute;
+    background-color: $darker-grey;
+    width: 100%;
+    top: 28px;
+    border-radius: 5px;
+    z-index: 999;
+}
+
+.show-query {
+  padding: 10px;
+  background-color: $dark-grey;
+  color: $light-grey;
+}
+
+.show-query:hover {
+  background-color: #222222;
+  color: $search-bar-grey;
+  cursor: pointer;
+}
+
+ul.search-result-list {
+  li {
+    padding: 10px 5px;
+    color: $plain-grey;
+  }
+
+  li:hover {
+    background-color: $dark-grey;
+  }
+
+  i {
+    color: $plain-grey;
+    padding-left: 10px;
   }
 }

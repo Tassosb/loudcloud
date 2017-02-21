@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
+import DeleteCommentButton from '../buttons/delete_comment_button';
 
 const Comment = ({ comment }) => {
-
   return (
     <li className='comment'>
       <div className=' image-circle-thumb'>
@@ -22,8 +22,9 @@ const Comment = ({ comment }) => {
           { comment.body }
         </p>
       </div>
-      <div className='comment-time-ago'>
+      <div className='comment-right'>
         <span>{ comment.time_ago }</span>
+        <DeleteCommentButton comment={ comment } />
       </div>
     </li>
   )
