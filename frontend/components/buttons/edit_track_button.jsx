@@ -2,15 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { receiveModal } from '../../actions/modal_actions';
-import { receiveTrackInView } from '../../actions/track_actions';
+import { fetchTrack } from '../../actions/track_actions';
 
 const EditTrackButton = ({ showEditTrackForm, track,
-                            receiveTrackInView, router }) => {
+                            fetchTrack, router }) => {
   const handleClick = (e) => {
     e.preventDefault();
-    receiveTrackInView(track);
-    router.push(`tracks/${track.id}`)
-    showEditTrackForm();
+    fetchTrack(track.id)
+      .then(() => {
+        router.push(`tracks/${track.id}`)
+        showEditTrackForm();
+      })
   }
   return (
     <button
@@ -24,7 +26,7 @@ const EditTrackButton = ({ showEditTrackForm, track,
 
 const mapDispatchToProps = (dispatch) => ({
   showEditTrackForm: () => dispatch(receiveModal('editTrack')),
-  receiveTrackInView: (track) => dispatch(receiveTrackInView(track))
+  fetchTrack: (trackId) => dispatch(fetchTrack(trackId))
 });
 
 export default connect(
