@@ -5,7 +5,10 @@ const doNotShow = {
   artist: true,
   num_plays: true,
   queuePos: true,
-  comments: true
+  comments: true,
+  num_comments: true,
+  liked_by_current_user: true,
+  num_likes: true
 }
 
 const FormField = ({ field, value, update }) => {
