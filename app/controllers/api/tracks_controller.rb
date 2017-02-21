@@ -15,7 +15,7 @@ class Api::TracksController < ApplicationController
   end
 
   def update
-    @track = Track.find_by(id: params[:id])
+    @track = Track.includes(comments: [:author]).find_by(id: params[:id])
 
     if @track.update(track_params)
       render :show
@@ -25,7 +25,7 @@ class Api::TracksController < ApplicationController
   end
 
   def show
-    @track = Track.find_by(id: params[:id])
+    @track = Track.includes(comments: [:author]).find_by(id: params[:id])
   end
 
   def create
@@ -49,14 +49,14 @@ class Api::TracksController < ApplicationController
   end
 
   def like
-    @track = Track.find_by(id: params[:id])
+    @track = Track.includes(comments: [:author]).find_by(id: params[:id])
     @track.likes.create(user_id: params[:user_id])
 
     render :show
   end
 
   def unlike
-    @track = Track.find_by(id: params[:id])
+    @track = Track.includes(comments: [:author]).find_by(id: params[:id])
     @track.likes.find_by(user_id: params[:user_id]).destroy
 
     render :show
