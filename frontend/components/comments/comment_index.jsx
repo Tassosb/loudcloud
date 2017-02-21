@@ -31,7 +31,9 @@ const Comment = ({ comment }) => {
 }
 
 const CommentIndex = ({ comments }) => {
-  const commentsAsArray = Object.keys(comments).map((id) => comments[id]);
+  const commentsAsArray = Object.keys(comments)
+                            .map((id) => comments[id])
+                            .reverse();
 
   return (
     <div className='comment-index-column'>
