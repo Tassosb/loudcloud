@@ -51,7 +51,7 @@ class SearchBar extends React.Component {
   }
 
   handleOutsideClick (e) {
-    if (e.target.className !== 'stay-open') {
+    if (e.target.className.slice(-9) !== 'stay-open') {
       this.setState({
         active: false,
         query: ''
@@ -88,7 +88,7 @@ class SearchBar extends React.Component {
           onChange={ this.update }
           className='stay-open'
           value={ this.state.query }/>
-        <i className="fa fa-search" aria-hidden="true"></i>
+        <i className="fa fa-search stay-open" aria-hidden="true"></i>
         { this.state.active &&
           <div className='search-drop-down'>
             <div className='show-query stay-open'>Search for "{ this.state.query }"</div>
