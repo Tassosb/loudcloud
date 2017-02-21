@@ -25,7 +25,7 @@ p.comment-body {
   margin-top: 5px;
 }
 
-.comment-time-ago > span {
+.comment-right > span {
   color: $plain-grey;
 }
 .comment-index-list {
@@ -61,5 +61,58 @@ div.comment-form {
   input:focus {
     border: 1px solid $plain-grey;
     color: $dark-grey;
+  }
+}
+
+div.comment-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+}
+
+button.delete-comment-button {
+    width: 30px;
+    height: 30px;
+    color: black;
+}
+
+.delete-comment {
+    width: 20px;
+    position: relative;
+}
+
+.delete-comment-pop-up {
+    width: 180px;
+    position: absolute;
+    background-color: white;
+    color: $dark-grey;
+    right: -22px;
+    @extend .subtle-border;
+    border-radius: $slight-curve;
+    padding: 5px;
+    z-index: 999;
+    box-shadow: -2px 1px 1px 1px rgba(0,0,0,0.2);
+
+    p {
+      line-height: 1.16;
+    }
+}
+
+.delete-comment-buttons {
+  flex-direction: row;
+  justify-content: flex-end;
+  display: flex;
+
+  button {
+    color: $dark-grey;
+    font-size: 12px;
+    @extend .subtle-border;
+    padding: 2px 5px;
+    margin-left: 3px;
+  }
+
+  button:hover {
+    @extend .subtle-border-hover;
   }
 }
