@@ -5,6 +5,7 @@ li.comment {
   display: flex;
   justify-content: space-between;
   font-size: 13px;
+  margin-bottom: 20px;
 
   .image-circle-thumb {
     margin-right: 15px;
@@ -30,4 +31,35 @@ p.comment-body {
 .comment-index-list {
   padding-top: 20px;
   border-top: 1px solid $smoke-grey;
+}
+
+div.comment-form {
+  display: flex;
+
+  input {
+    width: 100%;
+    height: 24px;
+    border-radius: $slight-curve;
+    outline: none;
+    @extend .subtle-border;
+    font-size: 14px;
+    color: $plain-grey;
+    padding-left: 5px;
+  }
+
+  div.image-tile-small {
+    margin-right: 10px;
+  }
+
+  form.form-field {
+    width: 100%;
+    background-color: $smoke-grey;
+    padding: 5px 13px 5px 5px;
+    @extend .subtle-border;
+  }
+
+  input:focus {
+    border: 1px solid $plain-grey;
+    color: $dark-grey;
+  }
 }

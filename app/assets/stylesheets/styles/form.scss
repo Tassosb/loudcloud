@@ -4,12 +4,21 @@
   flex-direction: column;
   justify-content: space-around;
   // align-items: center;
+
 }
 
 .modal-form {
   input, button, .demo-login {
     width: 80%;
-    @extend .big-button;
+    padding: 10px;
+    border-radius: $slight-curve;
+    border: 1px solid $accent-grey;
+    font-color: $light-grey;
+    font-size: 16px;
+    padding-left: 10px;
+    box-sizing: border-box;
+    height: 40px;
+    margin-bottom: 10px;
   }
 }
 

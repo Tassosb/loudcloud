@@ -1,10 +1,10 @@
 class Api::CommentsController < ApplicationController
 
   def create
-    @comment = Comment.new(comment_params)
+    @comment = current_user.authored_comments.new(comment_params)
 
     if @comment.save
-      render 'api/comments/comment', comment: @comment
+      render :show, comment: @comment
     else
       render @comment.errors, status: 422
     end
@@ -19,6 +19,6 @@ class Api::CommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit(:author_id, :track_id, :body)
+    params.require(:comment).permit(:track_id, :body)
   end
 end

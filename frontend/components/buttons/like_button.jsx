@@ -6,7 +6,7 @@ import { unlikeTrack, likeTrack } from '../../actions/track_actions';
 const LikeButton = ({ track, currentUser, likeTrack, unlikeTrack }) => {
 
   const handleClick = (e) => {
-
+    if (!currentUser) { return; }
     e.preventDefault();
     if (!track.liked_by_current_user) {
       likeTrack(track, currentUser.id);

@@ -1,5 +1,6 @@
 .nav-logo {
   height: 44px;
+  width: 140px;;
 }
 
 .header-bar {
@@ -16,6 +17,28 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  div.search-bar {
+    height: 28px;
+    min-width: 354px;
+    margin-left: 10px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
+
+div.nav-tab {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+  border-right: 1px solid black;
+}
+
+div.nav-tab:active {
+  background-color: $darker-grey;
 }
 
 .nav-bar div, span {
@@ -88,6 +111,18 @@
   padding: 15px;
 }
 
-.nav-bar a:hover {
+.nav-buttons > div{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-width: 255px;
+
+}
+div.profile-link {
+  min-width: 130px;
+  margin-left: 20px;
+}
+
+.nav-bar a:hover, .nav-bar div:hover {
   color: $off-white;
 }

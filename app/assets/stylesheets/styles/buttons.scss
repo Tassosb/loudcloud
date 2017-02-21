@@ -3,7 +3,7 @@
 .log-in-button {
   height: 30px;
   width: 70px;
-  margin-left: 35px;
+  margin-left: 10px;
   border: 1px solid $accent-grey;
   background-color: $dark-grey;
 }
@@ -39,6 +39,15 @@
   padding: 0 10px;
   display: flex;
   align-items: center;
+  a {
+    margin-left: 20px;
+  }
+
+  .log-in-button, .sign-up-button {
+    font-size: 14px;
+    height: 25px;
+    // padding: 25px;
+  }
 }
 
 button {

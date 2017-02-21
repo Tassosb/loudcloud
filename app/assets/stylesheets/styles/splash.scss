@@ -26,11 +26,12 @@
   z-index: 1;
 
   .sign-up-button {
-    margin-left: 14px;
+    margin-left: 17px;
     z-index: 1;
   }
   div {
     z-index: 1;
+    display: flex;
   }
 }
 
@@ -59,6 +60,7 @@ section.splash-track-index {
 
   h1 {
     font-size: 24px;
+    color: $dark-grey;
   }
 }
 

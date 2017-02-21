@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import PlayButton from '../buttons/play_button';
 import TrackStats from './track_stats';
 import CommentIndex from '../comments/comment_index';
+import CommentForm from '../comments/comment_form';
 
 const TrackBanner = ({ track }) => {
 
@@ -38,11 +39,13 @@ class TrackView extends React.Component {
     if (!track) { return null; }
 
     return (
-      <div className='trav-view'>
+      <div className='track-view'>
         <TrackBanner track={ track } />
         <div className='track-view-main'>
           <div className='track-main-column'>
-            <div className='comment-form'></div>
+            <div className='track-comment-form'>
+              <CommentForm track={ track }/>
+            </div>
             <div className='track-stats'>
               <TrackStats track={ track } showDelete={ true }/>
             </div>
