@@ -58,19 +58,19 @@ class NavBar extends React.Component {
               <img src={ logoWithText } />
             </Link>
           </div>
-          <div className='nav-tab'>
-            <Link to='/'>
-              Home
-            </Link>
-          </div>
-          <div className='nav-tab'>
-            <Link to='/'>
-              Charts
-            </Link>
-          </div>
+          <Link to='/'>
+            <div className='nav-tab'>
+                Home
+            </div>
+          </Link>
+          <Link to='/'>
+            <div className='nav-tab'>
+                Charts
+            </div>
+          </Link>
 
             <SearchBar />
-        
+
           <NavButtons loggedIn={ !!currentUser } />
           { !!currentUser &&
             <div className='profile-link'>
