@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const CurrentTrackDetail = ({ track }) => {
-
+  if (!track.id) { return null; }
   return (
     <div className='flex-row'>
       <div className='image-tile-small'>

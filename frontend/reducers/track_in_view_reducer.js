@@ -7,6 +7,10 @@ const defaultState = {
   audio_url: "",
   image_url: "",
   credits: "",
+  num_likes: 0,
+  num_comments: 0,
+  num_plays: 0,
+  liked_by_current_user: false,
   artist: {},
   comments: {}
 }
@@ -16,7 +20,7 @@ const trackInViewReducer = (state = defaultState, action) => {
   let newTrack;
   switch(action.type) {
     case RECEIVE_TRACK_IN_VIEW:
-      return action.track;
+      return Object.assign({}, defaultState, action.track);
     case RECEIVE_TRACK_COMMENT:
       newTrack = Object.assign({}, state);
       newTrack.comments[action.comment.id] = action.comment;

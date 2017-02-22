@@ -26,7 +26,6 @@ class PlayButton extends React.Component {
       tracks, updateQueue, currentTrackId, updateTrackPlays } = this.props;
 
     const track = tracks[trackId];
-
     let icon, action;
     if (playing && (trackQueuePos === currentQueuePos || trackId === currentTrackId)) {
       icon = size === 'small' ? "fa fa-pause" : "fa fa-pause-circle";
@@ -35,14 +34,16 @@ class PlayButton extends React.Component {
       icon = size === 'small' ? "fa fa-play" : "fa fa-play-circle";
       action = () => {
         updateQueue(tracks);
-        playTrack(track.queuePos);
-        if (!this.state.playCounted && currentTrackId !== trackId) {
-          updateTrackPlays({
-            id: trackId,
-            num_plays: track.num_plays + 1,
-            queuePos: track.queuePos
-          });
-          this.setState({playCounted: true});
+        if (track) {
+          playTrack(track.queuePos);
+          if (!this.state.playCounted && currentTrackId !== trackId) {
+            updateTrackPlays({
+              id: trackId,
+              num_plays: track.num_plays + 1,
+              queuePos: track.queuePos
+            });
+            this.setState({playCounted: true});
+          }
         }
       };
     }
@@ -62,6 +63,14 @@ class PlayButton extends React.Component {
 //button is clicked.
 
 const mapStateToProps = ({ currentTrack, tracks, playQueue }) => {
+  if (!playQueue[currentTrack.currentQueuePos]) {
+    return {
+      playing: false,
+      currentQueuePos: 0,
+      currentTrackId: -1,
+      tracks
+    }
+  }
   const currentTrackId = currentTrack.playing ?
       playQueue[currentTrack.currentQueuePos].id : 0;
   return {

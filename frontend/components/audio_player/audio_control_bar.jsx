@@ -67,10 +67,10 @@ class AudioControlBar extends React.Component {
   render () {
     const { currentTrack, playQueue, receiveCurrentTrack } = this.props;
     const { restart, playing, currentQueuePos, changeTime } = currentTrack;
-    const trackPlaying = playQueue[currentQueuePos];
+    const trackPlaying = playQueue[currentQueuePos] || {};
 
     if (playing) { this.listening = true }
-    if (!this.listening) { return null; }
+    if (!this.listening || !trackPlaying) { return null; }
 
     return (
       <div className='audio-control-full-width'>
