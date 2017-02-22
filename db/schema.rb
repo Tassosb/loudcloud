@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170220204939) do
+ActiveRecord::Schema.define(version: 20170221230420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,20 +48,21 @@ ActiveRecord::Schema.define(version: 20170220204939) do
   add_index "sessions", ["user_id"], name: "index_sessions_on_user_id", using: :btree
 
   create_table "tracks", force: :cascade do |t|
-    t.string   "title",                          null: false
-    t.integer  "artist_id",                      null: false
+    t.string   "title",                           null: false
+    t.integer  "artist_id",                       null: false
     t.string   "credits"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.string   "audio_file_name",                null: false
-    t.string   "audio_content_type",             null: false
-    t.integer  "audio_file_size",                null: false
-    t.datetime "audio_updated_at",               null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "audio_file_name",                 null: false
+    t.string   "audio_content_type",              null: false
+    t.integer  "audio_file_size",                 null: false
+    t.datetime "audio_updated_at",                null: false
     t.integer  "num_plays",          default: 0
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.float    "waveform",           default: [], null: false, array: true
   end
 
   add_index "tracks", ["artist_id"], name: "index_tracks_on_artist_id", using: :btree

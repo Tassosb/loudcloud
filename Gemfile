@@ -38,6 +38,11 @@ gem 'aws-sdk', '>= 2.0'
 #Audio metadata
 gem 'ruby-mp3info', require: 'mp3info'
 
+# Audio waveform data
+# gem 'audio_waveform-ruby', :require => 'audio_waveform'
+gem 'json-waveform'
+gem 'lame'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
