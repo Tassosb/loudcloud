@@ -35,7 +35,11 @@ class Track < ActiveRecord::Base
       'audio/x-mpeg3',
       'audio/mpg',
       'audio/x-mpg',
-      'audio/x-mpegaudio' ]
+      'audio/x-mpegaudio',
+      'audio/mp4',
+      'audio/x-mp4',
+      'audio/x-mp4audio'
+    ]
 
   has_attached_file :image, default_url: "default_image.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
