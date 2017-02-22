@@ -50,7 +50,7 @@ class AudioControlBar extends React.Component {
 
   playLastSong () {
     let currentQueuePos = this.props.currentTrack.currentQueuePos - 1
-    if (currentQueuePos === 0 ) {
+    if (currentQueuePos === this.getFirstQueuePos() - 1 ) {
       currentQueuePos = this.getLastQueuePos();
     }
     this.props.receiveCurrentTrack({
