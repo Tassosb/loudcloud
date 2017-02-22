@@ -1,5 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import TrackIndex from '../tracks/track_index';
+import UserStats from '../user/user_stats';
 
 const BrowseNavBar = ({ onPage }) => {
   return (
@@ -20,14 +22,17 @@ const BrowseNavBar = ({ onPage }) => {
   )
 }
 
-const BrowseSideBar = () => {
+const BrowseSideBar = ({ currentUser }) => {
   return (
     <div className='browse-side-bar'>
+      <div className='side-bar-poster'>
+      </div>
+      <UserStats user={ currentUser } summarize={ true } />
     </div>
   )
 }
 
-const Browse = ({ onPage, tracks }) => {
+const Browse = ({ onPage, tracks, currentUser }) => {
   const message = onPage === 'stream' ?
     'Hear the latest tracks' : '';
 
@@ -40,11 +45,17 @@ const Browse = ({ onPage, tracks }) => {
           <TrackIndex tracks={ tracks } />
         </div>
         <div className='browse-side-column'>
-          <BrowseSideBar />
+          <BrowseSideBar currentUser={ currentUser } />
         </div>
       </div>
     </div>
   )
 }
 
-export default Browse;
+const mapStateToProps = ({ session }) => ({
+  currentUser: session.currentUser
+})
+
+export default connect(
+  mapStateToProps
+)(Browse);

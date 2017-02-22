@@ -69,3 +69,28 @@
 .user-side-column {
   @extend .side-column;
 }
+
+.user-stats {
+  margin: 20px;
+  color: #999;
+  font-size: 15px;
+}
+
+.user-stats-summary {
+  margin-top: 20px;
+
+  div.stats-title {
+    border-bottom: 1px solid $smoke-grey;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+  }
+
+  strong {
+    color: $orange;
+    font-size: 32px;
+  }
+}
+
+.stats-column {
+  padding-bottom: 5px;
+}

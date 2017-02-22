@@ -40,6 +40,10 @@ class User < ActiveRecord::Base
     nil
   end
 
+  def total_plays
+    self.tracks.sum(:num_plays)
+  end
+
   def add_session!(http_user_agent)
     new_session = Session.generate_session(self, http_user_agent)
     new_session.token
