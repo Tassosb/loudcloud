@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { receiveCurrentTrack } from '../../actions/current_track_actions';
 import PlayButton from '../buttons/play_button';
-import Waveform from '../waveform/waveform';
 import TrackStats  from './track_stats';
+import TrackWaveform from '../waveform/track_waveform';
 
 class TrackIndexItem extends React.Component{
   constructor(props) {
@@ -24,7 +24,6 @@ class TrackIndexItem extends React.Component{
           </Link>
           <div className='track-details'>
             <div className='track-item-top'>
-
               <div className='index-play-button'>
                 <PlayButton size='regular'
                   trackQueuePos={ track.queuePos }
@@ -40,6 +39,7 @@ class TrackIndexItem extends React.Component{
               </div>
             </div>
             <div className='waveform-small'>
+              <TrackWaveform track={ track } size='index' />
             </div>
             <TrackStats track={ track } showDelete={ false }/>
           </div>
@@ -48,8 +48,5 @@ class TrackIndexItem extends React.Component{
     )
   }
 }
-
-//Waveform too slow!
-// <Waveform track={ track } />
 
 export default TrackIndexItem;

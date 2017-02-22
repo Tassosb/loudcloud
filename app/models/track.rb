@@ -68,17 +68,17 @@ class Track < ActiveRecord::Base
     path = audio.queued_for_write[:original] &&
            audio.queued_for_write[:original].path ||
            audio.url
-    debugger
+
     open(path) do |url_file|
       io_command = "php lib/assets/php-waveform-json.php #{url_file.path}"
       IO.popen(io_command) do |io|
         self.waveform = JSON.parse(io.read)['left']
       end
 
-      # open_opts = { :encoding => 'utf-8' }
-      # Mp3Info.open(url_file.path, open_opts) do |mp3info|
-      #   self.duration = mp3info.length.to_i
-      # end
+      open_opts = { :encoding => 'utf-8' }
+      Mp3Info.open(url_file.path, open_opts) do |mp3info|
+        self.duration = mp3info.length.to_i
+      end
     end
   end
 end

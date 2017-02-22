@@ -1,4 +1,4 @@
-json.extract! track, :id, :title, :credits, :num_plays, :num_likes, :num_comments
+json.extract! track, :id, :title, :credits, :num_plays, :num_likes, :num_comments, :waveform, :duration
 json.audio_url asset_path(track.audio.url(:original))
 json.image_url asset_path(track.image.url(:original))
 
