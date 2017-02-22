@@ -11,19 +11,21 @@ class SignUpForm extends React.Component {
   }
 
   render () {
-    const { signUp, errors } = this.props;
+    const { signUp, errors, loading } = this.props;
 
     return (
       <AuthForm
         submitForm={ signUp }
         formType='signUp'
-        errors={ errors } />
+        errors={ errors }
+        loading={ loading } />
     )
   }
 }
 
-const mapStateToProps = ({ errors }) => ({
-  errors: errors.session
+const mapStateToProps = ({ errors, loading }) => ({
+  errors: errors.session,
+  loading: loading.session
 });
 
 const mapDispatchToProps = (dispatch) => ({

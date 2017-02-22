@@ -2,8 +2,10 @@ import { receiveModal } from './modal_actions';
 import * as APIUtil from '../util/track_api_util';
 
 export const RECEIVE_TRACKS = 'RECEIVE_TRACKS';
+export const REQUEST_TRACKS = 'REQUEST_TRACKS';
 export const RECEIVE_TRACK = 'RECEIVE_TRACK';
 export const RECEIVE_TRACK_IN_VIEW = 'RECEIVE_TRACK_IN_VIEW';
+export const REQUEST_TRACK_IN_VIEW = 'REQUEST_TRACK_IN_VIEW';
 export const RECEIVE_TRACK_ERRORS = 'RECEIVE_TRACK_ERRORS';
 
 let nextQueuePos = 1; //close over this, we don't want to repeat queuePos in a session
@@ -20,6 +22,10 @@ export const receiveTracks = (tracks) => {
   }
 }
 
+export const requestTracks = () => ({
+  type: REQUEST_TRACKS
+})
+
 export const receiveTrack = (track) => ({
   type: RECEIVE_TRACK,
   track
@@ -30,12 +36,17 @@ export const receiveTrackInView = (track) => ({
   track
 })
 
+export const requestTrackInView = () => ({
+  type: REQUEST_TRACK_IN_VIEW
+})
+
 export const receiveTrackErrors = (errors) => ({
   type: RECEIVE_TRACK_ERRORS,
   errors
 })
 
 export const fetchTracks = (specs) => dispatch => {
+  dispatch(requestTracks());
   return APIUtil.fetchTracks(specs)
     .then((tracks) => {
       dispatch(receiveTracks(tracks))
@@ -43,6 +54,7 @@ export const fetchTracks = (specs) => dispatch => {
 }
 
 export const fetchTrack = (trackId) => dispatch => {
+  dispatch(requestTrackInView());
   return APIUtil.fetchTrack(trackId)
     .then((track) => {
       //we need this to update the play queue correctly when

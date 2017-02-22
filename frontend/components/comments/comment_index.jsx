@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import DeleteCommentButton from '../buttons/delete_comment_button';
+import Spinner from '../spinners/spinner';
 
 const Comment = ({ comment, currentUser }) => {
   const isOwnComment = currentUser ?
@@ -37,10 +38,12 @@ const Comment = ({ comment, currentUser }) => {
   )
 }
 
-const CommentIndex = ({ comments, currentUser }) => {
+const CommentIndex = ({ comments, currentUser, loading }) => {
   const commentsAsArray = Object.keys(comments)
                             .map((id) => comments[id])
                             .reverse();
+
+  if (loading) { return <Spinner /> }
 
   return (
     <div className='comment-index-column'>

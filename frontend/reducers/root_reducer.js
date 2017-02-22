@@ -8,6 +8,7 @@ import playQueue from './play_queue_reducer';
 import currentTrack from './current_track_reducer';
 import trackInView from './track_in_view_reducer';
 import searchResults from './search_results_reducer';
+import loading from './loading_reducer';
 
 const rootReducer = combineReducers({
   errors,
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
   playQueue,
   currentTrack,
   trackInView,
-  searchResults
+  searchResults,
+  loading
 });
 
 export default rootReducer;

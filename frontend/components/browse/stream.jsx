@@ -12,7 +12,7 @@ class Stream extends React.Component {
   }
 
   render () {
-    const { tracks } = this.props
+    const { tracks, loading } = this.props
     return (
       <MainApp>
         <Browse onPage='stream' tracks={ tracks }/>

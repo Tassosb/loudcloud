@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import AuthField from './auth_field';
 import ErrorList from '../errors/error_list';
+import LoadingBar from '../spinners/loading_bar.jsx';
 
 class AuthForm extends React.Component {
   constructor (props) {
@@ -72,7 +73,7 @@ class AuthForm extends React.Component {
   }
 
   render () {
-    const { formType, errors } = this.props
+    const { formType, errors, loading } = this.props
 
     return (
       <div className='modal-form modal-form-narrow'>
@@ -113,7 +114,10 @@ class AuthForm extends React.Component {
           <ErrorList errors={ errors.password } />
           <ErrorList errors={ errors.login } />
 
-          <input type='submit' value='Continue' />
+          { loading ?
+            <LoadingBar /> :
+            <input type='submit' value='Continue' />
+          }
         </form>
       </div>
     );
