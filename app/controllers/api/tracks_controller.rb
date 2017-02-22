@@ -25,6 +25,7 @@ class Api::TracksController < ApplicationController
   end
 
   def show
+    sleep(2)
     @track = Track.includes(comments: [:author]).find_by(id: params[:id])
   end
 

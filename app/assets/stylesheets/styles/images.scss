@@ -1,4 +1,9 @@
+.image {
+  background: linear-gradient(135deg, $salmon, $purple-grey);
+}
+
 .image-tile-medium {
+  @extend .image;
   width: 200px;
   height: 200px;
   overflow: hidden;
@@ -6,6 +11,7 @@
 }
 
 .image-tile-splash {
+  @extend .image;
   width: 190px;
   height: 190px;
   overflow: hidden;
@@ -14,6 +20,7 @@
 }
 
 .image-tile-big {
+  @extend .image;
   width: 340px;
   height: 340px;
   overflow: hidden;
@@ -21,14 +28,15 @@
 }
 
 .image-circle-big {
+  @extend .image;
   height: 200px;
   width: 200px;
-  background: linear-gradient(135deg, $salmon, $purple-grey);
   border-radius: 100px;
   overflow: hidden;
 }
 
 .image-circle-small {
+  @extend .image;
   height: 120px;
   width: 120px;
   border-radius: 60px;
@@ -36,18 +44,21 @@
 }
 
 .image-tile-small {
+  @extend .image;
   width: 30px;
   height: 30px;
   overflow: hidden;
 }
 
 .image-tile-thumb {
+  @extend .image;
   width: 40px;
   height: 40px;
   overflow: hidden;
 }
 
 .image-circle-thumb {
+  @extend .image;
   width: 40px;
   height: 40px;
   border-radius: 20px;
