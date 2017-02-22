@@ -1,9 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 const UserStatsSummary = ({ user }) => {
   return (
     <div className='user-stats-summary'>
       <div className='stats-title'>
+        <i className="fa fa-bar-chart" aria-hidden="true"></i>
         Stats
       </div>
       <div>
@@ -14,13 +16,19 @@ const UserStatsSummary = ({ user }) => {
   );
 }
 
-const UserStats = ({ user, summarize }) => {
-  if (!user) { return null; }
+const UserStats = ({ currentUser, summarize }) => {
+  if (!currentUser) { return null; }
   return (
     <div className='user-stats'>
-      <UserStatsSummary user={ user } />
+      <UserStatsSummary user={ currentUser } />
     </div>
   );
 }
 
-export default UserStats
+const mapStateToProps = ({ session }) => ({
+  currentUser: session.currentUser
+})
+
+export default connect(
+  mapStateToProps
+)(UserStats);

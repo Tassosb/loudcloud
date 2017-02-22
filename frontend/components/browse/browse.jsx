@@ -22,12 +22,12 @@ const BrowseNavBar = ({ onPage }) => {
   )
 }
 
-const BrowseSideBar = ({ currentUser }) => {
+const BrowseSideBar = () => {
   return (
     <div className='browse-side-bar'>
       <div className='side-bar-poster'>
       </div>
-      <UserStats user={ currentUser } summarize={ true } />
+      <UserStats summarize={ true } />
     </div>
   )
 }
@@ -45,7 +45,7 @@ const Browse = ({ onPage, tracks, currentUser }) => {
           <TrackIndex tracks={ tracks } />
         </div>
         <div className='browse-side-column'>
-          <BrowseSideBar currentUser={ currentUser } />
+          <BrowseSideBar />
         </div>
       </div>
     </div>

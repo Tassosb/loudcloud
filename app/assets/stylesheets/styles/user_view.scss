@@ -81,8 +81,11 @@
 
   div.stats-title {
     border-bottom: 1px solid $smoke-grey;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     padding-bottom: 15px;
+    i {
+      padding-right: 5px;
+    }
   }
 
   strong {

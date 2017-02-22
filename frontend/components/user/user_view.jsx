@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import EditProfileButton from '../buttons/edit_profile_button';
-import { receiveUserInView } from '../../actions/user_actions';
 import TrackIndex from '../tracks/track_index';
+import UserStats from './user_stats';
+import { receiveUserInView } from '../../actions/user_actions';
 import { selectTracksAsArray } from '../../reducers/selectors'
 import { fetchTracks } from '../../actions/track_actions';
 
@@ -95,6 +96,7 @@ class UserView extends React.Component {
             <TrackIndex tracks={ tracks }/>
           </div>
           <div className='user-side-column'>
+            <UserStats summarize={ false } />
           </div>
         </div>
       </div>
