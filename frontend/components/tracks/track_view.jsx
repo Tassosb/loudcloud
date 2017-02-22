@@ -35,7 +35,7 @@ class TrackView extends React.Component {
   }
 
   render () {
-    const { track } = this.props;
+    const { track, currentUser } = this.props;
     if (!track) { return null; }
 
     return (
@@ -66,7 +66,9 @@ class TrackView extends React.Component {
                     { track.num_comments > 1 ? ' comments' : ' comment' }
                   </span>
                 </div>
-                <CommentIndex comments={ track.comments } />
+                <CommentIndex
+                  comments={ track.comments}
+                  currentUser={ currentUser }/>
               </div>
             </div>
           </div>
@@ -78,4 +80,10 @@ class TrackView extends React.Component {
   }
 }
 
-export default TrackView;
+const mapStateToProps = ({ session }) => ({
+  currentUser: session.currentUser
+})
+
+export default connect(
+  mapStateToProps
+)(TrackView);

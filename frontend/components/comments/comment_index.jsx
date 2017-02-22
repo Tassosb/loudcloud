@@ -1,8 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import DeleteCommentButton from '../buttons/delete_comment_button';
 
-const Comment = ({ comment }) => {
+const Comment = ({ comment, currentUser }) => {
+  const isOwnComment = currentUser ?
+    (comment.author.id === currentUser.id) : false
+
   return (
     <li className='comment'>
       <div className=' image-circle-thumb'>
@@ -24,13 +28,16 @@ const Comment = ({ comment }) => {
       </div>
       <div className='comment-right'>
         <span>{ comment.time_ago }</span>
-        <DeleteCommentButton comment={ comment } />
+        { isOwnComment &&
+          <DeleteCommentButton
+            comment={ comment } />
+        }
       </div>
     </li>
   )
 }
 
-const CommentIndex = ({ comments }) => {
+const CommentIndex = ({ comments, currentUser }) => {
   const commentsAsArray = Object.keys(comments)
                             .map((id) => comments[id])
                             .reverse();
@@ -39,7 +46,9 @@ const CommentIndex = ({ comments }) => {
     <div className='comment-index-column'>
       <ul className='comment-index-list'>
         { commentsAsArray.map((comment) => (
-          <Comment key={ comment.id } comment= { comment } />
+          <Comment key={ comment.id }
+            comment= { comment }
+            currentUser={ currentUser } />
         )) }
       </ul>
     </div>
