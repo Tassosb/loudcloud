@@ -15,19 +15,29 @@ class PlayButton extends React.Component {
   constructor (props) {
     super(props);
     this.state = {playCounted: false};
+    this.addTrackPlay = this.addTrackPlay.bind(this);
   }
 
-  componentDidMount () {
+  addTrackPlay (track) {
+    const { trackId, currentTrackId, updateTrackPlays } = this.props;
+    if (!this.state.playCounted && currentTrackId !== trackId) {
+      updateTrackPlays({
+        id: trackId,
+        num_plays: track.num_plays + 1,
+        queuePos: track.queuePos
+      });
+      this.setState({playCounted: true});
+    }
   }
 
   render () {
     const { playing, size, pauseTrack, playTrack,
       trackId, trackQueuePos, currentQueuePos,
-      tracks, updateQueue, currentTrackId, updateTrackPlays } = this.props;
+      tracks, updateQueue, currentTrackId } = this.props;
 
     const track = tracks[trackId];
     let icon, action;
-    if (playing && (trackQueuePos === currentQueuePos || trackId === currentTrackId)) {
+    if (playing && (trackId === currentTrackId)) {
       icon = size === 'small' ? "fa fa-pause" : "fa fa-pause-circle";
       action = pauseTrack;
     } else {
@@ -36,14 +46,7 @@ class PlayButton extends React.Component {
         updateQueue(tracks);
         if (track) {
           playTrack(track.queuePos);
-          if (!this.state.playCounted && currentTrackId !== trackId) {
-            updateTrackPlays({
-              id: trackId,
-              num_plays: track.num_plays + 1,
-              queuePos: track.queuePos
-            });
-            this.setState({playCounted: true});
-          }
+          this.addTrackPlay(track);
         }
       };
     }
@@ -58,21 +61,13 @@ class PlayButton extends React.Component {
   }
 }
 
-//play button seems likes it should not need to know all tracks
-//But for now I need them to updat the queue every time the play
-//button is clicked.
-
 const mapStateToProps = ({ currentTrack, tracks, playQueue }) => {
-  // if (!playQueue[currentTrack.currentQueuePos]) {
-  //   return {
-  //     playing: false,
-  //     currentQueuePos: 0,
-  //     currentTrackId: -1,
-  //     tracks
-  //   }
-  // }
-  const currentTrackId = currentTrack.playing ?
-      playQueue[currentTrack.currentQueuePos].id : 0;
+  let currentTrackId = 0
+  if (currentTrack.playing) {
+    const trackPlaying = playQueue[currentTrack.currentQueuePos];
+    if (trackPlaying) { currentTrackId = trackPlaying.id; }
+  }
+
   return {
     playing: currentTrack.playing,
     currentQueuePos: currentTrack.currentQueuePos,
@@ -83,7 +78,7 @@ const mapStateToProps = ({ currentTrack, tracks, playQueue }) => {
 
 const mapDispatchToProps = (dispatch) => ({
   playTrack: (trackQueuePos) => dispatch(receiveCurrentTrack({
-    currentQueuePos: trackQueuePos, playing: true})),
+    currentQueuePos: trackQueuePos, playing: true })),
   pauseTrack: () => dispatch(receiveCurrentTrack({
     playing: false})),
   updateQueue: (tracks) => dispatch(receivePlayQueue(tracks)),

@@ -26,8 +26,8 @@ const TrackBanner = ({ track }) => {
             { track.title && <div><h1>{ track.title }</h1></div> }
           </div>
         </div>
-        <div className='waveform-small'>
-          <TrackWaveform track={ track } size='index' />
+        <div className='waveform-tall'>
+          { track.waveform && <TrackWaveform track={ track } size='show' /> }
         </div>
       </div>
       <div className='track-image'>

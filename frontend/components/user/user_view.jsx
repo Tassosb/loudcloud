@@ -65,7 +65,6 @@ class UserView extends React.Component {
   }
 
   componentWillReceiveProps (newProps) {
-    // if (!newProps.user.id || !this.props.user.id) { return; }
     if (this.props.user.id !== newProps.user.id) {
       this.props.fetchTracks({artist_id: newProps.user.id})
     }
@@ -88,7 +87,6 @@ class UserView extends React.Component {
 
   render () {
     const { user, tracks } = this.props;
-    // if (!user) { return null; }
 
     return (
       <div className='user-view'>

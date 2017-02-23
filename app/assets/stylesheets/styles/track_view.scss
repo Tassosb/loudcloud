@@ -24,7 +24,7 @@
   margin-top: 30px;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: flex-start;
 }
 
 .track-view-main {
@@ -94,4 +94,12 @@
     color: $plain-grey;
     font-size: 14px;
   }
+}
+
+.track-banner-left {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 45px;
 }
