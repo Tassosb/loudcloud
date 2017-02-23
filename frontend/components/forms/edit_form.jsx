@@ -12,6 +12,7 @@ class EditForm extends React.Component {
       if (attr !== 'id') {
         currState[attr] = this.editItem[attr] || '';
       }
+      if (attr === 'num_plays') { currState[attr] = this.editItem[attr]; }
     })
 
     this.state = currState;

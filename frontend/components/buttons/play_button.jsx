@@ -33,7 +33,6 @@ class PlayButton extends React.Component {
   componentWillReceiveProps (newProps) {
     if (newProps.currentTrackId === this.props.trackId &&
           newProps.elapsedTime !== this.props.elapsedTime) {
-            debugger
             this.setState({ elapsedTime: newProps.elapsedTime });
           }
   }
@@ -53,7 +52,6 @@ class PlayButton extends React.Component {
       action = () => {
         updateQueue(tracks);
         if (track) {
-          debugger
           playTrack(track, this.state.elapsedTime);
           this.addTrackPlay(track);
         }
@@ -88,7 +86,6 @@ const mapStateToProps = ({ currentTrack, tracks, playQueue }) => {
 
 const mapDispatchToProps = (dispatch) => ({
   playTrack: (track, elapsedTime) => {
-    debugger
     dispatch(receiveCurrentTrack({
     currentQueuePos: track.queuePos, playing: true, elapsedTime, changeTime: true }))
   },

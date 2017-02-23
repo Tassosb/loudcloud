@@ -24,7 +24,9 @@ const TrackBanner = ({ track }) => {
               { track.artist.name &&
                 <div><h2>{ track.artist.name }</h2></div> }
             </Link>
-            { track.title && <div><h1>{ track.title }</h1></div> }
+            { track.title &&
+              <div><h1>{ track.title + ` (${track.credits })`}</h1></div>
+              }
           </div>
         </div>
         <div className='waveform-tall'>
