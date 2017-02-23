@@ -8,6 +8,7 @@ import { selectTracksAsArray } from '../../reducers/selectors'
 import { fetchTracks } from '../../actions/track_actions';
 
 const UserBanner = ({ user }) => {
+  if (!user ) { return null; }
   return (
     <div className='user-banner'>
       <div className='user-image'>
@@ -65,6 +66,7 @@ class UserView extends React.Component {
   }
 
   componentWillReceiveProps (newProps) {
+    if (!this.props.user || !newProps.user ) { return; }
     if (this.props.user.id !== newProps.user.id) {
       this.props.fetchTracks({artist_id: newProps.user.id})
     }
