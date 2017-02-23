@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import { selectTracksAsArray } from '../../reducers/selectors';
 import { fetchTracks } from '../../actions/track_actions';
 import PlayButton from '../buttons/play_button';
+import Spinner from '../spinners/spinner';
 
 const SplashTrackIndexItem = ({ track }) => {
   return (
@@ -35,6 +36,7 @@ class SplashTrackIndex extends React.Component {
   }
 
   render () {
+    if (this.props.loading) { return <Spinner /> }
     return (
       <ul className='splash-track-list'>
         { this.props.tracks.map((track) => (
@@ -46,7 +48,8 @@ class SplashTrackIndex extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  tracks: selectTracksAsArray(state)
+  tracks: selectTracksAsArray(state),
+  loading: state.loading.tracks
 });
 
 const mapDispatchToProps = (dispatch) => ({
