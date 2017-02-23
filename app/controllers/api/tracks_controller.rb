@@ -2,11 +2,16 @@ class Api::TracksController < ApplicationController
 
   def index
     if (params[:artist_id])
-      @tracks = Track.where(artist_id: params[:artist_id]).includes(:likes, :comments, artist: [:tracks])
+      @tracks = Track.where(artist_id: params[:artist_id])
+                     .includes(:likes, :comments, artist: [:tracks])
     elsif params[:top_ten]
-      @tracks = Track.order(num_plays: :desc).includes(:likes, :comments, artist: [:tracks]).limit(10)
+      @tracks = Track.order(num_plays: :desc)
+                     .limit(10)
+                     .includes(:likes, :comments, artist: [:tracks])
     else
-      @tracks = Track.limit(10).includes(:likes, :comments, artist: [:tracks]);
+      @tracks = Track.order(created_at: :desc)
+                     .limit(10)
+                     .includes(:likes, :comments, artist: [:tracks])
     end
   end
 

@@ -20,7 +20,16 @@ const compareNumPlays = (t1, t2) => {
   return spaceship(t2.num_plays, t1.num_plays);
 }
 
-export const selectTracksAsArray = (state) => (
-  Object.keys(state.tracks).map((id) => state.tracks[id])
-    .sort(compareNumPlays)
-);
+const sortingFunctions = {
+  numPlays: compareNumPlays
+}
+
+export const selectTracksAsArray = (state, sort_by) => {
+  const tracksAsArray = Object.keys(state.tracks)
+                              .map((id) => state.tracks[id])
+  if (sort_by) {
+    return tracksAsArray.sort(compareNumPlays)
+  } else {
+    return tracksAsArray
+  }
+};
