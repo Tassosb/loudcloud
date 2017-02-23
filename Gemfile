@@ -39,7 +39,6 @@ gem 'aws-sdk', '>= 2.0'
 gem 'ruby-mp3info', require: 'mp3info'
 
 # Audio waveform data
-gem 'lame'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
