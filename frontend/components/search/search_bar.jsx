@@ -81,6 +81,7 @@ class SearchBar extends React.Component {
     return (
       <div className='search-bar'>
         <input type='text'
+          placeholder='Search'
           onChange={ this.update }
           className='stay-open'
           value={ this.state.query }/>
