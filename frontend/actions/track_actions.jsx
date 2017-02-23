@@ -111,8 +111,8 @@ export const likeTrack = (track, userId) => dispatch => {
 export const unlikeTrack = (track, userId) => dispatch => {
   const prevQueuePos = track.queuePos;
   return APIUtil.unlikeTrack(track.id, userId)
-    .then((track) => {
-      const queuedTrack = Object.assign({}, track, {queuePos: prevQueuePos})
+    .then((newTrack) => {
+      const queuedTrack = Object.assign({}, newTrack, {queuePos: prevQueuePos})
       dispatch(receiveTrack(queuedTrack));
       dispatch(receiveTrackInView(queuedTrack));
     })

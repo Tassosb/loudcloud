@@ -8,10 +8,11 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  track_id   :integer          not null
+#  track_time :integer          default(0), not null
 #
 
 class Comment < ActiveRecord::Base
-  validates :body, :author, :track, presence: true
+  validates :body, :author, :track, :track_time, presence: true
 
   belongs_to :track
   belongs_to :author,

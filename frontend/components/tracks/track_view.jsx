@@ -5,6 +5,7 @@ import PlayButton from '../buttons/play_button';
 import TrackStats from './track_stats';
 import CommentIndex from '../comments/comment_index';
 import CommentForm from '../comments/comment_form';
+import CommentThumbnails from '../comments/comment_thumbnails';
 import TrackWaveform from '../waveform/track_waveform';
 
 const TrackBanner = ({ track }) => {
@@ -28,6 +29,8 @@ const TrackBanner = ({ track }) => {
         </div>
         <div className='waveform-tall'>
           { track.waveform && <TrackWaveform track={ track } size='show' /> }
+          <CommentThumbnails
+              track = { track } />
         </div>
       </div>
       <div className='track-image'>

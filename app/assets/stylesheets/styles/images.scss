@@ -43,6 +43,13 @@
   overflow: hidden;
 }
 
+.image-tile-tiny {
+  @extend .image;
+  height: 25px;
+  width: 25px;
+  overflow: hidden;
+}
+
 .image-tile-small {
   @extend .image;
   width: 30px;

@@ -116,3 +116,34 @@ button.delete-comment-button {
     @extend .subtle-border-hover;
   }
 }
+
+.comment-thumbnails {
+  display: flex;
+  width: 700px;
+  height: 20px;
+  position: absolute;
+  bottom: -25px;
+
+  li {
+    position: absolute;
+    bottom: -5px;
+  }
+
+  li:hover .comment-thumb-pop-up {
+    display: flex;
+  }
+}
+
+.comment-thumb-pop-up {
+  display: none;
+  position:absolute;
+  bottom: -37px;
+  height: 20px;
+  background: transparent;
+  color: $off-white;
+  font-size: 14px;
+  width: 300px;
+  strong {
+    color: $orange
+  }
+}

@@ -22,9 +22,13 @@ class CommentForm extends React.Component {
   handleSubmit (e) {
     e.preventDefault();
     if (!this.props.currentUser) { return; }
+    const newCommentData = {
+      track_id: this.props.track.id,
+      track_time: this.props.trackTime
+    };
 
     this.props.createComment(
-      Object.assign({}, this.state, {track_id: this.props.track.id})
+      Object.assign({}, this.state, newCommentData)
     ).then(() => {
       this.setState({ body: '' })
     })
@@ -51,8 +55,9 @@ class CommentForm extends React.Component {
   }
 }
 
-const mapStateToProps = ({ session }) => ({
-  currentUser: session.currentUser
+const mapStateToProps = ({ session, currentTrack }) => ({
+  currentUser: session.currentUser,
+  trackTime: currentTrack.elapsedTime
 })
 
 const mapDispatchToProps = (dispatch) => ({
