@@ -6,7 +6,7 @@ import { receiveTracks } from '../../actions/track_actions';
 
 class TrackIndex extends React.Component {
   componentWillUnmount () {
-    this.props.clearTracks();
+    // this.props.clearTracks();
   }
 
   render () {

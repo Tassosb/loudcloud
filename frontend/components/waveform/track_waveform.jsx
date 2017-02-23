@@ -17,7 +17,7 @@ class TrackWaveform extends React.Component {
       peaks: track.waveform,
       currentTrack
     })
-    debugger
+
     this.waveform.draw();
   }
 
