@@ -60,16 +60,12 @@ class SearchBar extends React.Component {
   }
 
   update (e) {
-    this.setState({ query: e.currentTarget.value })
-
-    this.props.fetchSearchResults(this.state.query)
-      .then(() => {
-        if (this.state.query === '') {
-          this.setState({ active: false })
-        } else {
-          this.setState({ active: true });
-        }
-      });
+    this.setState({
+      query: e.currentTarget.value,
+      active: !(e.currentTarget.value === '')
+    },
+      () => { this.props.fetchSearchResults(this.state.query) }
+    );
   }
 
   handleResultClick (resultName) {
@@ -94,7 +90,7 @@ class SearchBar extends React.Component {
             <div className='show-query stay-open'>Search for "{ this.state.query }"</div>
             <SearchResults
               results={ this.props.searchResults }
-            handleResultClick={ this.handleResultClick } />
+              handleResultClick={ this.handleResultClick } />
           </div>
         }
       </div>
