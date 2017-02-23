@@ -7,6 +7,7 @@ import SignUpForm from './components/forms/sign_up_form';
 import configureStore from './store/store';
 import Splash from './components/splash/splash';
 import Stream from './components/browse/stream';
+import Charts from './components/browse/charts';
 import Profile from './components/user/profile';
 import UserShow from './components/user/user_show';
 import Upload from './components/upload/upload';
@@ -51,6 +52,7 @@ const Root = () => {
             component={ Splash }
             onEnter={ redirectIfLoggedIn } />
           <Route path='/stream' component={ Stream }></Route>
+          <Route path='/charts' component={ Charts }></Route>
           <Route
             path='/profile'
             component={ Profile }

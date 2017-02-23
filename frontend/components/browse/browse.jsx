@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import TrackIndex from '../tracks/track_index';
 import UserStats from '../user/user_stats';
 
@@ -8,14 +9,18 @@ const BrowseNavBar = ({ onPage }) => {
     <nav className='browse-nav-bar'>
       <ul>
         <li className='browse-tab'>
-          <span className={ onPage === 'stream' ? 'selected' : '' }>
-            Stream
-          </span>
+          <Link to='/stream'>
+            <span className={ onPage === 'stream' ? 'selected' : '' }>
+              Stream
+            </span>
+          </Link>
         </li>
         <li  className='browse-tab'>
-          <span className={ onPage === 'charts' ? 'selected' : '' }>
-            Charts
-          </span>
+          <Link to='/charts'>
+            <span className={ onPage === 'charts' ? 'selected' : '' }>
+              Charts
+            </span>
+        </Link>
         </li>
       </ul>
     </nav>
@@ -34,14 +39,16 @@ const BrowseSideBar = () => {
 
 const Browse = ({ onPage, tracks, currentUser }) => {
   const message = onPage === 'stream' ?
-    'Hear the latest tracks' : '';
+    'Hear the latest tracks' : 'Top 10';
+  let messageClass = onPage === 'stream' ? 'stream' : 'charts';
+  messageClass += '-header';
 
   return (
     <div className='browse'>
       <div className='browse-main'>
         <div className='browse-index-column'>
           <BrowseNavBar onPage={ onPage } />
-          <h2>{ message }</h2>
+          <h2 className={ messageClass }>{ message }</h2>
           <TrackIndex tracks={ tracks } />
         </div>
         <div className='browse-side-column'>
