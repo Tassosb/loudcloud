@@ -30,7 +30,6 @@ const TrackBanner = ({ track }) => {
           <TrackWaveform track={ track } size='index' />
         </div>
       </div>
-
       <div className='track-image'>
         <img src={ track.image_url } />
       </div>
