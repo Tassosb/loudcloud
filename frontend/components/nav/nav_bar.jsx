@@ -63,7 +63,7 @@ class NavBar extends React.Component {
                 Home
             </div>
           </Link>
-          <Link to='/'>
+          <Link to='/charts'>
             <div className='nav-tab'>
                 Charts
             </div>

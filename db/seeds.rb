@@ -9,9 +9,27 @@
 User.destroy_all
 Track.destroy_all
 
-User.create!(email: 'demo@loudcloud.com', password: 'loudcloud', name: 'LoudCloud User', location: "New York")
-User.create!(email: 'test@loudcloud.com', password: 'loudcloud', name: 'Test User')
+demo = User.create!(email: 'demo@loudcloud.com', password: 'loudcloud', name: 'LoudCloud User', location: "New York")
 
+demo_tracks = [
+  ['Everyday People', "https://s3.amazonaws.com/seeds-source/08+Everyday+People.mp3"],
+  ['Coconut Boogaloo', "https://s3.amazonaws.com/seeds-source/09+Coconut+Boogaloo.mp3"],
+  ['Nocturne', "https://s3.amazonaws.com/seeds-source/04+Nocturne.mp3"],
+  ['Just Like I Pictured It', "https://s3.amazonaws.com/seeds-source/02+Just+Like+I+Pictured+It.mp3"]
+]
+
+demo_tracks.each do |title, audio_url|
+  track = Track.new(
+    title: title,
+    credits: "By Medeski, Martin, and Wood",
+    num_plays: rand(100),
+    artist_id: demo.id
+  )
+
+  file = open(audio_url)
+  track.audio = file
+  track.save
+end
 
 artists = [
     ['David Bowie', 'England', 1],
@@ -183,14 +201,6 @@ tracks = {
         "https://s3.amazonaws.com/seeds-source/15+BULLETS+(feat.+Little+Dragon).mp3"
       ]
   ],
-  16 => [
-    ["Don't Get Too Close", '',
-        "https://s3.amazonaws.com/seeds-source/03+Don't+Get+Too+Close.m4a"
-      ],
-    ["Right On", '',
-        "https://s3.amazonaws.com/seeds-source/07+Right+On.m4a"
-      ]
-  ],
   17 => [
     ["Demon Host", '',
         "https://s3.amazonaws.com/seeds-source/01+Demon+Host.mp3"
@@ -227,7 +237,8 @@ artists.each do |name, location, temp_id, image_url|
     track = Track.new(
       title: title,
       credits: credits,
-      artist_id: user.id
+      artist_id: user.id,
+      num_plays: rand(100)
       )
 
     if track_image_url
@@ -282,6 +293,13 @@ track_ids = (Track.first.id..Track.last.id).to_a
     author_id: curr_user_id,
     track_id: curr_track_id,
     track_time: track_time
+    )
+  end
+
+  20.times do
+    Like.create!(
+      user_id: user_ids.sample,
+      track_id: track_ids.sample
     )
   end
 end

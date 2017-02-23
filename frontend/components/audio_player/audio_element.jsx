@@ -19,11 +19,6 @@ class AudioElement extends React.Component {
       })
     });
 
-    $audioEl.addEventListener('volumechange', () => {
-      console.log('volume changed')
-      console.log(this.AudioPlayer.getVolume())
-    });
-
     this.timerId = window.setInterval(() => {
       const elapsedTime = this.AudioPlayer.getCurrentTime();
       receiveCurrentTrack({

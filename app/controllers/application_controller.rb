@@ -24,4 +24,9 @@ class ApplicationController < ActionController::Base
   def log_in!(user)
     session[:session_token] = user.add_session!(request.env["HTTP_USER_AGENT"])
   end
+
+  def require_login!
+    return if logged_in?
+    render json: { session: ["You must be logged in to do that"] }, status: 422
+  end
 end

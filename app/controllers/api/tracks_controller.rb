@@ -1,4 +1,5 @@
 class Api::TracksController < ApplicationController
+  before_action :require_login!, only: [:update, :create, :destroy, :like, :unlike]
 
   def index
     if (params[:artist_id])

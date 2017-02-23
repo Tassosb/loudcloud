@@ -30,6 +30,6 @@ export const selectTracksAsArray = (state, sort_by) => {
   if (sort_by) {
     return tracksAsArray.sort(compareNumPlays)
   } else {
-    return tracksAsArray
+    return tracksAsArray.reverse();
   }
 };

@@ -1,5 +1,6 @@
 class Api::CommentsController < ApplicationController
-
+  before_action :require_login!
+  
   def create
     @comment = current_user.authored_comments.new(comment_params)
 
