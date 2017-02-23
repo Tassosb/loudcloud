@@ -14,7 +14,7 @@ const sizes = {
 class PlayButton extends React.Component {
   constructor (props) {
     super(props);
-    this.state = {playCounted: false};
+    this.state = {playCounted: false, elapsedTime: 0};
     this.addTrackPlay = this.addTrackPlay.bind(this);
   }
 
@@ -30,10 +30,18 @@ class PlayButton extends React.Component {
     }
   }
 
+  componentWillReceiveProps (newProps) {
+    if (newProps.currentTrackId === this.props.trackId &&
+          newProps.elapsedTime !== this.props.elapsedTime) {
+            debugger
+            this.setState({ elapsedTime: newProps.elapsedTime });
+          }
+  }
+
   render () {
     const { playing, size, pauseTrack, playTrack,
       trackId, trackQueuePos, currentQueuePos,
-      tracks, updateQueue, currentTrackId } = this.props;
+      tracks, updateQueue, currentTrackId, elapsedTime } = this.props;
 
     const track = tracks[trackId];
     let icon, action;
@@ -45,7 +53,8 @@ class PlayButton extends React.Component {
       action = () => {
         updateQueue(tracks);
         if (track) {
-          playTrack(track.queuePos);
+          debugger
+          playTrack(track, this.state.elapsedTime);
           this.addTrackPlay(track);
         }
       };
@@ -71,14 +80,18 @@ const mapStateToProps = ({ currentTrack, tracks, playQueue }) => {
   return {
     playing: currentTrack.playing,
     currentQueuePos: currentTrack.currentQueuePos,
+    elapsedTime: currentTrack.elapsedTime,
     currentTrackId,
     tracks
   }
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  playTrack: (trackQueuePos) => dispatch(receiveCurrentTrack({
-    currentQueuePos: trackQueuePos, playing: true })),
+  playTrack: (track, elapsedTime) => {
+    debugger
+    dispatch(receiveCurrentTrack({
+    currentQueuePos: track.queuePos, playing: true, elapsedTime, changeTime: true }))
+  },
   pauseTrack: () => dispatch(receiveCurrentTrack({
     playing: false})),
   updateQueue: (tracks) => dispatch(receivePlayQueue(tracks)),

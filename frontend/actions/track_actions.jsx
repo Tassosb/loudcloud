@@ -13,6 +13,7 @@ export const receiveTracks = (tracks) => {
   let queuedTracks = Object.assign({}, tracks);
   Object.keys(tracks).forEach((trackId) => {
     queuedTracks[trackId]['queuePos'] = nextQueuePos;
+    queuedTracks[trackId]['elapsedTime'] = 0;
     nextQueuePos++
   }) //Add queue position to each track.
 

@@ -44,7 +44,8 @@ class TrackWaveform extends React.Component {
         currentQueuePos: track.queuePos,
         playing: true,
         changeTime: true,
-        elapsedTime: this.waveform.currentTime });
+        elapsedTime: this.waveform.currentTime
+      });
     }
   }
 

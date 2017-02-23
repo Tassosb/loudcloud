@@ -1,5 +1,5 @@
-import { RECEIVE_TRACKS } from '../actions/track_actions';
-import { RECEIVE_TRACK } from '../actions/track_actions';
+import { RECEIVE_TRACKS, RECEIVE_TRACK } from '../actions/track_actions';
+import { RECEIVE_CURRENT_TRACK } from '../actions/current_track_actions';
 
 
 const tracksReducer = (state = {}, action) => {

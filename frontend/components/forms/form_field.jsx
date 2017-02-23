@@ -8,7 +8,10 @@ const doNotShow = {
   comments: true,
   num_comments: true,
   liked_by_current_user: true,
-  num_likes: true
+  num_likes: true,
+  waveform: true,
+  duration: true,
+  elapsedTime: true
 }
 
 const FormField = ({ field, value, update }) => {
