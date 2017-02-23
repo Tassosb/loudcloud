@@ -10,6 +10,17 @@ const defaults = {
   barGap: .4
 }
 
+const COLORS = {
+  played: {
+    upper: '#ff5500',
+    lower: '#ffaa80'
+  },
+  default: {
+    upper: '#666',
+    lower: '#d0d0d0'
+  }
+}
+
 function rootMeanSquare(bufferStartIdx, amtDataPoints, data) {
   var sum = data.slice(bufferStartIdx, bufferStartIdx + amtDataPoints).reduce(
     function(accum, dataPointVal){
@@ -24,8 +35,6 @@ export default class Waveform {
     this.duration = options.duration || defaults.duration;
     this.peaks = options.peaks || defaults.peaks
     this.barWidth = options.barWidth || defaults.barWidth;
-    this.regColor = options.regColor || defaults.regColor;
-    this.progressColor = options.progressColor || defaults.progressColor;
     this.currentTime = options.currentTime || defaults.currentTime;
     this.canvas = options.canvas;
     this.canvasWidth = this.canvas.width;
@@ -38,9 +47,6 @@ export default class Waveform {
 
   draw () {
     const numBars = this.canvasWidth / this.barWidth;
-    const skipFactor = Math.floor(this.peaks.length / numBars) || 1;
-
-    // if (this.peaks.length > 0) { debugger }
     const bufferFactor = this.peaks.length / this.canvasWidth;
 
     let vals = [];
@@ -49,13 +55,12 @@ export default class Waveform {
       let bufferIdx = Math.floor(i * this.barWidth);
       let val = rootMeanSquare(bufferIdx, bufferFactor, this.peaks);
       vals.push(val);
-      // vals.push(this.peaks[i]);
       if (maxVal < val) { maxVal = val }
     }
 
     const scale = this.maxHeight / maxVal;
 
-    if (this.peaks.length > 0) { debugger }
+    this.ctx.clearRect(0, 0, this.canvasWidth, this.maxHeight)
 
     let barHeight, barPos;
     for (let i = 0; i < vals.length; i++) {
@@ -67,19 +72,24 @@ export default class Waveform {
 
   drawBar (height, pos) {
     const diminishRatio = 0.7;
-    const ctx = this.canvas.getContext('2d');
+    this.ctx.fillStyle = this.barColor(pos, 'upper');
 
     let width = this.barWidth * Math.abs(1 - this.barGap);
     let x = pos + (width / 2)
     let y1 = (this.maxHeight - height) * diminishRatio - 1;
     let y2 = this.maxHeight * diminishRatio;
     this.ctx.fillRect(x, y1, width, height * diminishRatio);
-    ctx.fillStyle = '#d0d0d0';
+    this.ctx.fillStyle = this.barColor(pos, 'lower');
 
     this.ctx.fillRect(x, y2, width, height * (1 - diminishRatio));
+  }
 
-    let posInTime = (pos / this.canvasWidth) * this.duration;
-    let color = posInTime < this.currentTime ? this.progressColor : this.regColor;
-    this.ctx.fillStyle = '#666';
+  barColor (pos, barHalf) {
+    const posTime = (pos / this.canvasWidth) * this.duration;
+    if (posTime < this.currentTime) {
+      return COLORS.played[barHalf]
+    } else {
+      return COLORS.default[barHalf]
+    }
   }
 }

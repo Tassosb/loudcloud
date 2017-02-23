@@ -4,14 +4,12 @@ class Api::TracksController < ApplicationController
     if (params[:liked])
       @tracks = current_user.liked_tracks
     else
-      @tracks = Track.all.includes(:artist)
+      @tracks = Track.all.limit(10).includes(:likes, :comments, artist: [:tracks]);
     end
 
     if (params[:artist_id])
       @tracks = @tracks.where(artist_id: params[:artist_id])
     end
-
-    @tracks = @tracks.sample(10)
   end
 
   def update
@@ -25,7 +23,7 @@ class Api::TracksController < ApplicationController
   end
 
   def show
-    @track = Track.includes(comments: [:author]).find_by(id: params[:id])
+    @track = Track.includes(:likes, :artist, comments: [:author]).find_by(id: params[:id])
   end
 
   def create
@@ -49,14 +47,14 @@ class Api::TracksController < ApplicationController
   end
 
   def like
-    @track = Track.includes(comments: [:author]).find_by(id: params[:id])
+    @track = Track.includes(:likes, :artist, comments: [:author]).find_by(id: params[:id])
     @track.likes.create(user_id: params[:user_id])
 
     render :show
   end
 
   def unlike
-    @track = Track.includes(comments: [:author]).find_by(id: params[:id])
+    @track = Track.includes(:likes, :artist, comments: [:author]).find_by(id: params[:id])
     @track.likes.find_by(user_id: params[:user_id]).destroy
 
     render :show

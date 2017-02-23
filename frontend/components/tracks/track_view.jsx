@@ -11,15 +11,17 @@ const TrackBanner = ({ track }) => {
   return (
     <div className='track-banner'>
       <div className='track-header'>
-        <PlayButton
-          trackId={ track.id }
-          trackQueuePos={ track.queuePos }
-          size='big' />
+        { !!track.id &&
+          <PlayButton
+            trackId={ track.id }
+            trackQueuePos={ track.queuePos }
+            size='big' /> }
         <div>
           <Link to={`/users/${track.artist.id}`}>
-            <div><h2>{ track.artist.name }</h2></div>
+            { track.artist.name &&
+                <div><h2>{ track.artist.name }</h2></div> }
           </Link>
-          <div><h1>{ track.title }</h1></div>
+          { track.title && <div><h1>{ track.title }</h1></div> }
         </div>
       </div>
       <div className='track-image'>

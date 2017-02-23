@@ -1,4 +1,4 @@
-import { RECEIVE_TRACK_IN_VIEW } from '../actions/track_actions';
+import { RECEIVE_TRACK_IN_VIEW, CLEAR_TRACK_IN_VIEW } from '../actions/track_actions';
 import { RECEIVE_TRACK_COMMENT, REMOVE_TRACK_COMMENT } from '../actions/comment_actions';
 
 const defaultState = {

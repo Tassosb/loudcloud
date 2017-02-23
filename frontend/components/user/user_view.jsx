@@ -14,7 +14,7 @@ const UserBanner = ({ user }) => {
         <img src={ user.image_url } />
       </div>
       <div className='user-info'>
-        <div><h1>{ user.name }</h1></div>
+        { user.name && <div><h1>{ user.name }</h1></div> }
         { user.location &&
           <div><h2>{ user.location }</h2></div>
         }
@@ -63,10 +63,14 @@ class UserView extends React.Component {
   }
 
   componentWillReceiveProps (newProps) {
-    if (!newProps.user) { return null; }
+    if (!newProps.user) { return; }
     if (this.props.user.id !== newProps.user.id) {
       this.props.fetchTracks({artist_id: newProps.user.id})
     }
+  }
+
+  componentWillUnmount () {
+    this.props.clearUserInView();
   }
 
   updateTab (tab) {
@@ -82,7 +86,7 @@ class UserView extends React.Component {
 
   render () {
     const { user, tracks } = this.props;
-    if (!user) { return null; }
+    // if (!user) { return null; }
 
     return (
       <div className='user-view'>
@@ -111,7 +115,8 @@ const mapStateToProps = ( state ) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchTracks: (specs) => dispatch(fetchTracks(specs)),
-  receiveUserInView: (user) => dispatch(receiveUserInView(user))
+  receiveUserInView: (user) => dispatch(receiveUserInView(user)),
+  clearUserInView: () => dispatch(receiveUserInView({}))
 })
 
 export default connect(

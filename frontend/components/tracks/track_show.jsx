@@ -2,12 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import TrackView from './track_view';
 import MainApp from '../main_app/main_app';
-import { fetchTrack } from '../../actions/track_actions';
+import { fetchTrack, receiveTrackInView } from '../../actions/track_actions';
 
 class TrackShow extends React.Component {
-
   componentDidMount () {
     this.props.fetchTrack(this.props.params.trackId);
+  }
+
+  componentWillUnmount () {
+    this.props.clearTrackInView();
   }
 
   componentWillReceiveProps(newProps) {
@@ -30,7 +33,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchTrack: (trackId) => dispatch(fetchTrack(trackId))
+  fetchTrack: (trackId) => dispatch(fetchTrack(trackId)),
+  clearTrackInView: () => dispatch(receiveTrackInView({}))
 })
 
 export default connect(

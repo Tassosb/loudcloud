@@ -63,14 +63,14 @@ class PlayButton extends React.Component {
 //button is clicked.
 
 const mapStateToProps = ({ currentTrack, tracks, playQueue }) => {
-  if (!playQueue[currentTrack.currentQueuePos]) {
-    return {
-      playing: false,
-      currentQueuePos: 0,
-      currentTrackId: -1,
-      tracks
-    }
-  }
+  // if (!playQueue[currentTrack.currentQueuePos]) {
+  //   return {
+  //     playing: false,
+  //     currentQueuePos: 0,
+  //     currentTrackId: -1,
+  //     tracks
+  //   }
+  // }
   const currentTrackId = currentTrack.playing ?
       playQueue[currentTrack.currentQueuePos].id : 0;
   return {

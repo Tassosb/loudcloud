@@ -54,14 +54,6 @@ class Track < ActiveRecord::Base
   has_many :likers, through: :likes, source: :user
   has_many :comments
 
-  def num_likes
-    self.likes.count
-  end
-
-  def num_comments
-    self.comments.count
-  end
-
   def liked_by?(user)
     self.likers.include?(user)
   end

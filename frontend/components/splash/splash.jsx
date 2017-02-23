@@ -1,10 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import LogInButton from '../buttons/log_in_button';
 import SignUpButton from '../buttons/sign_up_button';
 import SearchBar from '../search/search_bar';
 import SplashUploadButton from '../buttons/splash_upload_button';
 import SplashTrackIndex from './splash_track_index';
+import Spinner from '../spinners/spinner';
 
 const SplashBanner = () => {
   return (
@@ -24,7 +26,7 @@ const SplashBanner = () => {
   );
 }
 
-const Splash = () => {
+const Splash = ({ loading }) => {
   return (
     <div className='splash-main'>
       <SplashBanner />
