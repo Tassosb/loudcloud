@@ -56,6 +56,8 @@ class UserView extends React.Component {
   }
 
   componentDidMount () {
+    if (!this.props.user.id) { return; }
+
     if (this.isProfile()) {
       this.props.receiveUserInView(this.props.user);
     }
@@ -63,7 +65,7 @@ class UserView extends React.Component {
   }
 
   componentWillReceiveProps (newProps) {
-    if (!newProps.user.id) { return; }
+    // if (!newProps.user.id || !this.props.user.id) { return; }
     if (this.props.user.id !== newProps.user.id) {
       this.props.fetchTracks({artist_id: newProps.user.id})
     }

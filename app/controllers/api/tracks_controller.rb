@@ -1,14 +1,10 @@
 class Api::TracksController < ApplicationController
 
   def index
-    if (params[:liked])
-      @tracks = current_user.liked_tracks
-    else
-      @tracks = Track.all.limit(10).includes(:likes, :comments, artist: [:tracks]);
-    end
-
     if (params[:artist_id])
-      @tracks = @tracks.where(artist_id: params[:artist_id])
+      @tracks = Track.where(artist_id: params[:artist_id])
+    else
+      @tracks = Track.limit(10).includes(:likes, :comments, artist: [:tracks]);
     end
   end
 
