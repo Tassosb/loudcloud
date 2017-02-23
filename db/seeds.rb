@@ -250,7 +250,7 @@ end
 comments = [
   "great song",
   "love it",
-  "Here is a very very looooooooong comment that I am. I am very moved by your work please contact me I am a musician we can collaborate",
+  "Here is a very long coment... I am very moved by your work please contact me I am a musician we can collaborate",
   "Cool",
   "Dig it",
   "I like the loud parts",
@@ -259,7 +259,13 @@ comments = [
   "Awesome work",
   "I've listened to this song like 50 times",
   "Sad.. :(",
-  "I wake up to this song every day"
+  "I wake up to this song every day",
+  "PM me about collaborating",
+  "I like this website",
+  "This just made my day a lot better",
+  "THANK YOU",
+  "This songs gets me",
+  "This sums up my life"
 ]
 
 user_ids = (User.first.id..User.last.id).to_a
@@ -269,11 +275,13 @@ track_ids = (Track.first.id..Track.last.id).to_a
   comments.each do |comment|
     curr_user_id = user_ids.sample
     curr_track_id = track_ids.sample
+    track_time = rand(Track.find(curr_track_id).duration)
 
     Comment.create!(
     body: comment,
     author_id: curr_user_id,
-    track_id: curr_track_id
+    track_id: curr_track_id,
+    track_time: track_time
     )
   end
 end
