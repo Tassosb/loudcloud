@@ -50,21 +50,21 @@ class Api::TracksController < ApplicationController
   end
 
   def like
-    @track = Track.includes(:likes, :artist, comments: [:author]).find_by(id: params[:id])
+    @track = Track.includes(:likes).find_by(id: params[:id])
     @track.likes.create(user_id: current_user.id)
 
     render json: {}, status: 200
   end
 
   def unlike
-    @track = Track.includes(:likes, :artist, comments: [:author]).find_by(id: params[:id])
+    @track = Track.includes(:likes).find_by(id: params[:id])
     @track.likes.find_by(user_id: current_user.id).destroy
 
     render json: {}, status: 200
   end
 
   def play
-    @track = Track.find_by(id: params[:id])
+    @track = Track.includes(:plays).find_by(id: params[:id])
     @track.plays.create(user_id: current_user.id)
 
     render json: {}, status: 200
@@ -72,6 +72,6 @@ class Api::TracksController < ApplicationController
 
   private
   def track_params
-    params.require(:track).permit(:title, :num_plays, :audio, :credits, :image)
+    params.require(:track).permit(:title, :audio, :credits, :image)
   end
 end

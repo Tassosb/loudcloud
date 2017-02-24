@@ -12,7 +12,8 @@ const doNotShow = {
   waveform: true,
   duration: true,
   elapsedTime: true,
-  temp_queue_pos: true
+  temp_queue_pos: true,
+  total_plays: true
 }
 
 const FormField = ({ field, value, update }) => {
