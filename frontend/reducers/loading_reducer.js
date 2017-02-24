@@ -1,4 +1,6 @@
-import { REQUEST_CURRENT_USER, RECEIVE_CURRENT_USER } from '../actions/session_actions';
+import { REQUEST_CURRENT_USER,
+         RECEIVE_CURRENT_USER,
+        RECEIVE_SESSION_ERRORS } from '../actions/session_actions';
 import { REQUEST_TRACKS,
          REQUEST_TRACK_IN_VIEW,
          RECEIVE_TRACKS,
@@ -17,6 +19,7 @@ const loadingReducer = (state = defaultState, action) => {
     case REQUEST_CURRENT_USER:
       return Object.assign({}, state, {session: true});
     case RECEIVE_CURRENT_USER:
+    case RECEIVE_SESSION_ERRORS:
       return Object.assign({}, state, {session: false});
     case REQUEST_TRACKS:
       return Object.assign({}, state, {tracks: true});
