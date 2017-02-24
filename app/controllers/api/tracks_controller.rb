@@ -5,13 +5,13 @@ class Api::TracksController < ApplicationController
     if (params[:artist_id])
       @tracks = Track.where(artist_id: params[:artist_id])
                      .order(created_at: :desc)
-                     .includes(:plays, :likes, :comments, artist: [:tracks])
+                     .includes(:plays, :likes, :comments, :artist)
     elsif params[:top_ten]
       @tracks = Track.top_ten
     else
       @tracks = Track.order(created_at: :desc)
                      .limit(10)
-                     .includes(:plays, :likes, :comments, artist: [:tracks])
+                     .includes(:plays, :likes, :comments, :artist)
     end
   end
 

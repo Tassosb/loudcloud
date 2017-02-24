@@ -1,7 +1,7 @@
 <script type="text/javascript">
   <% if logged_in? %>
     window.currentUser =
-      <%= render("api/users/user.json.jbuilder", user: current_user).html_safe %>
+      <%= render("api/users/user.json.jbuilder", include_total_plays: true, user: current_user).html_safe %>
   <% end %>
   window.logoWithText = "<%= image_url('logo_with_text.svg') %>"
   window.bannerImg = "<%= image_url('banner_dancer.jpg') %>"

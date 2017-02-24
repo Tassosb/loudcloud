@@ -58,7 +58,7 @@ class Track < ActiveRecord::Base
   has_many :plays
 
   def self.top_ten
-    Track.includes(:likes, :plays, comments: [:author])
+    Track.includes(:likes, :plays, :artist, comments: [:author])
          .joins("LEFT OUTER JOIN plays ON plays.track_id = tracks.id")
          .group("tracks.id")
          .order("COUNT(*) DESC")
@@ -66,9 +66,10 @@ class Track < ActiveRecord::Base
   end
 
   def liked_by?(user)
-    !!Like.joins(:track)
-          .where("user_id  = ? AND track_id = ?", user.id, self.id)
-          .first
+    user.likes.to_a.find { |like| like.track_id == self.id }
+    # !!Like.joins(:track)
+    #       .where("user_id  = ? AND track_id = ?", user.id, self.id)
+    #       .first
   end
 
   ###From EricMoy Songcloud
