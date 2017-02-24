@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
     @current_user = token ? token.user : nil
   end
 
+  def current_user_id
+    current_user ? current_user.id : 0
+  end
+
   def logged_in?
     !!current_user
   end

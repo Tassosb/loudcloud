@@ -309,6 +309,6 @@ end
 300.times do
   Play.create!(
     user_id: user_ids.sample,
-    sample_id: track_ids.sample
+    track_id: track_ids.sample
   )
 end

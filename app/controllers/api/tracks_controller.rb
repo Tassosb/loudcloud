@@ -51,21 +51,21 @@ class Api::TracksController < ApplicationController
 
   def like
     @track = Track.includes(:likes).find_by(id: params[:id])
-    @track.likes.create(user_id: current_user.id)
+    @track.likes.create(user_id: current_user_id)
 
     render json: {}, status: 200
   end
 
   def unlike
     @track = Track.includes(:likes).find_by(id: params[:id])
-    @track.likes.find_by(user_id: current_user.id).destroy
+    @track.likes.find_by(user_id: current_user_id).destroy
 
     render json: {}, status: 200
   end
 
   def play
     @track = Track.includes(:plays).find_by(id: params[:id])
-    @track.plays.create(user_id: current_user.id)
+    @track.plays.create(user_id: current_user_id)
 
     render json: {}, status: 200
   end
