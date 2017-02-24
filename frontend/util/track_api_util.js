@@ -13,16 +13,11 @@ export const fetchTrack = (trackId) => {
   })
 }
 
-export const updateTrackPlays = (track) => {
+export const updateTrackPlays = (trackId) => {
   return $.ajax({
     method: 'POST',
-    url: `api/tracks/${track.id}/play`
+    url: `api/tracks/${trackId}/play`
   })
-  // return $.ajax({
-  //   method: 'PATCH',
-  //   url: `api/tracks/${track.id}`,
-  //   data: { track }
-  // })
 }
 
 

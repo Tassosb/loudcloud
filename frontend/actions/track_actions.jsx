@@ -86,11 +86,10 @@ export const fetchTrack = (trackId) => dispatch => {
     });
 }
 
-export const updateTrackPlays = (track) => dispatch => {
-  const prevQueuePos = track.queuePos;
-  return APIUtil.updateTrackPlays(track)
+export const updateTrackPlays = (trackId) => dispatch => {
+  return APIUtil.updateTrackPlays(trackId)
     .then(() => {
-      dispatch(playTrack(track.id));
+      dispatch(playTrack(trackId));
     });
 }
 

@@ -3,12 +3,15 @@ import { connect } from 'react-redux';
 import Waveform from '../../util/waveform_util';
 import { receiveCurrentTrack } from '../../actions/current_track_actions';
 import { receivePlayQueue } from '../../actions/play_queue_actions';
+import { updateTrackPlays } from '../../actions/track_actions';
 
 class TrackWaveform extends React.Component {
   constructor (props) {
     super(props);
+    this.state = {playCounted: false}
 
     this.handleClick = this.handleClick.bind(this);
+    this.addTrackPlay = this.addTrackPlay.bind(this);
   }
 
   componentDidMount () {
@@ -40,12 +43,21 @@ class TrackWaveform extends React.Component {
       receiveCurrentTrack({ elapsedTime, changeTime: true, playing: true });
     } else {
       updateQueue(tracks);
+      this.addTrackPlay(track);
       receiveCurrentTrack({
         currentQueuePos: track.queuePos,
         playing: true,
         changeTime: true,
         elapsedTime: this.waveform.currentTime
       });
+    }
+  }
+
+  addTrackPlay (track) {
+    const { updateTrackPlays } = this.props;
+    if (!this.state.playCounted) {
+      updateTrackPlays(track.id);
+      this.setState({playCounted: true});
     }
   }
 
@@ -93,7 +105,8 @@ const mapStateToProps = ({ currentTrack, playQueue, tracks }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   receiveCurrentTrack: (currentTrack) => dispatch(receiveCurrentTrack(currentTrack)),
-  updateQueue: (tracks) => dispatch(receivePlayQueue(tracks))
+  updateQueue: (tracks) => dispatch(receivePlayQueue(tracks)),
+  updateTrackPlays: (trackId) => dispatch(updateTrackPlays(trackId))
 })
 
 export default connect(

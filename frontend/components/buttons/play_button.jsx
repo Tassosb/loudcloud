@@ -21,11 +21,7 @@ class PlayButton extends React.Component {
   addTrackPlay (track) {
     const { trackId, currentTrackId, updateTrackPlays } = this.props;
     if (!this.state.playCounted && currentTrackId !== trackId) {
-      updateTrackPlays({
-        id: trackId,
-        num_plays: track.num_plays + 1,
-        queuePos: track.queuePos
-      });
+      updateTrackPlays(trackId);
       this.setState({playCounted: true});
     }
   }
@@ -92,7 +88,7 @@ const mapDispatchToProps = (dispatch) => ({
   pauseTrack: () => dispatch(receiveCurrentTrack({
     playing: false})),
   updateQueue: (tracks) => dispatch(receivePlayQueue(tracks)),
-  updateTrackPlays: (track) => dispatch(updateTrackPlays(track))
+  updateTrackPlays: (trackId) => dispatch(updateTrackPlays(trackId))
 })
 
 export default connect(
