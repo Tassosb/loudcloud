@@ -11,7 +11,8 @@ const doNotShow = {
   num_likes: true,
   waveform: true,
   duration: true,
-  elapsedTime: true
+  elapsedTime: true,
+  temp_queue_pos: true
 }
 
 const FormField = ({ field, value, update }) => {

@@ -16,20 +16,13 @@ const spaceship = (a, b) => {
   return 0;
 }
 
-const compareNumPlays = (t1, t2) => {
-  return spaceship(t2.num_plays, t1.num_plays);
+const compareByQueuePos = (t1, t2) => {
+  return spaceship(t1.queuePos, t2.queuePos);
 }
 
-const sortingFunctions = {
-  numPlays: compareNumPlays
-}
-
-export const selectTracksAsArray = (state, sort_by_plays) => {
+export const selectTracksAsArray = (state) => {
   const tracksAsArray = Object.keys(state.tracks)
                               .map((id) => state.tracks[id])
-  if (sort_by_plays) {
-    return tracksAsArray.sort(compareNumPlays)
-  } else {
-    return tracksAsArray.reverse();
-  }
+
+  return tracksAsArray.sort(compareByQueuePos)
 };

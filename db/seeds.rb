@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-
 User.destroy_all
 Track.destroy_all
 
@@ -17,7 +9,7 @@ demo_tracks = [
   ['Nocturne', "https://s3.amazonaws.com/seeds-source/04+Nocturne.mp3"],
   ['Just Like I Pictured It', "https://s3.amazonaws.com/seeds-source/02+Just+Like+I+Pictured+It.mp3"]
 ]
-
+puts "Loading demo tracks!"
 demo_tracks.each do |title, audio_url|
   track = Track.new(
     title: title,
@@ -201,6 +193,7 @@ tracks = {
         "https://s3.amazonaws.com/seeds-source/15+BULLETS+(feat.+Little+Dragon).mp3"
       ]
   ],
+  16 => [],
   17 => [
     ["Demon Host", '',
         "https://s3.amazonaws.com/seeds-source/01+Demon+Host.mp3"
@@ -282,6 +275,10 @@ comments = [
 user_ids = (User.first.id..User.last.id).to_a
 track_ids = (Track.first.id..Track.last.id).to_a
 
+puts "Comments!"
+
+taken_combos = {}
+
 5.times do
   comments.each do |comment|
     curr_user_id = user_ids.sample
@@ -295,11 +292,18 @@ track_ids = (Track.first.id..Track.last.id).to_a
     track_time: track_time
     )
   end
+  puts "Likes!"
 
   20.times do
+    user_track_combo = [user_ids.sample, track_ids.sample]
+    until !taken_combos[user_track_combo]
+      user_track_combo = [user_ids.sample, track_ids.sample]
+    end
+    taken_combos[user_track_combo] = true
+
     Like.create!(
-      user_id: user_ids.sample,
-      track_id: track_ids.sample
+    user_id: user_track_combo[0],
+    track_id: user_track_combo[1]
     )
   end
 end
