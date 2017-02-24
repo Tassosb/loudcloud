@@ -11,6 +11,7 @@ class CommentForm extends React.Component {
     };
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.assignTrackTime = this.assignTrackTime.bind(this);
   }
 
   update(field) {
@@ -19,12 +20,23 @@ class CommentForm extends React.Component {
     }
   }
 
+  assignTrackTime () {
+    const { trackPlaying, track, trackTime } = this.props;
+
+    if (trackPlaying) {
+      if (trackPlaying.id === track.id) {
+        return trackTime
+      }
+    }
+    return 0;
+  }
+
   handleSubmit (e) {
     e.preventDefault();
     if (!this.props.currentUser) { return; }
     const newCommentData = {
       track_id: this.props.track.id,
-      track_time: this.props.trackTime
+      track_time: this.assignTrackTime()
     };
 
     this.props.createComment(
@@ -55,9 +67,10 @@ class CommentForm extends React.Component {
   }
 }
 
-const mapStateToProps = ({ session, currentTrack }) => ({
+const mapStateToProps = ({ session, currentTrack, playQueue }) => ({
   currentUser: session.currentUser,
-  trackTime: currentTrack.elapsedTime
+  trackTime: currentTrack.elapsedTime,
+  trackPlaying: playQueue[currentTrack.currentQueuePos]
 })
 
 const mapDispatchToProps = (dispatch) => ({
