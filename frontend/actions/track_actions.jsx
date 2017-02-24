@@ -9,6 +9,8 @@ export const RECEIVE_TRACK_IN_VIEW = 'RECEIVE_TRACK_IN_VIEW';
 export const REQUEST_TRACK_IN_VIEW = 'REQUEST_TRACK_IN_VIEW';
 export const RECEIVE_TRACK_ERRORS = 'RECEIVE_TRACK_ERRORS';
 export const PLAY_TRACK = 'PLAY_TRACK';
+export const RECEIVE_TRACK_LIKE = 'RECEIVE_TRACK_LIKE';
+export const REMOVE_TRACK_LIKE = 'REMOVE_TRACK_LIKE';
 
 
 let nextQueuePos = 1; //close over this, we don't want to repeat queuePos in a session
@@ -29,6 +31,16 @@ export const receiveTracks = (tracks, specs) => {
 
 export const playTrack = (trackId) => ({
   type: PLAY_TRACK,
+  trackId
+})
+
+export const receiveTrackLike = (trackId) => ({
+  type: RECEIVE_TRACK_LIKE,
+  trackId
+})
+
+export const removeTrackLike = (trackId) => ({
+  type: REMOVE_TRACK_LIKE,
   trackId
 })
 
@@ -105,22 +117,16 @@ export const deleteTrack = (trackId) => dispatch => {
     .then(() => dispatch(receiveModal('')));
 }
 
-export const likeTrack = (track, userId) => dispatch => {
-  const prevQueuePos = track.queuePos;
-  return APIUtil.likeTrack(track.id, userId)
-    .then((track) => {
-      const queuedTrack = Object.assign({}, track, {queuePos: prevQueuePos})
-      dispatch(receiveTrack(queuedTrack));
-      dispatch(receiveTrackInView(queuedTrack));
+export const likeTrack = (track) => dispatch => {
+  return APIUtil.likeTrack(track.id)
+    .then(() => {
+      dispatch(receiveTrackLike(track.id));
     })
 }
 
-export const unlikeTrack = (track, userId) => dispatch => {
-  const prevQueuePos = track.queuePos;
-  return APIUtil.unlikeTrack(track.id, userId)
-    .then((newTrack) => {
-      const queuedTrack = Object.assign({}, newTrack, {queuePos: prevQueuePos})
-      dispatch(receiveTrack(queuedTrack));
-      dispatch(receiveTrackInView(queuedTrack));
+export const unlikeTrack = (track) => dispatch => {
+  return APIUtil.unlikeTrack(track.id)
+    .then(() => {
+      dispatch(removeTrackLike(track.id))
     })
 }

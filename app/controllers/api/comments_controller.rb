@@ -10,7 +10,7 @@ class Api::CommentsController < ApplicationController
       render @comment.errors, status: 422
     end
   end
-at
+
   def destroy
     @comment = Comment.find_by(id: params[:id])
     @comment.destroy if @comment

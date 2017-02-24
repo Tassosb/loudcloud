@@ -1,4 +1,8 @@
-import { RECEIVE_TRACK_IN_VIEW, CLEAR_TRACK_IN_VIEW } from '../actions/track_actions';
+import { RECEIVE_TRACK_IN_VIEW,
+         CLEAR_TRACK_IN_VIEW,
+         RECEIVE_TRACK_LIKE,
+         REMOVE_TRACK_LIKE,
+         PLAY_TRACK } from '../actions/track_actions';
 import { RECEIVE_TRACK_COMMENT, REMOVE_TRACK_COMMENT } from '../actions/comment_actions';
 
 const defaultState = {
@@ -29,6 +33,20 @@ const trackInViewReducer = (state = defaultState, action) => {
       newTrack = Object.assign({}, state);
       delete newTrack.comments[action.commentId];
       return newTrack;
+    case PLAY_TRACK:
+      return Object.assign({}, state, {num_plays: state.num_plays + 1});
+    case RECEIVE_TRACK_LIKE:
+      return Object.assign(
+        {},
+        state,
+        {num_likes: state.num_likes + 1, liked_by_current_user: true}
+      );
+    case REMOVE_TRACK_LIKE:
+      return Object.assign(
+        {},
+        state,
+        {num_likes: state.num_likes - 1, liked_by_current_user: false}
+      );
     default:
       return state;
   }
