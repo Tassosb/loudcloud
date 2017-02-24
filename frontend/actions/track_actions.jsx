@@ -8,6 +8,7 @@ export const RECEIVE_TRACK = 'RECEIVE_TRACK';
 export const RECEIVE_TRACK_IN_VIEW = 'RECEIVE_TRACK_IN_VIEW';
 export const REQUEST_TRACK_IN_VIEW = 'REQUEST_TRACK_IN_VIEW';
 export const RECEIVE_TRACK_ERRORS = 'RECEIVE_TRACK_ERRORS';
+export const PLAY_TRACK = 'PLAY_TRACK';
 
 
 let nextQueuePos = 1; //close over this, we don't want to repeat queuePos in a session
@@ -25,6 +26,11 @@ export const receiveTracks = (tracks, specs) => {
     tracks: queuedTracks
   }
 }
+
+export const playTrack = (trackId) => ({
+  type: PLAY_TRACK,
+  trackId
+})
 
 export const requestTracks = () => ({
   type: REQUEST_TRACKS
@@ -71,10 +77,8 @@ export const fetchTrack = (trackId) => dispatch => {
 export const updateTrackPlays = (track) => dispatch => {
   const prevQueuePos = track.queuePos;
   return APIUtil.updateTrackPlays(track)
-    .then((track) => {
-      const queuedTrack = Object.assign({}, track, {queuePos: prevQueuePos})
-      dispatch(receiveTrack(queuedTrack));
-      dispatch(receiveTrackInView(queuedTrack));
+    .then(() => {
+      dispatch(playTrack(track.id));
     });
 }
 

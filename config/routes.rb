@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       member do
         post :like
         delete :unlike
+        post :play
       end
     end
 

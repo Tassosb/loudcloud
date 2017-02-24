@@ -15,11 +15,16 @@ export const fetchTrack = (trackId) => {
 
 export const updateTrackPlays = (track) => {
   return $.ajax({
-    method: 'PATCH',
-    url: `api/tracks/${track.id}`,
-    data: { track }
+    method: 'POST',
+    url: `api/tracks/${track.id}/play`
   })
+  // return $.ajax({
+  //   method: 'PATCH',
+  //   url: `api/tracks/${track.id}`,
+  //   data: { track }
+  // })
 }
+
 
 export const updateTrack = (formData, trackId) => {
   return $.ajax({

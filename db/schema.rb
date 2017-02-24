@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170224143810) do
+ActiveRecord::Schema.define(version: 20170224150352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,7 +65,6 @@ ActiveRecord::Schema.define(version: 20170224143810) do
     t.string   "audio_content_type",              null: false
     t.integer  "audio_file_size",                 null: false
     t.datetime "audio_updated_at",                null: false
-    t.integer  "num_plays",          default: 0
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"

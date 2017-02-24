@@ -24,7 +24,7 @@
 class Track < ActiveRecord::Base
   attr_reader :liked_by_current_user
 
-  validates :title, :artist, :num_plays, :waveform, presence: true
+  validates :title, :artist, :waveform, presence: true
 
   has_attached_file :audio
   validates_attachment_content_type :audio,
@@ -57,8 +57,18 @@ class Track < ActiveRecord::Base
   has_many :comments
   has_many :plays
 
+  def self.top_ten
+    Track.includes(:likes, :plays, comments: [:author])
+         .joins("LEFT OUTER JOIN plays ON plays.track_id = tracks.id")
+         .group("tracks.id")
+         .order("COUNT(*) DESC")
+         .limit(10)
+  end
+
   def liked_by?(user)
-    self.likers.include?(user)
+    !!Like.joins(:track)
+          .where("user_id  = ? AND track_id = ?", user.id, self.id)
+          .first
   end
 
   ###From EricMoy Songcloud

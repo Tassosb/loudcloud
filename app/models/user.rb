@@ -43,7 +43,9 @@ class User < ActiveRecord::Base
   end
 
   def total_plays
-    self.tracks.sum(:num_plays)
+    Play.joins(:track)
+        .where("tracks.artist_id = ?", User.first.id)
+        .count
   end
 
   def add_session!(http_user_agent)

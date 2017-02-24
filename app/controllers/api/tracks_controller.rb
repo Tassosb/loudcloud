@@ -5,20 +5,18 @@ class Api::TracksController < ApplicationController
     if (params[:artist_id])
       @tracks = Track.where(artist_id: params[:artist_id])
                      .order(created_at: :desc)
-                     .includes(:likes, :comments, artist: [:tracks])
+                     .includes(:plays, :likes, :comments, artist: [:tracks])
     elsif params[:top_ten]
-      @tracks = Track.order(num_plays: :desc)
-                     .limit(10)
-                     .includes(:likes, :comments, artist: [:tracks])
+      @tracks = Track.top_ten
     else
       @tracks = Track.order(created_at: :desc)
                      .limit(10)
-                     .includes(:likes, :comments, artist: [:tracks])
+                     .includes(:plays, :likes, :comments, artist: [:tracks])
     end
   end
 
   def update
-    @track = Track.includes(comments: [:author]).find_by(id: params[:id])
+    @track = Track.includes(:plays, comments: [:author]).find_by(id: params[:id])
 
     if @track.update(track_params)
       render :show
@@ -28,7 +26,7 @@ class Api::TracksController < ApplicationController
   end
 
   def show
-    @track = Track.includes(:likes, :artist, comments: [:author]).find_by(id: params[:id])
+    @track = Track.includes(:likes, :artist, :plays, comments: [:author]).find_by(id: params[:id])
   end
 
   def create
@@ -63,6 +61,13 @@ class Api::TracksController < ApplicationController
     @track.likes.find_by(user_id: params[:user_id]).destroy
 
     render :show
+  end
+
+  def play
+    @track = Track.find_by(id: params[:id])
+    @track.plays.create(user_id: current_user.id)
+
+    render json: {}, status: 200
   end
 
   private
