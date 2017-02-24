@@ -24,10 +24,10 @@ const sortingFunctions = {
   numPlays: compareNumPlays
 }
 
-export const selectTracksAsArray = (state, sort_by) => {
+export const selectTracksAsArray = (state, sort_by_plays) => {
   const tracksAsArray = Object.keys(state.tracks)
                               .map((id) => state.tracks[id])
-  if (sort_by) {
+  if (sort_by_plays) {
     return tracksAsArray.sort(compareNumPlays)
   } else {
     return tracksAsArray.reverse();

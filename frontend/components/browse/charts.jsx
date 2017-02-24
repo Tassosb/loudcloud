@@ -23,7 +23,7 @@ class Charts extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  tracks: selectTracksAsArray(state, 'numPlays')
+  tracks: selectTracksAsArray(state, true)
 })
 
 const mapDispatchToProps = (dispatch) => ({

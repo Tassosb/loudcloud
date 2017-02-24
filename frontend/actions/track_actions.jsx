@@ -1,4 +1,5 @@
 import { receiveModal } from './modal_actions';
+import { selectTracksAsArray } from '../reducers/selectors';
 import * as APIUtil from '../util/track_api_util';
 
 export const RECEIVE_TRACKS = 'RECEIVE_TRACKS';
@@ -8,11 +9,13 @@ export const RECEIVE_TRACK_IN_VIEW = 'RECEIVE_TRACK_IN_VIEW';
 export const REQUEST_TRACK_IN_VIEW = 'REQUEST_TRACK_IN_VIEW';
 export const RECEIVE_TRACK_ERRORS = 'RECEIVE_TRACK_ERRORS';
 
+
 let nextQueuePos = 1; //close over this, we don't want to repeat queuePos in a session
-export const receiveTracks = (tracks) => {
+export const receiveTracks = (tracks, specs) => {
   let queuedTracks = Object.assign({}, tracks);
-  Object.keys(tracks).forEach((trackId) => {
-    queuedTracks[trackId]['queuePos'] = nextQueuePos;
+  let baseQueuPos = nextQueuePos;
+  Object.keys(tracks).forEach((trackId) => { //user temp_queue_pos to ensure ordering assigned in controller
+    queuedTracks[trackId]['queuePos'] = baseQueuPos + tracks[trackId].temp_queue_pos;
     queuedTracks[trackId]['elapsedTime'] = 0;
     nextQueuePos++
   }) //Add queue position to each track.
@@ -59,7 +62,7 @@ export const fetchTrack = (trackId) => dispatch => {
   return APIUtil.fetchTrack(trackId)
     .then((track) => {
       //we need this to update the play queue correctly when
-      //user clicks play on the track show page
+      //user clicks play on the track show page, so we receiveTracks
       dispatch(receiveTracks({[track.id]: track}));
       dispatch(receiveTrackInView(track));
     });

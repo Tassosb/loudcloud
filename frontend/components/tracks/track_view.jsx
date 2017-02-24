@@ -25,7 +25,7 @@ const TrackBanner = ({ track }) => {
                 <div><h2>{ track.artist.name }</h2></div> }
             </Link>
             { track.title &&
-              <div><h1>{ track.title + ` (${track.credits })`}</h1></div>
+              <div><h1>{ track.title }{ track.credits && ` (${track.credits })`}</h1></div>
               }
           </div>
         </div>

@@ -4,6 +4,7 @@ class Api::TracksController < ApplicationController
   def index
     if (params[:artist_id])
       @tracks = Track.where(artist_id: params[:artist_id])
+                     .order(created_at: :desc)
                      .includes(:likes, :comments, artist: [:tracks])
     elsif params[:top_ten]
       @tracks = Track.order(num_plays: :desc)
