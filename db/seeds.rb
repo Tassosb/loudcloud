@@ -14,7 +14,6 @@ demo_tracks.each do |title, audio_url|
   track = Track.new(
     title: title,
     credits: "By Medeski, Martin, and Wood",
-    num_plays: rand(100),
     artist_id: demo.id
   )
 
@@ -230,8 +229,7 @@ artists.each do |name, location, temp_id, image_url|
     track = Track.new(
       title: title,
       credits: credits,
-      artist_id: user.id,
-      num_plays: rand(100)
+      artist_id: user.id
       )
 
     if track_image_url
@@ -277,7 +275,6 @@ track_ids = (Track.first.id..Track.last.id).to_a
 
 puts "Comments!"
 
-taken_combos = {}
 
 5.times do
   comments.each do |comment|
@@ -293,17 +290,25 @@ taken_combos = {}
     )
   end
   puts "Likes!"
+end
 
-  20.times do
+taken_combos = {}
+100.times do
+  user_track_combo = [user_ids.sample, track_ids.sample]
+  until !taken_combos[user_track_combo]
     user_track_combo = [user_ids.sample, track_ids.sample]
-    until !taken_combos[user_track_combo]
-      user_track_combo = [user_ids.sample, track_ids.sample]
-    end
-    taken_combos[user_track_combo] = true
+  end
+  taken_combos[user_track_combo] = true
 
-    Like.create!(
+  Like.create!(
     user_id: user_track_combo[0],
     track_id: user_track_combo[1]
-    )
-  end
+  )
+end
+
+300.times do
+  Play.create!(
+    user_id: user_ids.sample,
+    sample_id: track_ids.sample
+  )
 end
