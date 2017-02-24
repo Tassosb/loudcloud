@@ -9,6 +9,7 @@ class Api::SessionsController < ApplicationController
 
     if @user
       log_in!(@user)
+      @include_total_plays = true
       render "api/users/show"
     else
       render json: { login: ["Email/password do not match"] }, status: 422

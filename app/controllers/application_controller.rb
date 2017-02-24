@@ -20,6 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def log_out!
+    @current_user = nil
     current_user.try(:remove_session!, session[:session_token])
     session[:session_token] = nil
   end

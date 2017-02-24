@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
 
   def total_plays
     Play.joins(:track)
-        .where("tracks.artist_id = ?", User.first.id)
+        .where("tracks.artist_id = ?", self.id)
         .length
   end
 

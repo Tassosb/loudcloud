@@ -6,6 +6,7 @@ class Api::UsersController < ApplicationController
 
     if @user.save
       log_in!(@user)
+      @include_total_plays = true
       render :show
     else
       render json: @user.errors, status: 422
@@ -16,6 +17,7 @@ class Api::UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
 
     if @user.update(user_params)
+      @include_total_plays = true
       render :show
     else
       render json: @user.errors, status: 422
@@ -23,6 +25,7 @@ class Api::UsersController < ApplicationController
   end
 
   def show
+    @include_total_plays = false
     @user = User.includes(:tracks).find_by(id: params[:id])
   end
 
