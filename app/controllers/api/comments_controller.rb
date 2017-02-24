@@ -1,6 +1,6 @@
 class Api::CommentsController < ApplicationController
   before_action :require_login!
-  
+
   def create
     @comment = current_user.authored_comments.new(comment_params)
 
@@ -10,7 +10,7 @@ class Api::CommentsController < ApplicationController
       render @comment.errors, status: 422
     end
   end
-
+at
   def destroy
     @comment = Comment.find_by(id: params[:id])
     @comment.destroy if @comment

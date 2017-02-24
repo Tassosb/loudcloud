@@ -33,6 +33,8 @@ class User < ActiveRecord::Base
   has_many :authored_comments,
     class_name: 'Comment',
     foreign_key: :author_id
+  has_many :plays
+  has_many :played_tracks, through: :plays, source: :track
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)

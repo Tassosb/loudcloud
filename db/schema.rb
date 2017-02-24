@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170223194504) do
+ActiveRecord::Schema.define(version: 20170224143810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,13 @@ ActiveRecord::Schema.define(version: 20170223194504) do
   add_index "likes", ["track_id"], name: "index_likes_on_track_id", using: :btree
   add_index "likes", ["user_id", "track_id"], name: "index_likes_on_user_id_and_track_id", unique: true, using: :btree
   add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
+
+  create_table "plays", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "track_id",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sessions", force: :cascade do |t|
     t.string   "token",           null: false
