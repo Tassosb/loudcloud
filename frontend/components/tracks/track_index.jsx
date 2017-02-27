@@ -5,10 +5,6 @@ import Spinner from '../spinners/spinner';
 import { receiveTracks } from '../../actions/track_actions';
 
 class TrackIndex extends React.Component {
-  componentWillUnmount () {
-    // this.props.clearTracks();
-  }
-
   render () {
     const { tracks, loading } = this.props;
     if (loading) { return <Spinner /> }

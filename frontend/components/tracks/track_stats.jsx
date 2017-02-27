@@ -6,7 +6,7 @@ import DeleteTrackButton from '../buttons/delete_track_button';
 import LikeButton from '../buttons/like_button';
 
 const TrackStats = ({ track, currentUser, showDelete }) => {
-  let isOwnSong = currentUser ?
+  const isOwnSong = currentUser ?
     (track.artist.id === currentUser.id) : false;
 
   return (

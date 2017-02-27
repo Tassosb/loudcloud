@@ -1,6 +1,6 @@
 # LoudCloud
 
-[LoudCloud live](http://www.loud-cloud.herokuapp.com "Live Link")
+[LoudCloud live](http://loud-cloud.herokuapp.com "Live Link")
 
 LoudCloud is a full-stack web application based on SoundCloud. It was built with a Ruby on Rails back end and React.js-Redux front end.
 
@@ -24,7 +24,7 @@ Audio is played by the **AudioElement** component, which renders an HTML 5 audio
 
 Following the idea of building modular components, each button with major functionality has its own component. The play button is particularly versatile. It will render as small, regular, or big, depending on the size prop passed in. Once it is given a track id and track queue position, it can be relied upon to delivery the functionality of toggling play status, updating the play queue, and incrementing the track's play count. Additionally, it keeps track of the elapsed play time of its associated track. With this, users can return to a song and begin where they had once stopped.
 
-## Waveform
+### Waveform
 
 Waveforms are central to the experience of SoundCloud. So they are too for LoudCloud. They provide visually impressive feedback when a song is playing, and they are readily interactive.
 
