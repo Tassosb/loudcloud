@@ -1,4 +1,6 @@
 <?php
+//As posted from https://github.com/alexkirs/php-waveform-json by alexkirs.
+
 error_reporting(0);
 ini_set('display_error', false);
 ini_set("max_execution_time", "30000");
