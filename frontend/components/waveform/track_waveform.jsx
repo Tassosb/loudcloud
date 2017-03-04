@@ -61,14 +61,6 @@ class TrackWaveform extends React.Component {
     }
   }
 
-  componentWillReceiveProps (nextProps) {
-    if (!nextProps.currentTrack) { return; }
-    if (this.props.currentTrack.elapsedTime !==
-              nextProps.currentTrack.elapsedTime) {
-
-    }
-  }
-
   update (trackPlaying) {
     const { track, currentTrack } = this.props;
 
