@@ -26,6 +26,8 @@ Following the idea of building modular components, each button with major functi
 
 ### Waveform
 
+![alt text](http://g.recordit.co/boiH4NcFtp.gif "Waveform Gif")
+
 Waveforms are central to the experience of SoundCloud. So they are too for LoudCloud. They provide visually impressive feedback when a song is playing, and they are readily interactive.
 
 Each waveform is a canvas element that is rendered by a **TrackWaveform** component. This component manages the interface with the user. It delegates the drawing of the waveform to a plain javascript Waveform utility class. Upon mounting, the TrackWaveform component instantiates a Waveform object and passes in the canvas element that it has rendered along with the audio buffer and duration of its associated track. Each time the TrackWaveform re-renders, it will update its waveform and trigger a re-drawing if necessary.
@@ -35,3 +37,7 @@ In order to render waveforms quickly, audio buffer and duration is extracted and
 Waveforms are drawn by first dividing the audio buffer into a number of subsets equal to the number of bars to be rendered. The root mean square is calculated for each subset. These values are then scaled according to the canvas height and used to draw bars of representative heights. The bars are colored depending on their position relative to the current elapsed time of the track.
 
 The waveforms interact with the currentTrack slice of state similarly to the play button and the progress bar.
+
+### Search
+
+![alt text](http://g.recordit.co/AIx4P1mnDG.gif "Search Bar Gif")
