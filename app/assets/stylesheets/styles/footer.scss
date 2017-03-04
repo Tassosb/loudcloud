@@ -2,6 +2,7 @@ footer.main-footer {
   @extend .main-content;
   background: white;
   border-top: 1px solid $smoke-grey;
+  padding-bottom: 50px;
 }
 
 footer.main-footer ul {
