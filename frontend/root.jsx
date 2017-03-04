@@ -2,8 +2,6 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { Router, hashHistory, IndexRoute, Route } from 'react-router';
 import App from './app';
-import LogInForm from './components/forms/log_in_form';
-import SignUpForm from './components/forms/sign_up_form';
 import configureStore from './store/store';
 import Splash from './components/splash/splash';
 import Stream from './components/browse/stream';
@@ -61,9 +59,7 @@ const Root = () => {
             path='/users/:userId'
             component={ UserShow }
             onEnter={ redirectIfCurrentUserPage } />
-          <Route
-            path='/upload'
-            component={ Upload } />
+          <Route path='/upload' component={ Upload } />
           <Route path='/tracks/:trackId' component={ TrackShow } />
         </Route>
       </Router>
