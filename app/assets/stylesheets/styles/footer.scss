@@ -1,0 +1,18 @@
+footer.main-footer {
+  @extend .main-content;
+  background: white;
+  border-top: 1px solid $smoke-grey;
+}
+
+footer.main-footer ul {
+  font-size: 10px;
+  display:  flex;
+  padding: 20px;
+  width: 240px;
+  color: $light-grey;
+  justify-content: space-between;
+
+  a:hover {
+    color: $plain-grey;
+  }
+}
