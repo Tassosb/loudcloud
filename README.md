@@ -16,6 +16,19 @@ All of the **tracks** on a given page are stored in the redux state as an object
 
 The current **play queue** is stored in the redux state as an object with the keys being the queue positions of each track and the values being the tracks themselves. While the play queue may stay the same, the tracks on a page will change as the user navigates the site. Thus, the play queue needed to carry information about the tracks themselves.
 
+```
+const generatePlayQueue = (tracks) => {
+  let playQueue = {};
+  const trackList = Object.keys(tracks).map((id) => tracks[id])
+
+  trackList.forEach((track) => {
+    playQueue[track.queuePos] = track;
+  })
+
+  return playQueue;
+}
+```
+
 With this implementation, every track on the page knows its position in the play queue. Additionally, the play queue has all the information it needs about every track it contains.
 
 Information about the currently playing track is stored in the redux state as an object called **currentTrack**. It holds the current position in the play queue and information about play status and elapsed time. Finding information about the currently playing track is as easy as keying into the play queue with the current queue position. Many components, like wave forms, play buttons, and the progress bar, take direction from the current track slice of state.
@@ -24,13 +37,62 @@ Audio is played by the **AudioElement** component, which renders an HTML 5 audio
 
 Following the idea of building modular components, each button with major functionality has its own component. The play button is particularly versatile. It will render as small, regular, or big, depending on the size prop passed in. Once it is given a track id and track queue position, it can be relied upon to delivery the functionality of toggling play status, updating the play queue, and incrementing the track's play count. Additionally, it keeps track of the elapsed play time of its associated track. With this, users can return to a song and begin where they had once stopped.
 
+```
+const track = tracks[trackId];
+let icon, action;
+if (playing && (trackId === currentTrackId)) {
+  icon = size === 'small' ? "fa fa-pause" : "fa fa-pause-circle";
+  action = pauseTrack;
+} else {
+  icon = size === 'small' ? "fa fa-play" : "fa fa-play-circle";
+  action = () => {
+    updateQueue(tracks);
+    if (track) {
+      playTrack(track, this.state.elapsedTime);
+      this.addTrackPlay(track);
+    }
+  };
+}
+```
+
 ![alt text](http://g.recordit.co/boiH4NcFtp.gif "Waveform Gif")
 
 ### Waveform
 
 Waveforms are central to the experience of SoundCloud. So they are too for LoudCloud. They provide visually impressive feedback when a song is playing, and they are readily interactive.
 
-Each waveform is a canvas element that is rendered by a **TrackWaveform** component. This component manages the interface with the user. It delegates the drawing of the waveform to a plain javascript Waveform utility class. Upon mounting, the TrackWaveform component instantiates a Waveform object and passes in the canvas element that it has rendered along with the audio buffer and duration of its associated track. Each time the TrackWaveform re-renders, it will update its waveform and trigger a re-drawing if necessary.
+Each waveform is a canvas element that is rendered by a **TrackWaveform** component. This component manages the interface with the user. It delegates the drawing of the waveform to a plain javascript Waveform utility class. Upon mounting, the TrackWaveform component instantiates a Waveform object and passes in the canvas element that it has rendered along with the audio buffer and duration of its associated track.
+
+```
+componentDidMount () {
+  const { track, currentTrack } = this.props;
+  const canvas = this.refs[`waveform-canvas-${track.id}`];
+  this.waveform = new Waveform({
+    canvas,
+    duration: track.duration,
+    peaks: track.waveform,
+    currentTrack
+    })
+
+    this.waveform.draw();
+
+    canvas.addEventListener('click', this.handleClick);
+  }
+  ```
+
+Each time the TrackWaveform re-renders, it will update its waveform and trigger a re-drawing if necessary.
+
+```
+update (trackPlaying) {
+  const { track, currentTrack } = this.props;
+
+  if (track.id === trackPlaying.id) {
+    const newTime = currentTrack.elapsedTime % track.duration;
+    this.waveform.currentTime = newTime;
+    this.waveform.draw();
+  }
+}
+```
 
 In order to render waveforms quickly, audio buffer and duration is extracted and saved to the database when a new track is uploaded. The audio buffer is saved as an array of floats. These processes take place server-side using included libraries. This information is then passed down when the tracks are requested and used to draw the waveforms.
 
@@ -40,4 +102,38 @@ The waveforms interact with the currentTrack slice of state similarly to the pla
 
 ### Search
 
+The search bar provides access to every track and user on the website. It fetches new search results whenever the user changes the search query. Additionally, it clears itself when the user clicks anywhere outside the search component.
+
+```
+update (e) {
+  this.setState({
+    query: e.currentTarget.value,
+    active: !(e.currentTarget.value === '')
+  },
+    () => { this.props.fetchSearchResults(this.state.query) }
+  );
+}
+```
+
 ![alt text](http://g.recordit.co/AIx4P1mnDG.gif "Search Bar Gif")
+
+### Other Features
+
+Other features offered by LoudCloud include:
+
+- Audio and Image Uploading
+- Editing and Deleting Tracks
+- Multiple Sessions
+- Comments
+- Track Likes
+- Track Plays
+- User Profiles
+
+### Features To Implement
+
+Some features I'd like to implement are:
+
+- Following Artists
+- User Playlists
+- Genres
+- Track Recommendations Based on Listening History
