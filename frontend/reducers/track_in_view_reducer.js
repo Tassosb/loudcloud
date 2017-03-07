@@ -28,10 +28,12 @@ const trackInViewReducer = (state = defaultState, action) => {
     case RECEIVE_TRACK_COMMENT:
       newTrack = Object.assign({}, state);
       newTrack.comments[action.comment.id] = action.comment;
+      newTrack.num_comments++
       return newTrack;
     case REMOVE_TRACK_COMMENT:
       newTrack = Object.assign({}, state);
       delete newTrack.comments[action.commentId];
+      newTrack.num_comments--
       return newTrack;
     case PLAY_TRACK:
       return Object.assign({}, state, {num_plays: state.num_plays + 1});
