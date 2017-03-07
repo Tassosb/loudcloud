@@ -26,6 +26,8 @@ class UploadForm extends React.Component {
   }
 
   handleAudioFile (e) {
+    e.preventDefault();
+    
     let file = e.currentTarget.files[0];
     let fileReader = new FileReader();
 

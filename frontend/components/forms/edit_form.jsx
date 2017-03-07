@@ -32,7 +32,8 @@ class EditForm extends React.Component {
     }
   }
 
-  handleSubmit () {
+  handleSubmit (e) {
+    e.preventDefault();
     const formData = new FormData();
     const itemType = this.props.user ? 'user' : 'track';
 
@@ -49,6 +50,7 @@ class EditForm extends React.Component {
   }
 
   updateFile (e) {
+    e.preventDefault();
     let file = e.currentTarget.files[0];
     let fileReader = new FileReader();
     fileReader.onloadend = () => {
