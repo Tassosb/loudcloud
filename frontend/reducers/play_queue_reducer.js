@@ -1,6 +1,4 @@
 import { RECEIVE_PLAY_QUEUE } from '../actions/play_queue_actions';
-import { selectTracksAsArray } from './selectors';
- //Not sure why selectTracksAsArray isn't getting imported?!
 
 const generatePlayQueue = (tracks) => {
   let playQueue = {};
