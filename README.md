@@ -37,6 +37,7 @@ Audio is played by the **AudioElement** component, which renders an HTML 5 audio
 
 Following the idea of building modular components, each button with major functionality has its own component. The play button is particularly versatile. It will render as small, regular, or big, depending on the size prop passed in. Once it is given a track id and track queue position, it can be relied upon to delivery the functionality of toggling play status, updating the play queue, and incrementing the track's play count. Additionally, it keeps track of the elapsed play time of its associated track. With this, users can return to a song and begin where they had once stopped.
 
+Inside play button's handleClick method:
 ```
 const track = tracks[trackId];
 let icon, action;
