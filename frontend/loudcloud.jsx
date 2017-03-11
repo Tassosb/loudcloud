@@ -7,8 +7,5 @@ import { fetchSearchResults } from './actions/search_actions';
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
 
-  //tests
-  window.fetchSearchResults = fetchSearchResults;
-
   ReactDOM.render(<Root />, root);
 })

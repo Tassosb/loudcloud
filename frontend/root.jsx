@@ -19,7 +19,6 @@ const Root = () => {
 
   delete window.currentUser;
   const store = configureStore(preloadedState);
-  window.store = store;
 
   const loggedIn = () => {
     return !!store.getState().session.currentUser;
