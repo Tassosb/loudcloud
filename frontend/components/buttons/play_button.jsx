@@ -30,7 +30,7 @@ class PlayButton extends React.Component {
     if (newProps.currentTrackId === this.props.trackId &&
           newProps.elapsedTime !== this.props.elapsedTime) {
             this.setState({ elapsedTime: newProps.elapsedTime });
-          }
+    }
   }
 
   render () {

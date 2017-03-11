@@ -13,6 +13,7 @@ class AudioControlBar extends React.Component {
     super(props);
 
     this.playNextSong = this.playNextSong.bind(this);
+    this.handlePlayNext = this.handlePlayNext.bind(this);
     this.restartSong = this.restartSong.bind(this);
     this.playLastSong = this.playLastSong.bind(this);
   }
@@ -37,7 +38,18 @@ class AudioControlBar extends React.Component {
     return minPos;
   }
 
-  playNextSong () {
+  handlePlayNext (e) {
+    this.playNextSong(false)
+  }
+
+  playNextSong (auto) {
+    if (auto && Object.keys(this.props.playQueue).length === 1 ) {
+      this.props.receiveCurrentTrack({playing: false})
+      return;
+    }
+
+    if (auto) { this.props.receiveCurrentTrack({ elapsedTime: 0 }) }
+
     const lastQueuePos = this.getLastQueuePos();
     let currentQueuePos = (this.props.currentTrack.currentQueuePos + 1) % (lastQueuePos + 1)
     if (currentQueuePos === 0 ) {
@@ -86,7 +98,7 @@ class AudioControlBar extends React.Component {
             <div className='next-song-button'>
               <i className="fa fa-step-forward"
                 aria-hidden="true"
-                onClick={ this.playNextSong }></i>
+                onClick={ this.handlePlayNext }></i>
             </div>
           </div>
           <div className='progress-bar-box'>
