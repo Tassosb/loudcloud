@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const formatTime = (seconds) => {
+const formatTime = (time) => {
+  const seconds = Math.floor(time)
   let minutes = Math.floor(seconds / 60);
   let secondsLeft = seconds % 60;
   const paddedSec = secondsLeft < 10 ? `0${secondsLeft}` : `${secondsLeft}`
@@ -14,7 +15,7 @@ const percentComplete = (elapsed, total) => (
 
 const ProgressBar = ({ elapsedTime, duration, trackPlaying, receiveCurrentTrack }) => {
   const formattedElapsedTime = formatTime(elapsedTime);
-  const formattedDuration = formatTime(duration);
+  const formattedDuration = formatTime(trackPlaying.duration);
   const style = {width: percentComplete(elapsedTime, duration)}
 
   const handleClick = (e) => {
