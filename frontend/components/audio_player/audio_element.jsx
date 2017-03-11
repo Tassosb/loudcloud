@@ -22,7 +22,6 @@ class AudioElement extends React.Component {
     this.timerId = window.setInterval(() => {
       const duration = this.AudioPlayer.getDuration();
       let elapsedTime = this.AudioPlayer.getCurrentTime();
-      if (duration) { elapsedTime = elapsedTime % duration }
       receiveCurrentTrack({
         elapsedTime
       });
@@ -53,7 +52,8 @@ class AudioElement extends React.Component {
       this.AudioPlayer.setPlayTime(0)
       receiveCurrentTrack({ restart: false })
     } else if (this.AudioPlayer.isSongOver()) {
-      playNextSong()
+      receiveCurrentTrack({ elapsedTime: 0, changeTime: true })
+      playNextSong(true);
     } else {
       playing ? this.AudioPlayer.play() : this.AudioPlayer.pause();
     }
@@ -65,7 +65,8 @@ class AudioElement extends React.Component {
     return (
       <audio
         src={ audioUrl }
-        autoPlay={ playing }></audio>
+        autoPlay={ playing }>
+      </audio>
     );
   }
 }
