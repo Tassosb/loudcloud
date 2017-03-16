@@ -67,10 +67,7 @@ class Track < ActiveRecord::Base
 
   def liked_by?(user)
     return false unless user
-    user.likes.to_a.find { |like| like.track_id == self.id }
-    # !!Like.joins(:track)
-    #       .where("user_id  = ? AND track_id = ?", user.id, self.id)
-    #       .first
+    user.likes.map(&:track_id).include?(self.id)
   end
 
   ###From EricMoy Songcloud
