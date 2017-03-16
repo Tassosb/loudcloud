@@ -78,7 +78,7 @@ class Track < ActiveRecord::Base
            audio.url
 
     open(path) do |url_file|
-      io_command = "php lib/assets/php-waveform-json.php #{url_file.path}"
+      io_command = "php vendor/assets/php-waveform-json.php #{url_file.path}"
       IO.popen(io_command) do |io|
         self.waveform = JSON.parse(io.read)['left']
       end
