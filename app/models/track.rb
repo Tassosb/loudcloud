@@ -52,10 +52,10 @@ class Track < ActiveRecord::Base
     class_name: 'User',
     foreign_key: :artist_id
 
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_many :likers, through: :likes, source: :user
-  has_many :comments
-  has_many :plays
+  has_many :comments, dependent: :destroy
+  has_many :plays, dependent: :destroy
 
   def self.top_ten
     Track.includes(:likes, :plays, :artist, comments: [:author])

@@ -25,14 +25,16 @@ class User < ActiveRecord::Base
   has_attached_file :image, default_url: "default_image.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
-  has_many :sessions
+  has_many :sessions, dependent: :destroy
   has_many :tracks,
-    foreign_key: :artist_id
+    foreign_key: :artist_id,
+    dependent: :destroy
   has_many :likes
   has_many :liked_tracks, through: :likes, source: :track
   has_many :authored_comments,
     class_name: 'Comment',
-    foreign_key: :author_id
+    foreign_key: :author_id,
+    dependent: :destroy
   has_many :plays
   has_many :played_tracks, through: :plays, source: :track
 
