@@ -134,7 +134,8 @@ li.splash-track-tile {
 }
 
 .splash-play-button {
-  display: none;
+  display: flex;
+  opacity: 0;
   color: $orange;
   position: absolute;
   font-size: 70px;
@@ -146,13 +147,14 @@ li.splash-track-tile {
   border-radius: 20px;
   align-items: center;
   justify-content: center;
+  transition: opacity .2s linear;
 }
 
 .image-tile-splash:hover .splash-play-button{
-  display: flex;
+  opacity: 1;
 }
 
-footer.splash-footer {
+section.splash-footer {
   display: flex;
   flex-direction: column;
   align-items: center;

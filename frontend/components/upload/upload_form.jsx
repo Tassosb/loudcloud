@@ -27,7 +27,7 @@ class UploadForm extends React.Component {
 
   handleAudioFile (e) {
     e.preventDefault();
-    
+
     let file = e.currentTarget.files[0];
     let fileReader = new FileReader();
 
@@ -51,7 +51,8 @@ class UploadForm extends React.Component {
     formData.append('track[audio]', this.state.audioFile);
     this.setState({processing: true});
     this.props.createTrack(formData)
-      .then(() => this.redirect());
+      .then(() => this.redirect())
+      .fail(() => this.setState({processing: false}));
   }
 
   redirect () {
@@ -81,6 +82,7 @@ class UploadForm extends React.Component {
             id='file' onChange={ this.handleAudioFile } />
           <label className='file' htmlFor="file">Choose a file to upload</label>
           <ErrorList errors={ this.props.errors.audio } startWith='Chosen file' />
+          <ErrorList errors={ this.props.errors.session } startWith=' ' />
         </div>
         { this.state.showForm ?
           <div className='new-track-form'>

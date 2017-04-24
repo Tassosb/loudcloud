@@ -68,6 +68,7 @@ class EditForm extends React.Component {
       <div className='modal-form modal-center modal-form-wide'>
         <h2 className='edit-form-title'>{ this.props.title }</h2>
         <form className='edit-form' onSubmit={ this.handleSubmit }>
+          
           <div className='edit-form-flex-box'>
             <div className='edit-image-column'>
               <div className='user-image'>
