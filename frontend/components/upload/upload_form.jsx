@@ -49,7 +49,8 @@ class UploadForm extends React.Component {
 
   submitForm (formData) {
     formData.append('track[audio]', this.state.audioFile);
-    this.setState({processing: true});
+    if (this.props.loggedIn) { this.setState({processing: true}); }
+    
     this.props.createTrack(formData)
       .then(() => this.redirect())
       .fail(() => this.setState({processing: false}));
