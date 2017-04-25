@@ -112,7 +112,7 @@ class AuthForm extends React.Component {
             value={ this.state.password }
             formType={ formType } />
           <ErrorList errors={ errors.password } />
-          <ErrorList errors={ errors.login } />
+          <ErrorList errors={ errors.login } startWith=" " />
 
           { loading ?
             <LoadingBar /> :
