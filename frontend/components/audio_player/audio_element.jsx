@@ -8,7 +8,7 @@ class AudioElement extends React.Component {
   }
 
   componentDidMount () {
-    const audioEl = $('audio')[0];
+    const audioEl = this.refs.audio;
     const { receiveCurrentTrack, elapsedTime } = this.props;
 
     this.AudioPlayer = new AudioPlayer(audioEl);
@@ -64,6 +64,7 @@ class AudioElement extends React.Component {
 
     return (
       <audio
+        ref='audio'
         src={ audioUrl }
         autoPlay={ playing }>
       </audio>
