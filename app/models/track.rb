@@ -27,21 +27,23 @@ class Track < ActiveRecord::Base
   validates :title, :artist, :waveform, presence: true
 
   has_attached_file :audio
-  validates_attachment_content_type :audio,
-    :content_type => [
-      'audio/mpeg',
-      'audio/x-mpeg',
-      'audio/mp3',
-      'audio/x-mp3',
-      'audio/mpeg3',
-      'audio/x-mpeg3',
-      'audio/mpg',
-      'audio/x-mpg',
-      'audio/x-mpegaudio',
-      'audio/mp4',
-      'audio/x-mp4',
-      'audio/x-mp4audio'
-    ]
+
+  validates_attachment :audio,
+    content_type: { content_type: [
+        'audio/mpeg',
+        'audio/x-mpeg',
+        'audio/mp3',
+        'audio/x-mp3',
+        'audio/mpeg3',
+        'audio/x-mpeg3',
+        'audio/mpg',
+        'audio/x-mpg',
+        'audio/x-mpegaudio',
+        'audio/mp4',
+        'audio/x-mp4',
+        'audio/x-mp4audio'
+      ]
+    }
 
   has_attached_file :image, default_url: "default_image.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
@@ -78,7 +80,7 @@ class Track < ActiveRecord::Base
            audio.url
 
     open(path) do |url_file|
-      io_command = "php vendor/assets/php-waveform-json.php #{url_file.path}"
+      io_command = "php vendor/assets/php/php-waveform-json.php #{url_file.path}"
       IO.popen(io_command) do |io|
         self.waveform = JSON.parse(io.read)['left']
       end
