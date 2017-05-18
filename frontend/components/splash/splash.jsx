@@ -6,6 +6,7 @@ import SignUpButton from '../buttons/sign_up_button';
 import SearchBar from '../search/search_bar';
 import SplashUploadButton from '../buttons/splash_upload_button';
 import SplashTrackIndex from './splash_track_index';
+import Footer from '../footer/footer';
 
 const SplashBanner = () => {
   return (
@@ -38,7 +39,7 @@ const Splash = () => {
         <h1>Hear what's trending</h1>
         <SplashTrackIndex />
       </section>
-      <footer className='splash-footer'>
+      <section className='splash-footer'>
         <h1>Thanks for listening. Now join in.</h1>
         <h2>Save tracks, discover new music. All for free.</h2>
         <SignUpButton />
@@ -46,7 +47,8 @@ const Splash = () => {
           <span>Already have an account?</span>
           <LogInButton />
         </div>
-      </footer>
+      </section>
+      <Footer />
     </div>
   )
 }

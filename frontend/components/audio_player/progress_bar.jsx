@@ -13,16 +13,16 @@ const percentComplete = (elapsed, total) => (
   ((elapsed / total) * 100) + '%'
 )
 
-const ProgressBar = ({ elapsedTime, duration, trackPlaying, receiveCurrentTrack }) => {
+const ProgressBar = ({ elapsedTime, trackPlaying, receiveCurrentTrack }) => {
   const formattedElapsedTime = formatTime(elapsedTime);
   const formattedDuration = formatTime(trackPlaying.duration);
-  const style = {width: percentComplete(elapsedTime, duration)}
+  const style = {width: percentComplete(elapsedTime, trackPlaying.duration)}
 
   const handleClick = (e) => {
     var relClickPos = e.nativeEvent.offsetX;
     var barWidth = e.currentTarget.offsetWidth;
 
-    const elapsedTime = Math.floor((relClickPos / barWidth) * duration)
+    const elapsedTime = Math.floor((relClickPos / barWidth) * trackPlaying.duration)
     receiveCurrentTrack({ elapsedTime, changeTime: true })
   }
 
@@ -46,8 +46,7 @@ const ProgressBar = ({ elapsedTime, duration, trackPlaying, receiveCurrentTrack 
 }
 
 const mapStateToProps = ({ currentTrack }) => ({
-  elapsedTime: currentTrack.elapsedTime,
-  duration: currentTrack.duration
+  elapsedTime: currentTrack.elapsedTime
 })
 
 export default connect(

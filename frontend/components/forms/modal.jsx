@@ -30,16 +30,17 @@ class Modal extends React.Component {
 
   render () {
     const { modal, closeModal } = this.props
-    if (!modal) { return null };
+
+    let klass = modal === '' ? ' off-screen' : '';
 
     const width = (this.props.modal === 'editProfile' ||
                    this.props.modal === 'editTrack') ? 600 : 400
 
     return (
-      <div onClick={ this.handleClick } className='modal-screen'>
+      <div onClick={ this.handleClick } className={'modal-screen' + klass}>
         <i className="modal-close"
           onClick={ closeModal }></i>
-        <div className='modal-content' style={ {width: width} }>
+        <div className={'modal-content' + klass} style={ {width: width} }>
           { modals[modal] }
         </div>
       </div>

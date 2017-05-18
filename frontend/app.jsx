@@ -9,7 +9,6 @@ const App = ({ children }) => {
     <div>
       <Modal />
       { children }
-      <Footer />
       <AudioControlBar />
     </div>
   )

@@ -55,7 +55,8 @@ class AudioControlBar extends React.Component {
     }
 
     this.props.receiveCurrentTrack({
-      currentQueuePos: currentQueuePos
+      currentQueuePos: currentQueuePos,
+      elapsedTime: 0
     });
   }
 

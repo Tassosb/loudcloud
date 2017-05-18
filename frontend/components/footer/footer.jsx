@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className='main-footer'>
       <ul>
         <li>
-          Made by Tassos Bareiss
+          Made by <a href='https://tassosb.github.io'>Tassos Bareiss</a>
         </li>
         <li>-</li>
         <li>

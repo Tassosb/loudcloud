@@ -28,6 +28,10 @@
   @extend .middle-content;
   margin: 0 auto;
   background-color: white;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 body {
