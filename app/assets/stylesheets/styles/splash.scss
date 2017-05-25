@@ -1,7 +1,8 @@
 .splash-main {
   margin: 0 auto;
   background-color: white;
-  // width: 1100px;
+  max-width: 1100px;
+  min-width: 400px;
 }
 
 .splash-banner {
@@ -39,11 +40,10 @@ section.splash-search {
   margin: 30px;
   display: flex;
   align-items: center;
-  // width: 1100px;
+  justify-content: center;
 
   input {
     width: 100%;
-    max-width: 570px;
     min-width: 150px;
     height: 40px;
   }
@@ -51,33 +51,6 @@ section.splash-search {
   span {
     color: $dark-grey;
     margin: 0 20px;
-  }
-}
-
-@media (max-width: 1049px) {
-  div.image-tile-splash {
-    width: 150px;
-    height: 150px;
-  }
-  li.splash-track-tile {
-    margin-right: 10px;
-    margin-bottom: 15px;
-  }
-  .splash-track-detail {
-    width: 150px;
-  }
-}
-
-@media (max-width: 649px) {
-  section.splash-search {
-    flex-direction: column;
-    .search-bar {
-      width: 450px;
-    }
-    span { margin: 10px 0; }
-  }
-  ul.splash-track-list {
-    width: 420px;
   }
 }
 
@@ -132,9 +105,9 @@ section.splash-track-index {
 }
 
 ul.splash-track-list {
-  // width: 1050px;
   display: flex;
   flex-wrap: wrap;
+  width: 1050px;
   padding: 20px 0 20px 20px;
 
 }
@@ -218,5 +191,80 @@ section.splash-footer {
 
   .log-in-button:hover {
     @extend .subtle-border-hover;
+  }
+}
+
+
+@media (max-width: 1070px) {
+  div.image-tile-splash {
+    width: 180px;
+    height: 180px;
+  }
+  li.splash-track-tile {
+    margin-right: 15px;
+    margin-bottom: 20px;
+  }
+  ul.splash-track-list {
+    width: 975px;
+    padding-left: 15px;
+  }
+  .splash-track-detail {
+    width: 180px;
+  }
+  .splash-main {
+    width: 1000px;
+  }
+}
+
+@media (max-width: 995px) {
+  div.image-tile-splash {
+    width: 165px;
+    height: 165px;
+  }
+  li.splash-track-tile {
+    margin-right: 10px;
+    margin-bottom: 15px;
+  }
+  ul.splash-track-list {
+    width: 875px;
+    padding-left: 10px;
+  }
+  .splash-track-detail {
+    width: 165px;
+  }
+  .splash-main {
+    width: 900px;
+  }
+}
+
+@media (max-width: 649px) {
+  section.splash-search {
+    flex-direction: column;
+    .search-bar {
+      width: 400px;
+    }
+    span { margin: 10px 0; }
+  }
+  ul.splash-track-list {
+    width: 400px;
+    padding-left: 10px;
+  }
+  .splash-main {
+    width: 480px;
+  }
+  div.image-tile-splash {
+    width: 190px;
+    height: 190px;
+  }
+  li.splash-track-tile {
+    margin-right: 10px;
+    margin-bottom: 15px;
+  }
+  .splash-track-detail {
+    width: 190px;
+  }
+  section.splash-footer h1 {
+    font-size: 35px;
+    padding: 0 30px 30px 30px;
   }
 }
