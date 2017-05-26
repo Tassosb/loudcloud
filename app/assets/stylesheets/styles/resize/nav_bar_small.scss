@@ -1,0 +1,64 @@
+@media (max-width: 467px) {
+  .header-bar {
+    min-width: 0;
+    width:100%;
+  }
+  .nav-bar {
+    width: 100%;
+    flex-wrap: wrap;
+    height: 110px;
+    justify-content: flex-start;
+    min-width: 200px !important;
+    div.search-bar {
+      order: 1;
+      margin: 0;
+      flex:none;
+      width:100%;
+      min-width: 0;
+    }
+    a {
+      flex: 1;
+      padding: 0;
+    }
+    div, span {
+      font-size: 13px;
+    }
+    .nav-logo {
+      border-bottom: 1px solid black;
+    }
+  }
+  .nav-buttons {
+    a {
+      margin: 0 10px 0 20px !important;
+      flex:1;
+    }
+    padding: 0;
+  }
+  .nav-dropdown {
+    margin: 0;
+  }
+  .nav-dropdown > li {
+    height: 27px;
+  }
+  .nav-dropdown.display ul {
+    top:27px;
+    right:0;
+  }
+  .drop-down-icon {
+    padding: 0 6px;
+  }
+  div.nav-tab {
+    border-bottom: 1px solid black;
+    padding: 0 10px;
+  }
+  .log-in-button, .sign-up-button {
+    font-size: 13px;
+  }
+  .log-in-button {
+    width: 50px;
+  }
+  .sign-up-button {
+    margin-right: 10px;
+    width: 100px
+  }
+}

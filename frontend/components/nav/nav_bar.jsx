@@ -70,8 +70,18 @@ class NavBar extends React.Component {
           </Link>
 
             <SearchBar />
-
-          <NavButtons loggedIn={ !!currentUser } />
+          { !currentUser &&
+            <div>
+              <LogInButton />
+              <span>or</span>
+              <SignUpButton />
+            </div>
+          }
+          <Link to='/upload'>
+            <div>
+                Upload
+            </div>
+          </Link>
           { !!currentUser &&
             <div className='profile-link'>
               <Link to='/profile'>

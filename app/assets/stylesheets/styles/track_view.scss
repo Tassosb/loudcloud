@@ -80,8 +80,6 @@
   margin: 10px 20px 10px 40px;
 }
 
-
-
 .comment-count {
   color: $plain-grey;
   margin-bottom: 10px;
@@ -102,37 +100,4 @@
   flex-direction: column;
   justify-content: space-between;
   padding-bottom: 45px;
-}
-
-@media (max-width: 400px) {
-  .main-content {
-    min-width: 400px !important;
-  }
-  .track-banner {
-    flex-direction: column;
-    height: 677px;
-    align-items: center;
-    .track-image {
-      width: 320px;
-      height: 320px;
-    }
-  }
-  .track-banner-left {
-    order: 1;
-    align-items: center;
-  }
-  .track-header {
-    margin-top: 10px
-  }
-  .waveform-tall {
-    height: 160px;
-    padding:65px 0 0 0;
-    canvas {
-      width: 350px;
-      height: 200px;
-    }
-  }
-  .comment-thumbnails {
-    display: none !important;
-  }
 }
