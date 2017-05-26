@@ -1,6 +1,6 @@
 .track-banner {
   background: linear-gradient( 135deg, #874648,#235);
-  height: 380px;
+  height: 100%;
   display: flex;
   justify-content: space-between;
 
@@ -21,7 +21,8 @@
 
 .track-header {
   @extend .user-info;
-  margin-top: 30px;
+  // margin-top: 30px;
+  margin-bottom: 0;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
