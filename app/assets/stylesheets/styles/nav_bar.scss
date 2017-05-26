@@ -127,3 +127,48 @@ div.profile-link {
 .nav-bar a:hover, .nav-bar div:hover {
   color: $off-white;
 }
+
+@media (max-width: 400px) {
+  .header-bar {
+    min-width: 0;
+    width:400px;
+  }
+  .nav-bar {
+    flex-wrap: wrap;
+    height: 120px;
+    justify-content: flex-start;
+    min-width: 400px !important;
+    div.search-bar {
+      order: 1;
+      margin: 0;
+      flex:none;
+      width:400px;
+    }
+    a {flex:1}
+    .nav-logo {
+      border-bottom: 1px solid black;
+    }
+  }
+  .nav-buttons {
+    a {
+      margin: 0 10px 0 20px !important;
+      flex:1;
+    }
+  }
+  .nav-dropdown {
+    margin: 0 -10px;
+  }
+  .nav-dropdown > li {
+    height: 27px;
+  }
+  .nav-dropdown.display ul {
+    top:27px;
+    right:0;
+  }
+  .drop-down-icon {
+    padding: 0 6px;
+  }
+  .nav-tab {
+    border-bottom: 1px solid black;
+  }
+}
