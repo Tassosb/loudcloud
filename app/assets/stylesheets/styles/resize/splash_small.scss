@@ -69,9 +69,15 @@
   .splash-track-detail {
     width: 190px;
   }
-  section.splash-footer h1 {
-    font-size: 35px;
-    padding: 0 30px 30px 30px;
+  section.splash-footer {
+    align-items: flex-start;
+    h1 {
+      font-size: 32px;
+    }
+    h2 {
+      font-size: 20px;
+      margin: 30px 0 0 0;
+    }
   }
   .splash-header {
     align-items: flex-start;
@@ -87,5 +93,7 @@
     }
     .log-in-button { order:1 }
   }
-
+  section.splash-footer span {
+    font-size: 12px;
+  }
 }

@@ -7,7 +7,7 @@
   .nav-bar {
     width: 100%;
     flex-wrap: wrap;
-    height: 110px;
+    height: 100%;
     justify-content: flex-start;
     min-width: 200px !important;
     div.search-bar {
@@ -58,6 +58,8 @@
   div.nav-tab {
     border-bottom: 1px solid black;
     padding: 0 10px;
+    display: flex;
+    justify-content: center;
   }
   .log-in-button, .sign-up-button {
     font-size: 13px;

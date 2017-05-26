@@ -1,0 +1,19 @@
+@media (max-width: 467px) {
+  .user-banner {
+    height: 350px;
+    flex-direction: column;
+    align-items: center;
+  }
+  .user-image {
+    margin-left: 0;
+  }
+  .user-info {
+    align-items: center;
+  }
+  .user-side-column {
+    display: none;
+  }
+  .user-tracks-column {
+    border-right: none;
+  }
+}
