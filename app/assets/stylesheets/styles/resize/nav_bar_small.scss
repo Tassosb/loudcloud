@@ -8,6 +8,7 @@
     width: 100%;
     flex-wrap: wrap;
     height: 100px;
+
     justify-content: flex-start;
     min-width: 200px !important;
     div.search-bar {
@@ -34,6 +35,11 @@
     .nav-logo {
       border-bottom: 1px solid black;
     }
+  }
+  .nav-bar > div {
+    height: 40px;
+    display: flex;
+    align-items: center;
   }
   .nav-buttons {
     a {
