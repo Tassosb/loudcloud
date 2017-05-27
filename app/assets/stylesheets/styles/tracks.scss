@@ -109,14 +109,15 @@
     height: 27px;
     width: 60px;
     padding: 0 5px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    // display: flex;
+    // justify-content: space-around;
+    // align-items: center;
     background-color: white;
     margin-right: 5px;
 
     span {
       color: black;
+      margin-left: 10px;
     }
   }
 
@@ -147,5 +148,6 @@
 }
 
 canvas {
+  width:100%;
   cursor: pointer;
 }

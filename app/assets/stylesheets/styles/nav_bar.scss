@@ -18,6 +18,11 @@
   justify-content: space-between;
   align-items: center;
 
+  section {
+    display: flex;
+    align-items: center;
+  }
+
   div.search-bar {
     height: 28px;
     min-width: 354px;

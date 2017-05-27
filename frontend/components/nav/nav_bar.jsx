@@ -53,43 +53,46 @@ class NavBar extends React.Component {
     return (
       <div className='header-bar'>
         <div className='nav-bar'>
-          <div className='nav-logo'>
-            <Link to='/'>
-              <img src={ logoWithText } />
-            </Link>
-          </div>
-          <Link to='/'>
-            <div className='nav-tab'>
-                Home
-            </div>
-          </Link>
-          <Link to='/charts'>
-            <div className='nav-tab'>
-                Charts
-            </div>
-          </Link>
-
-            <SearchBar />
-          { !currentUser &&
-            <div>
-              <LogInButton />
-              <span>or</span>
-              <SignUpButton />
-            </div>
-          }
-          <Link to='/upload'>
-            <div>
-                Upload
-            </div>
-          </Link>
-          { !!currentUser &&
-            <div className='profile-link'>
-              <Link to='/profile'>
-                { currentUser.name || currentUser.email }
+          <section>
+            <div className='nav-logo'>
+              <Link to='/'>
+                <img src={ logoWithText } />
               </Link>
-            </div> }
-            <NavDropDown loggedIn={ !!currentUser } />
-          </div>
+            </div>
+            <Link to='/'>
+              <div className='nav-tab'>
+                Home
+              </div>
+            </Link>
+            <Link to='/charts'>
+              <div className='nav-tab'>
+                Charts
+              </div>
+            </Link>
+          </section>
+          <SearchBar />
+          <section>
+            { !currentUser &&
+              <div>
+                <LogInButton />
+                <span>or</span>
+                <SignUpButton />
+              </div>
+            }
+            <Link to='/upload'>
+              <div>
+                Upload
+              </div>
+            </Link>
+            { !!currentUser &&
+              <div className='profile-link'>
+                <Link to='/profile'>
+                  { currentUser.name || currentUser.email }
+                </Link>
+              </div> }
+              <NavDropDown loggedIn={ !!currentUser } />
+          </section>
+        </div>
       </div>
     )
   }

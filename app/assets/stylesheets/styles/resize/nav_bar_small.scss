@@ -6,9 +6,9 @@
 
   .nav-bar {
     width: 100%;
-    flex-wrap: wrap;
-    height: 100px;
-
+    // flex-wrap: wrap;
+    height: 118px;
+    flex-direction: column;
     justify-content: flex-start;
     min-width: 200px !important;
     div.search-bar {
@@ -31,9 +31,15 @@
     }
     div, span {
       font-size: 13px;
+      display: flex;
+      align-items: center;
     }
     .nav-logo {
       border-bottom: 1px solid black;
+    }
+    section {
+      width:100%;
+      display: flex;
     }
   }
   .nav-bar > div {
@@ -59,7 +65,7 @@
     right:0;
   }
   .drop-down-icon {
-    padding: 0 6px;
+    padding: 0px 6px;
   }
   div.nav-tab {
     border-bottom: 1px solid black;

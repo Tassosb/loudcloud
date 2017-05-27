@@ -41,6 +41,7 @@
     align-items: center;
   }
   .track-main-column {
+    padding-top: 0;
     padding-left: 20px;
   }
   .track-show-artist-tile {
@@ -58,5 +59,7 @@
   }
   .track-view-main .track-stats {
     margin-left: 0;
+    justify-content: center;
+    width:100%;
   }
 }
