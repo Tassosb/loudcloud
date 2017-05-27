@@ -43,8 +43,8 @@ class AudioControlBar extends React.Component {
   }
 
   playNextSong (auto) {
-    if (auto && Object.keys(this.props.playQueue).length === 1 ) {
-      this.props.receiveCurrentTrack({playing: false});
+    if (Object.keys(this.props.playQueue).length === 1 ) {
+      if (auto) this.props.receiveCurrentTrack({playing: false});
       return;
     }
 
