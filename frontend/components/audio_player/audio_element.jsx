@@ -25,7 +25,7 @@ class AudioElement extends React.Component {
       receiveCurrentTrack({
         elapsedTime
       });
-    }, 400)
+    }, 250)
   }
 
   componentWillUnmount () {
