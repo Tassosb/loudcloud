@@ -5,7 +5,9 @@ const generatePlayQueue = (tracks) => {
   const trackList = Object.keys(tracks).map((id) => tracks[id])
 
   trackList.forEach((track) => {
-    playQueue[track.queuePos] = track;
+    const {id, artist, audio_url, duration, image_url, title} = track;
+    const queued = {id, artist, audio_url, duration, image_url, title};
+    playQueue[track.queuePos] = queued;
   })
 
   return playQueue;
