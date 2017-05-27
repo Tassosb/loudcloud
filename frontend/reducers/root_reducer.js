@@ -9,6 +9,7 @@ import currentTrack from './current_track_reducer';
 import trackInView from './track_in_view_reducer';
 import searchResults from './search_results_reducer';
 import loading from './loading_reducer';
+import elapsedTimes from './elapsed_times_reducer';
 
 const rootReducer = combineReducers({
   errors,
@@ -20,7 +21,8 @@ const rootReducer = combineReducers({
   currentTrack,
   trackInView,
   searchResults,
-  loading
+  loading,
+  elapsedTimes
 });
 
 export default rootReducer;

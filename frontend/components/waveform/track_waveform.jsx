@@ -62,24 +62,21 @@ class TrackWaveform extends React.Component {
   }
 
   update (trackPlaying) {
-    const { track, currentTrack } = this.props;
+    const { track, elapsedTimes } = this.props;
 
-    if (track.id === trackPlaying.id) {
-      const newTime = currentTrack.elapsedTime % track.duration;
-      this.waveform.currentTime = newTime;
-      this.waveform.draw();
-    }
+    const newTime = elapsedTimes[track.id] || 0;
+    this.waveform.currentTime = newTime;
+    this.waveform.draw();
   }
 
   render () {
     const { track, size, currentTrack, playQueue } = this.props;
-    const trackPlaying = playQueue[currentTrack.currentQueuePos];
 
     const width = size === 'index' ? 500 : 700;
     const height = size === 'index' ? 60 : 150;
 
-    if (this.waveform && trackPlaying) {
-      this.update(trackPlaying);
+    if (this.waveform) {
+      this.update();
     }
 
     return (
@@ -89,10 +86,11 @@ class TrackWaveform extends React.Component {
   }
 }
 
-const mapStateToProps = ({ currentTrack, playQueue, tracks }) => ({
+const mapStateToProps = ({ currentTrack, playQueue, tracks, elapsedTimes }) => ({
   currentTrack,
   playQueue,
-  tracks
+  tracks,
+  elapsedTimes
 });
 
 const mapDispatchToProps = (dispatch) => ({

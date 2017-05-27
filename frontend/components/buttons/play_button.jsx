@@ -14,7 +14,7 @@ const sizes = {
 class PlayButton extends React.Component {
   constructor (props) {
     super(props);
-    this.state = {playCounted: false, elapsedTime: 0};
+    this.state = {playCounted: false};
     this.addTrackPlay = this.addTrackPlay.bind(this);
   }
 
@@ -26,17 +26,10 @@ class PlayButton extends React.Component {
     }
   }
 
-  componentWillReceiveProps (newProps) {
-    if (newProps.currentTrackId === this.props.trackId &&
-          newProps.elapsedTime !== this.props.elapsedTime) {
-            this.setState({ elapsedTime: newProps.elapsedTime });
-    }
-  }
-
   render () {
     const { playing, size, pauseTrack, playTrack,
       trackId, trackQueuePos, currentQueuePos,
-      tracks, updateQueue, currentTrackId, elapsedTime } = this.props;
+      tracks, updateQueue, currentTrackId, elapsedTimes } = this.props;
 
     const track = tracks[trackId];
     let icon, action;
@@ -47,8 +40,8 @@ class PlayButton extends React.Component {
       icon = size === 'small' ? "fa fa-play" : "fa fa-play-circle";
       action = () => {
         updateQueue(tracks);
-        if (track) {
-          playTrack(track, this.state.elapsedTime);
+        if (track !== undefined) {
+          playTrack(track, this.props.elapsedTimes[track.id]);
           this.addTrackPlay(track);
         }
       };
@@ -64,24 +57,26 @@ class PlayButton extends React.Component {
   }
 }
 
-const mapStateToProps = ({ currentTrack, tracks, playQueue }) => {
-  let currentTrackId = 0
+const mapStateToProps = ({ currentTrack, tracks, playQueue, elapsedTimes }) => {
+  let currentTrackId = 0, elapsedTime = 0;
   if (currentTrack.playing) {
     const trackPlaying = playQueue[currentTrack.currentQueuePos];
-    if (trackPlaying) { currentTrackId = trackPlaying.id; }
+    if (trackPlaying) {
+      currentTrackId = trackPlaying.id;
+    }
   }
 
   return {
     playing: currentTrack.playing,
     currentQueuePos: currentTrack.currentQueuePos,
-    elapsedTime: currentTrack.elapsedTime,
     currentTrackId,
-    tracks
+    tracks,
+    elapsedTimes
   }
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  playTrack: (track, elapsedTime) => {
+  playTrack: (track, elapsedTime = 0) => {
     dispatch(receiveCurrentTrack({
     currentQueuePos: track.queuePos, playing: true, elapsedTime, changeTime: true }))
   },

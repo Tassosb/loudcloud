@@ -26,3 +26,7 @@ export const selectTracksAsArray = (state) => {
 
   return tracksAsArray.sort(compareByQueuePos)
 };
+
+export const selectCurrentTrack = (state) => {
+  return state.playQueue[state.currentTrack.currentQueuePos];
+}

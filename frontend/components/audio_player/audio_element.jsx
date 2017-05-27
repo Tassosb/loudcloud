@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import AudioPlayer from '../../util/audio_player_util';
+import { selectCurrentTrack } from '../../reducers/selectors';
 
 class AudioElement extends React.Component {
   constructor (props) {
@@ -9,7 +10,7 @@ class AudioElement extends React.Component {
 
   componentDidMount () {
     const audioEl = this.refs.audio;
-    const { receiveCurrentTrack, elapsedTime } = this.props;
+    const { receiveCurrentTrack, elapsedTime, currentTrack } = this.props;
 
     this.AudioPlayer = new AudioPlayer(audioEl);
 
@@ -22,8 +23,10 @@ class AudioElement extends React.Component {
     this.timerId = window.setInterval(() => {
       const duration = this.AudioPlayer.getDuration();
       let elapsedTime = this.AudioPlayer.getCurrentTime();
+      // const currentTrackId = currentTrack === undefined ? 0 : currentTrack.id;
       receiveCurrentTrack({
-        elapsedTime
+        elapsedTime,
+        track: this.props.currentTrack
       });
     }, 250)
   }
@@ -39,7 +42,7 @@ class AudioElement extends React.Component {
             changeTime,
             playNextSong,
             playLastSong,
-            receiveCurrentTrack,
+            receiveCurrentTrack
           } = this.props;
 
     if (changeTime) {
@@ -72,11 +75,12 @@ class AudioElement extends React.Component {
   }
 }
 
-const mapStateToProps = ({ currentTrack }) => ({
-  playing: currentTrack.playing,
-  restart: currentTrack.restart,
-  elapsedTime: currentTrack.elapsedTime,
-  changeTime: currentTrack.changeTime
+const mapStateToProps = (state) => ({
+  playing: state.currentTrack.playing,
+  restart: state.currentTrack.restart,
+  elapsedTime: state.currentTrack.elapsedTime,
+  changeTime: state.currentTrack.changeTime,
+  currentTrack: selectCurrentTrack(state)
 })
 
 export default connect(
