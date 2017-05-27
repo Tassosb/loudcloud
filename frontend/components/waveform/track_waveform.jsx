@@ -84,7 +84,7 @@ class TrackWaveform extends React.Component {
 
     return (
       <canvas ref={`waveform-canvas-${track.id}`}
-        width={ width } height={ height } />
+        width={width} height={ height } />
     );
   }
 }
